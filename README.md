@@ -123,8 +123,10 @@ sequenceDiagram
 
 ### Specialist (сборка)
 
-- Сейчас: **специализированная модель с отдельным промптом** — тот же OpenRouter-endpoint, вызов через `SpecialistAdapter`, промпт `prompts/specialist.v2.md`, контракт `SpecialistResult`
-- **Планируется заменить на дообученную модель специалиста по сборке** (локальный checkpoint + SFT на разрешённом корпусе); датасет КСО и training pipeline в этом MVP не развёрнуты
+Это **не отдельная ветка диалога** в Telegram. Пользователь пишет одному боту; оркестратор при необходимости вызывает tool `workshop_consult`, внутри которого идёт **второй LLM-вызов** (`SpecialistAdapter` + `prompts/specialist.v2.md`). Результат возвращается в оркестратор как structured `SpecialistResult` / opaque tool payload; в чат уходит уже собранный ответ (summary + блок проверок в `render_answer`), а не отдельный «чат со специалистом».
+
+- Сейчас: **специализированная модель с отдельным промптом** — тот же OpenRouter-endpoint, отдельный вызов и JSON-контракт
+- **Планируется заменить на дообученную модель специалиста по сборке** (локальный checkpoint + SFT); датасет КСО и training pipeline в этом MVP не развёрнуты
 - Получает только RAG/demo evidence по клипсам/панелям; форумные ответы в его контекст не смешиваются
 - Цитаты ограничены `evidence_id` / `EASSUME`; оркестратор не переписывает шаги specialist в tool-message
 
