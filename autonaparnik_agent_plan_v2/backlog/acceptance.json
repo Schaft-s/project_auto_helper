@@ -1,0 +1,245 @@
+{
+  "schema_version": "2.0",
+  "execution_status": "not_run",
+  "cases": [
+    {
+      "id": "AC01",
+      "title": "Live MCP",
+      "given": "Известный make/model/year и рабочие endpoints",
+      "expected": "UI→router→MCP initialize/tools/list/tools/call→официальный source ID; trace saved; no fixture-as-live",
+      "requirements": [
+        "B04",
+        "B05"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC02",
+      "title": "Уточнение",
+      "given": "Не указан model_year или неизвестна модель",
+      "expected": "Не более3 существенных вопросов; профиль не выдуман; год регистрации не приравнен к model_year",
+      "requirements": [
+        "B02",
+        "B05"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC03",
+      "title": "Ноль против ошибки",
+      "given": "Empty success, HTTP400 empty fixture, произвольный400, timeout",
+      "expected": "Только известный empty envelope даёт confirmed0; прочие ошибки unavailable/invalid; никаких «жалоб нет» при outage",
+      "requirements": [
+        "B04",
+        "B05"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC04",
+      "title": "Честный охват",
+      "given": "Жалоб больше, чем получено",
+      "expected": "total/returned/analyzed разделены; partial=true; source market US виден; не вычисляется вероятность поломки",
+      "requirements": [
+        "B01",
+        "B05"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC05",
+      "title": "Неизвестное покрытие",
+      "given": "Рынок KZ/RU или неподдержанная модель; вопрос про VIN",
+      "expected": "Нет подмены похожей моделью и обещания полноты/участия конкретногоVIN; общая консультация допускается",
+      "requirements": [
+        "B01"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC06",
+      "title": "Реальный специалист",
+      "given": "Поддерживаемый workshop intent и approved документ",
+      "expected": "Вызван base/SFT endpoint; original checks прикреплены без rewrite; actual stage/hash",
+      "requirements": [
+        "A01",
+        "B03",
+        "B05"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC07",
+      "title": "Применимость",
+      "given": "Высоко похожий текст для чужого варианта",
+      "expected": "mismatch исключён; unknown не становится точной процедурой; general только после review",
+      "requirements": [
+        "B01",
+        "B03"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC08",
+      "title": "Нет документа",
+      "given": "Нет подходящего источника или профиль неполон",
+      "expected": "needs_context/general_only с допустимым источником; не выдумываются нормативы/процедура",
+      "requirements": [
+        "B03"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC09",
+      "title": "Пропуск не обвинение",
+      "given": "Пользователь не описал контрольный шаг",
+      "expected": "not_mentioned, а не утверждение о фактическом нарушении; findings подтверждены gold rubric",
+      "requirements": [
+        "A02",
+        "B01"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC10",
+      "title": "Права корпуса и весов",
+      "given": "Canary private документ или private-only training lineage",
+      "expected": "Недопустимое не попадает в cloud/log/public corpus/inference; checks training manifest по actual artifact hash; отдельно двухходовый canary: после показа local block следующий router request не содержит specialist text/excerpts",
+      "requirements": [
+        "A01",
+        "B06"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC11",
+      "title": "Недоверенная история/источники",
+      "given": "system/tool в history или инструкция внутри жалобы",
+      "expected": "Вход отклонён либо текст изолирован как данные; нет новых tools, источников или privilege changes",
+      "requirements": [
+        "B03",
+        "B05"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC12",
+      "title": "UI и ссылки",
+      "given": "HTML/script/unsafe URL в источнике/LLM",
+      "expected": "Escape, allowlist URLs и источников; код не исполняется, нет API key в browser",
+      "requirements": [
+        "B02"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC13",
+      "title": "Ограниченный бюджет",
+      "given": "Повторные tools, retry/slow endpoint, параллельные запросы",
+      "expected": "Счётчики/общий deadline/лимит расходов соблюдены; понятная partial/error; нет бесконечных вызовов; каждый app tool реально исполняется не более1раза, identical повтор cache, другие args блокируются; spending cap не null в публичном запуске",
+      "requirements": [
+        "B05",
+        "B06"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC14",
+      "title": "Контракт и repair",
+      "given": "Невалидный JSON/несуществующий ID/непереданный specialist источник",
+      "expected": "Максимум один repair модели; невалидный ответ не выдан; raw vs repaired честно сохранены",
+      "requirements": [
+        "B03"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC15",
+      "title": "Независимость данных",
+      "given": "Копии, переводы, paraphrases одного источника",
+      "expected": "Все имеют один source_group_id и один split; нет targets теста в train/RAG",
+      "requirements": [
+        "A02"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC16",
+      "title": "Настоящее SFT",
+      "given": "Tiny smoke и основной run",
+      "expected": "Completion loss mask проверен, optimizer steps были, обучаемые weights изменились, adapter reload работает",
+      "requirements": [
+        "A01"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC17",
+      "title": "Честное сравнение",
+      "given": "Frozen base/SFT test",
+      "expected": "Один контекст/template/decoding; rubric/n групп/uncertainty; raw outputs и actual results; без fabricated improvements",
+      "requirements": [
+        "A02"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC18",
+      "title": "Экспорт/идентичность",
+      "given": "Перезагрузка inference после SFT или merge",
+      "expected": "Фактически загруженный artifact совпадает с manifest/hash, parity выполнена; base не показан как SFT",
+      "requirements": [
+        "A01",
+        "B05"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC19",
+      "title": "Доступность",
+      "given": "Чистый checkout и внешний браузер",
+      "expected": "HTTPS URL работает, внутренние порты закрыты, restore корпуса и runbook проверены",
+      "requirements": [
+        "B06",
+        "B07"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC20",
+      "title": "Материалы курсов",
+      "given": "README/HTML/журнал/воркшоп/репетиция",
+      "expected": "Проверяемые ссылки, до10мин, mandatory workshop подтверждён, source/model evidence и оба курса понятны",
+      "requirements": [
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC21",
+      "title": "Визуально зависимый контекст",
+      "given": "Карта со ссылкой на недоступную схему или утраченным warning",
+      "expected": "requires_visual_context/неполнота замечены; нет притворства что схема прочитана; шаг не усечён молча",
+      "requirements": [
+        "B01",
+        "B03"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "AC22",
+      "title": "Публичные артефакты",
+      "given": "Предрелизный diff и model/corpus manifests",
+      "expected": "Secrets/закрытыеКСО/неразрешённыеweights отсутствуют; источники и лицензии сохранены; hosted model public_serve подтверждён",
+      "requirements": [
+        "B06",
+        "B07"
+      ],
+      "status": "not_run"
+    }
+  ]
+}

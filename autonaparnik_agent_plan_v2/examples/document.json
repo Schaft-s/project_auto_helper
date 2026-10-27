@@ -1,0 +1,33 @@
+{
+  "document_id": "DEMO-01",
+  "source_group_id": "DEMO-SOURCE-GROUP-01",
+  "operation_type": "fictional_fixture_check",
+  "title": "Вымышленная карточка для проверки формата",
+  "language": "ru",
+  "source_type": "demo_fixture",
+  "workflow_context": "general",
+  "transfer_scope": "general_principle",
+  "vehicle_constraints": {
+    "make": null,
+    "model": null,
+    "model_year": null,
+    "market": "unknown",
+    "variant": null
+  },
+  "revision": "fixture-v1",
+  "locator": "examples/document.json",
+  "content_sha256": "1328d143aa679d08fbe2dba470a13a6d216abbae38063467b25e8f4400b3bb3a",
+  "requires_visual_context": false,
+  "review_status": "approved",
+  "reviewer": "author_of_format_fixture_not_technical_reviewer",
+  "rights": {
+    "train": false,
+    "retrieval": true,
+    "send_cloud": true,
+    "public_serve": true,
+    "publish_source": true,
+    "publish_weights": false,
+    "rights_ref": "Original fictional text for format testing only."
+  },
+  "content": "Вымышленная учебная карточка. После условной установки фиксатора в макете проверить фиксацию. Не относится к реальному автомобилю."
+}

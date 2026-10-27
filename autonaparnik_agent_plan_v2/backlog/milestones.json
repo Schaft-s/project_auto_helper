@@ -1,0 +1,18 @@
+{
+  "schema_version": "2.0",
+  "milestones": [
+    {
+      "id": "W01",
+      "name": "Обязательный воркшоп",
+      "owner": "user",
+      "depends_on": [
+        "T13"
+      ],
+      "status": "pending",
+      "date": null,
+      "scheduling_rule": "За неделю до фактической даты защиты по подтверждённому расписанию курса",
+      "evidence_path_planned": "docs/workshop-evidence.md",
+      "note": "Организационный milestone, а не финальная разработческая задача. Выполняется после M2 и не ждёт T23/T24. T24 только включает evidence уже состоявшегося участия."
+    }
+  ]
+}

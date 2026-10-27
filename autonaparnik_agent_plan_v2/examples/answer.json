@@ -1,0 +1,75 @@
+{
+  "schema_version": "2.0",
+  "trace_id": "fixture-trace-not-a-live-run",
+  "status": "ok",
+  "route": "workshop",
+  "vehicle": {
+    "make": null,
+    "model": null,
+    "model_year": null,
+    "market": "unknown",
+    "variant": null
+  },
+  "summary": "Это искусственный пример контракта. Вызов модели фактически не выполнен; значения provenance ниже предназначены для положительного fixture.",
+  "known_issues": null,
+  "specialist": {
+    "result": {
+      "task": "review_plan",
+      "status": "general_only",
+      "summary": "В вымышленном плане не упомянута проверка фиксации; это не доказывает ошибку реальной сборки.",
+      "checks": [
+        {
+          "text": "В учебной карточке указан контроль фиксации; добавьте этот пункт в учебный список.",
+          "relation": "not_mentioned",
+          "evidence_ids": [
+            "E_DEMO_01"
+          ]
+        }
+      ],
+      "missing_information": [],
+      "limitations": [
+        "Форматный пример, не инструкция для реального автомобиля."
+      ]
+    },
+    "model_run": {
+      "executed": true,
+      "stage": "base",
+      "model_id": "FIXTURE_ONLY_NOT_A_DEPLOYMENT",
+      "base_revision": "fictional-format-fixture",
+      "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "latency_ms": 1,
+      "raw_schema_valid": true,
+      "repaired": false
+    },
+    "input_evidence_ids": [
+      "E_DEMO_01"
+    ]
+  },
+  "questions": [],
+  "limitations": [
+    "Все поля этого файла вымышлены для валидации структуры; не использовать как live evidence."
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E_DEMO_01",
+      "source_type": "demo_note",
+      "source_id": "DEMO-01",
+      "title": "Вымышленный источник",
+      "locator": "examples/document.json",
+      "url": null,
+      "excerpt": "Вымышленная учебная карточка. После условной установки фиксатора в макете проверить фиксацию. Не относится к реальному автомобилю.",
+      "retrieved_at": "2026-10-20T00:00:00Z",
+      "mode": "fixture",
+      "applicability": "general",
+      "source_market": "general"
+    }
+  ],
+  "tool_events": [
+    {
+      "tool": "workshop_consult",
+      "status": "ok",
+      "mode": "fixture",
+      "elapsed_ms": 1
+    }
+  ]
+}

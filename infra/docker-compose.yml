@@ -1,0 +1,23 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.13.2
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant-data:/qdrant/storage
+    restart: unless-stopped
+
+  nhtsa-mcp:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile
+    command: python -m autonaparnik.mcp_server
+    environment:
+      MCP_LISTEN_HOST: 0.0.0.0
+      MCP_LISTEN_PORT: 8765
+    ports:
+      - "8765:8765"
+    restart: unless-stopped
+
+volumes:
+  qdrant-data:

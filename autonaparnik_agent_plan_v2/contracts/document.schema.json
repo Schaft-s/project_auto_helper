@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "Rights": {
+      "additionalProperties": false,
+      "properties": {
+        "train": {
+          "default": false,
+          "title": "Train",
+          "type": "boolean"
+        },
+        "retrieval": {
+          "default": false,
+          "title": "Retrieval",
+          "type": "boolean"
+        },
+        "send_cloud": {
+          "default": false,
+          "title": "Send Cloud",
+          "type": "boolean"
+        },
+        "public_serve": {
+          "default": false,
+          "title": "Public Serve",
+          "type": "boolean"
+        },
+        "publish_source": {
+          "default": false,
+          "title": "Publish Source",
+          "type": "boolean"
+        },
+        "publish_weights": {
+          "default": false,
+          "title": "Publish Weights",
+          "type": "boolean"
+        },
+        "rights_ref": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Rights Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rights_ref"
+      ],
+      "title": "Rights",
+      "type": "object"
+    },
+    "VehicleProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "make": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Make"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model"
+        },
+        "model_year": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1886,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Year"
+        },
+        "market": {
+          "default": "unknown",
+          "enum": [
+            "US",
+            "KZ",
+            "RU",
+            "EU",
+            "other",
+            "unknown"
+          ],
+          "title": "Market",
+          "type": "string"
+        },
+        "variant": {
+          "anyOf": [
+            {
+              "maxLength": 500,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Variant"
+        }
+      },
+      "title": "VehicleProfile",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "document_id": {
+      "maxLength": 100,
+      "minLength": 1,
+      "title": "Document Id",
+      "type": "string"
+    },
+    "source_group_id": {
+      "maxLength": 100,
+      "minLength": 1,
+      "title": "Source Group Id",
+      "type": "string"
+    },
+    "operation_type": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Operation Type",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "language": {
+      "enum": [
+        "ru",
+        "en",
+        "other"
+      ],
+      "title": "Language",
+      "type": "string"
+    },
+    "source_type": {
+      "enum": [
+        "kso",
+        "service_manual",
+        "public_guidance",
+        "own_general",
+        "qa",
+        "demo_fixture"
+      ],
+      "title": "Source Type",
+      "type": "string"
+    },
+    "workflow_context": {
+      "enum": [
+        "manufacturing",
+        "service",
+        "general"
+      ],
+      "title": "Workflow Context",
+      "type": "string"
+    },
+    "transfer_scope": {
+      "enum": [
+        "vehicle_specific",
+        "general_principle",
+        "unreviewed"
+      ],
+      "title": "Transfer Scope",
+      "type": "string"
+    },
+    "vehicle_constraints": {
+      "$ref": "#/$defs/VehicleProfile"
+    },
+    "revision": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Revision",
+      "type": "string"
+    },
+    "locator": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Locator",
+      "type": "string"
+    },
+    "content_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Content Sha256",
+      "type": "string"
+    },
+    "requires_visual_context": {
+      "title": "Requires Visual Context",
+      "type": "boolean"
+    },
+    "review_status": {
+      "enum": [
+        "approved",
+        "pending",
+        "rejected"
+      ],
+      "title": "Review Status",
+      "type": "string"
+    },
+    "reviewer": {
+      "anyOf": [
+        {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Reviewer"
+    },
+    "rights": {
+      "$ref": "#/$defs/Rights"
+    },
+    "content": {
+      "maxLength": 100000,
+      "minLength": 1,
+      "title": "Content",
+      "type": "string"
+    }
+  },
+  "required": [
+    "document_id",
+    "source_group_id",
+    "operation_type",
+    "title",
+    "language",
+    "source_type",
+    "workflow_context",
+    "transfer_scope",
+    "vehicle_constraints",
+    "revision",
+    "locator",
+    "content_sha256",
+    "requires_visual_context",
+    "review_status",
+    "reviewer",
+    "rights",
+    "content"
+  ],
+  "title": "Document",
+  "type": "object"
+}

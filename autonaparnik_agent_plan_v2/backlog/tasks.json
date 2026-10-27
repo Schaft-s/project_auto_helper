@@ -1,0 +1,866 @@
+{
+  "schema_version": "2.0",
+  "status": "implementation_not_started",
+  "notes": "deliverables_planned are future outputs, not claims that these files exist",
+  "tasks": [
+    {
+      "id": "T01",
+      "stage": "M0",
+      "owner": "integrator",
+      "title": "Зафиксировать требования, scope и права",
+      "status": "todo",
+      "depends_on": [],
+      "requirements": [
+        "A01",
+        "B01",
+        "B10",
+        "B11"
+      ],
+      "acceptance_ids": [
+        "AC10",
+        "AC20"
+      ],
+      "work": [
+        "Прочитать спецификацию; получить доступный образец КСО только при разрешении владельца.",
+        "Уточнить рубрику курса A, статус согласования темы и реальные даты.",
+        "Отдельно записать train/retrieval/send_cloud/public_serve/publish_source/publish_weights; выбрать 2–3 operation_type."
+      ],
+      "deliverables_planned": [
+        "docs/decisions/M0.md",
+        "data/inventory.json"
+      ],
+      "done_when": [
+        "Неизвестные перечислены с владельцем; никакие права или марки не выдуманы.",
+        "Разрешён основной путь публичного корпуса либо указан конкретный блокер и допустимый временный fixture."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T01.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T02",
+      "stage": "M0",
+      "owner": "integration",
+      "title": "Проверить MCP и сильную модель",
+      "status": "todo",
+      "depends_on": [
+        "T01"
+      ],
+      "requirements": [
+        "B03",
+        "B04"
+      ],
+      "acceptance_ids": [
+        "AC01",
+        "AC03"
+      ],
+      "work": [
+        "Запустить выбранный MCP; initialize/tools/list; сохранить schemas/serverInfo/digest.",
+        "Выполнить recalls и complaints live; отдельно проверить tool calling/JSON выбранного router endpoint.",
+        "Записать versions, реальные команды, budget; placeholders не считать smoke."
+      ],
+      "deliverables_planned": [
+        "artifacts/smoke/mcp.json",
+        "artifacts/smoke/router.json",
+        "artifacts/mcp/tool-schemas.json"
+      ],
+      "done_when": [
+        "Есть реальный MCP result и источник; known empty/400 и error различаются.",
+        "Router поддерживает необходимые параметры у фактического endpoint; secrets отсутствуют в отчётах."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T02.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T03",
+      "stage": "M0",
+      "owner": "ml",
+      "title": "Проверить GPU, base model и длины",
+      "status": "todo",
+      "depends_on": [
+        "T01"
+      ],
+      "requirements": [
+        "A01"
+      ],
+      "acceptance_ids": [
+        "AC06",
+        "AC18"
+      ],
+      "work": [
+        "Загрузить Qwen-кандидат и tokenizer по revision.",
+        "Проверить 10–20 разрешённых форматов задач, один training step, save/reload и inference.",
+        "Зафиксировать VRAM, длины, время, доступный hosting вариант; не гарантировать память по размеру весов."
+      ],
+      "deliverables_planned": [
+        "artifacts/smoke/model.json",
+        "configs/versions.lock.json"
+      ],
+      "done_when": [
+        "Русский ответ/контракт и реальные resource measurements записаны.",
+        "Определён один serving путь или назван blocker; base не маркируется SFT."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T03.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T04",
+      "stage": "M1",
+      "owner": "integrator",
+      "title": "Зафиксировать контракты и каркас репозитория",
+      "status": "todo",
+      "depends_on": [
+        "T01"
+      ],
+      "requirements": [
+        "B11"
+      ],
+      "acceptance_ids": [
+        "AC14"
+      ],
+      "work": [
+        "Перенести contract reference в общий код, согласовать JSON, типы UI и примеры.",
+        "Создать app/web/training/evaluation/infra и отдельные dependency locks.",
+        "CI по умолчанию offline; live tests отдельны.",
+        "Начать README реализации с реально проверенными командами; обновлять его при каждой новой возможности."
+      ],
+      "deliverables_planned": [
+        "app/domain/",
+        "web/",
+        "training/",
+        "evaluation/",
+        "infra/",
+        "docs/engineering-log/T04.md"
+      ],
+      "done_when": [
+        "Положительные примеры проходят, отрицательные отклоняются.",
+        "Нет разных версий SpecialistResult в обучении и приложении."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T04.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T05",
+      "stage": "M1",
+      "owner": "backend",
+      "title": "Реализовать ограниченный API запрос-ответ",
+      "status": "todo",
+      "depends_on": [
+        "T04"
+      ],
+      "requirements": [
+        "B02",
+        "B05"
+      ],
+      "acceptance_ids": [
+        "AC02",
+        "AC11",
+        "AC13"
+      ],
+      "work": [
+        "POST chat, health/ready, input bounds, семафор и общий deadline.",
+        "История только user/assistant text; source/tool/system из браузера запрещены.",
+        "Сгенерировать реальный OpenAPI и bounded errors, без worker/очереди.",
+        "Перед router вырезать все assistant entries истории: UI-visible specialist content не уходит в cloud следующим запросом."
+      ],
+      "deliverables_planned": [
+        "app/api/",
+        "app/orchestration/request_context.py",
+        "artifacts/openapi.json"
+      ],
+      "done_when": [
+        "Некорректные роли/размеры отклоняются; локальные лимиты не обходятся параллельными запросами.",
+        "Частичная ошибка не скрывается и не превращается в успех."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T05.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T06",
+      "stage": "M1",
+      "owner": "integration",
+      "title": "Реализовать NHTSA MCP адаптер",
+      "status": "todo",
+      "depends_on": [
+        "T02",
+        "T04"
+      ],
+      "requirements": [
+        "B04"
+      ],
+      "acceptance_ids": [
+        "AC01",
+        "AC03",
+        "AC04",
+        "AC05"
+      ],
+      "work": [
+        "Фасад vehicle_safety_lookup: приложение берёт профиль из validated context.",
+        "Нормализовать recalls/complaints раздельно: count, date, status, source IDs, partial.",
+        "Добавить timeouts, bounded retry/cache и проверки schema drift."
+      ],
+      "deliverables_planned": [
+        "app/adapters/nhtsa/",
+        "tests/integration/test_nhtsa_contract.py"
+      ],
+      "done_when": [
+        "Не заменён MCP прямым REST; HTTP fixtures отделены от live.",
+        "Просмотр страницы не выдаётся за полный поиск; рынок US явно отмечен."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T06.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T07",
+      "stage": "M1",
+      "owner": "backend",
+      "title": "Собрать ограниченную оркестрацию",
+      "status": "todo",
+      "depends_on": [
+        "T02",
+        "T05",
+        "T06"
+      ],
+      "requirements": [
+        "B03",
+        "B05"
+      ],
+      "acceptance_ids": [
+        "AC01",
+        "AC02",
+        "AC04",
+        "AC05",
+        "AC11",
+        "AC13"
+      ],
+      "work": [
+        "Одна сильная модель, два tools, явные structured outputs и server validation.",
+        "Уточнение недостающего профиля; source claims из актуального run.",
+        "Лимиты 3 router calls/4 MCP calls, контроль repeats, no arbitrary tools."
+      ],
+      "deliverables_planned": [
+        "app/orchestration/",
+        "app/adapters/router/",
+        "prompts/router.md"
+      ],
+      "done_when": [
+        "Обычный NHTSA сценарий выполняется real tools и возвращает цитируемые факты.",
+        "Prompt injection в источнике не вызывает новые инструменты или раскрытие секретов."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T07.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T08",
+      "stage": "M1",
+      "owner": "frontend",
+      "title": "Реализовать один экран и карточки источников",
+      "status": "todo",
+      "depends_on": [
+        "T04"
+      ],
+      "requirements": [
+        "B02"
+      ],
+      "acceptance_ids": [
+        "AC02",
+        "AC12"
+      ],
+      "work": [
+        "Профиль, owner/mechanic, quick intents, текст, pending/error/partial.",
+        "История только в памяти вкладки; отключить повторный submit во время обработки.",
+        "Рендерить источники, охват и actual model stage; escape HTML.",
+        "Хранить assistant-карточки для отображения отдельно; history API собирать только из user texts."
+      ],
+      "deliverables_planned": [
+        "web/src/",
+        "web/tests/"
+      ],
+      "done_when": [
+        "Интерфейс работает с contract fixtures с видимой маркировкой.",
+        "Ключей/промптов/логики прав в bundle нет; HTML/unsafe URL не исполняются."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T08.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T09",
+      "stage": "M1",
+      "owner": "qa_ops",
+      "title": "Разместить первый живой NHTSA-сценарий",
+      "status": "todo",
+      "depends_on": [
+        "T05",
+        "T06",
+        "T07",
+        "T08"
+      ],
+      "requirements": [
+        "B04",
+        "B05",
+        "B06"
+      ],
+      "acceptance_ids": [
+        "AC01",
+        "AC19"
+      ],
+      "work": [
+        "Compose для app/static/PG/MCP/proxy; HTTPS и приватные внутренние порты.",
+        "Разместить при предоставленном доступе, выполнить внешнюю browser/E2E проверку.",
+        "Сохранить дату, URL, commit и live MCP trace.",
+        "Зафиксировать текущие проверенные команды build/run/deploy в README, не ждать T23."
+      ],
+      "deliverables_planned": [
+        "infra/compose.yaml",
+        "artifacts/releases/early-release.md"
+      ],
+      "done_when": [
+        "По URL проходит реальный UI→LLM→MCP→ответ.",
+        "Работает из отдельной браузерной сессии; fixtures выключены.",
+        "Лимит расходов API задан и проверен; null в public/live конфигурации не допускается."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T09.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T10",
+      "stage": "M2",
+      "owner": "data",
+      "title": "Подготовить небольшой разрешённый корпус",
+      "status": "todo",
+      "depends_on": [
+        "T01",
+        "T04"
+      ],
+      "requirements": [
+        "A01",
+        "B01"
+      ],
+      "acceptance_ids": [
+        "AC07",
+        "AC10",
+        "AC21"
+      ],
+      "work": [
+        "Аудит форматов; один importer фактического формата плюс MD/JSONL.",
+        "source_group_id/revisions/rights/applicability/visual flags; content review.",
+        "Собрать approved КСО-производные и небольшой разрешённый public слой; H4 только после ограниченного audit."
+      ],
+      "deliverables_planned": [
+        "app/ingestion/",
+        "data/manifests/corpus.json",
+        "data/cards/dataset-card.md"
+      ],
+      "done_when": [
+        "Импорт повторяемый, предупреждения/условия не теряются.",
+        "Pending/mismatch/visual-dependent материалы не становятся точной текстовой процедурой."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T10.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T11",
+      "stage": "M2",
+      "owner": "data",
+      "title": "Реализовать RAG и проверку применимости",
+      "status": "todo",
+      "depends_on": [
+        "T10"
+      ],
+      "requirements": [
+        "B03"
+      ],
+      "acceptance_ids": [
+        "AC07",
+        "AC08",
+        "AC21"
+      ],
+      "work": [
+        "E5 prefixes/tokenizer, controlled chunking, PG exact vector search top4.",
+        "Права и vehicle filters до retrieval; parent warnings и token budget.",
+        "Разметить небольшой retrieval validation; FTS/RRF добавлять только по измеренной проблеме."
+      ],
+      "deliverables_planned": [
+        "app/retrieval/",
+        "evaluation/retrieval/",
+        "artifacts/retrieval-baseline.json"
+      ],
+      "done_when": [
+        "Выдаёт требуемый источник для gold вопросов, отсутствуют mismatch инструкции.",
+        "Известны Recall@4/Hit@4 и причины отсутствия результата."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T11.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T12",
+      "stage": "M2",
+      "owner": "ml",
+      "title": "Подключить исходного специалиста",
+      "status": "todo",
+      "depends_on": [
+        "T03",
+        "T04"
+      ],
+      "requirements": [
+        "A01",
+        "B03"
+      ],
+      "acceptance_ids": [
+        "AC06",
+        "AC14",
+        "AC18"
+      ],
+      "work": [
+        "Один приватный endpoint, общий SpecialistResult, actual artifact manifest.",
+        "Проверка prompt+output длины, schema validation и максимум один format repair.",
+        "Сохранить сырой и repaired output для разрешённых development примеров."
+      ],
+      "deliverables_planned": [
+        "app/adapters/specialist/",
+        "inference/",
+        "prompts/specialist.md"
+      ],
+      "done_when": [
+        "ModelRun сообщает base, фактический hash/revision, а не env label.",
+        "Нет необозначенного облачного fallback; unavailable отображается явно."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T12.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T13",
+      "stage": "M2",
+      "owner": "backend",
+      "title": "Собрать workshop_consult и полный base MVP",
+      "status": "todo",
+      "depends_on": [
+        "T05",
+        "T07",
+        "T08",
+        "T11",
+        "T12"
+      ],
+      "requirements": [
+        "A01",
+        "B03",
+        "B05"
+      ],
+      "acceptance_ids": [
+        "AC06",
+        "AC07",
+        "AC08",
+        "AC09",
+        "AC13",
+        "AC14"
+      ],
+      "work": [
+        "RAG→base model→validate→original block attachment.",
+        "input_evidence_ids только реально переданные модели; итоговая strong модель не переписывает checks.",
+        "Профильный intent требует specialist либо явное ограничение/недоступность."
+      ],
+      "deliverables_planned": [
+        "app/tools/workshop.py",
+        "tests/e2e/test_workshop.py",
+        "artifacts/demos/base-mvp.md"
+      ],
+      "done_when": [
+        "UC02/UC03 проходят через реального specialist; block виден в UI.",
+        "Есть составной сценарий NHTSA+workshop и честный путь без источника."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T13.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T14",
+      "stage": "M3",
+      "owner": "data",
+      "title": "Создать dataset pipeline и group split",
+      "status": "todo",
+      "depends_on": [
+        "T10",
+        "T04"
+      ],
+      "requirements": [
+        "A01",
+        "A02"
+      ],
+      "acceptance_ids": [
+        "AC10",
+        "AC15"
+      ],
+      "work": [
+        "Одна запись: context+task+target+lineage+rights+rubric; синтетика маркируется.",
+        "Группировать оригиналы/редакции/переводы до split; operation_type не group id.",
+        "Генерировать только разрешённым способом; closed content не отправлять облачному teacher."
+      ],
+      "deliverables_planned": [
+        "training/data_pipeline/",
+        "data/manifests/splits.json"
+      ],
+      "done_when": [
+        "Нет пересечения source_group_id и близких производных между train/validation/test.",
+        "Сохранены права/источник/авторство, нет test targets в RAG."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T14.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T15",
+      "stage": "M3",
+      "owner": "ml_qa",
+      "title": "Реализовать рубрику и baseline harness",
+      "status": "todo",
+      "depends_on": [
+        "T12",
+        "T14"
+      ],
+      "requirements": [
+        "A02"
+      ],
+      "acceptance_ids": [
+        "AC09",
+        "AC17"
+      ],
+      "work": [
+        "Primary rubric 0–10 и отдельные abstention/raw JSON/citations.",
+        "Одинаковые context packets и decoding, blind review export, group bootstrap.",
+        "Запустить baseline на development/validation; финальный test не использовать для подбора."
+      ],
+      "deliverables_planned": [
+        "evaluation/specialist/",
+        "evaluation/rubric.json",
+        "artifacts/baseline/"
+      ],
+      "done_when": [
+        "Измерены ошибки base и обоснован навык SFT.",
+        "Results содержат фактические n примеров/n групп, конфиги и hashes."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T15.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T16",
+      "stage": "M3",
+      "owner": "data_reviewer",
+      "title": "Проверить и заморозить данные/протокол",
+      "status": "todo",
+      "depends_on": [
+        "T14",
+        "T15"
+      ],
+      "requirements": [
+        "A01",
+        "A02"
+      ],
+      "acceptance_ids": [
+        "AC10",
+        "AC15",
+        "AC17"
+      ],
+      "work": [
+        "Reviewer проверяет цели по источникам; выносит спорные/опасные случаи.",
+        "Зафиксировать train/val/test manifest, prompt/rubric и хранителя test labels.",
+        "Записать ограничения публичной воспроизводимости."
+      ],
+      "deliverables_planned": [
+        "artifacts/data-review.md",
+        "artifacts/evaluation-freeze.json"
+      ],
+      "done_when": [
+        "Ревью выполнено человеком/назначенным компетентным проверяющим с явным статусом.",
+        "ML-агент не получает hidden labels для дальнейшего подбора."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T16.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T17",
+      "stage": "M4",
+      "owner": "ml",
+      "title": "Проверить настоящий training pipeline на малом наборе",
+      "status": "todo",
+      "depends_on": [
+        "T03",
+        "T16"
+      ],
+      "requirements": [
+        "A01"
+      ],
+      "acceptance_ids": [
+        "AC16"
+      ],
+      "work": [
+        "TRL+PEFT QLoRA; проверить loss mask и template на 1–2 примерах.",
+        "Tiny overfit на небольшом train subset, реальные optimizer steps.",
+        "Save/reload adapter; сравнить trainable weights hashes и loss."
+      ],
+      "deliverables_planned": [
+        "training/train_sft.py",
+        "artifacts/smoke/training.json"
+      ],
+      "done_when": [
+        "Loss обучает assistant completion, trainable weights действительно изменяются.",
+        "Model после reload выдаёт валидный ответ; smoke не выдан за финальную оценку."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T17.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T18",
+      "stage": "M4",
+      "owner": "ml",
+      "title": "Выполнить основной SFT",
+      "status": "todo",
+      "depends_on": [
+        "T17"
+      ],
+      "requirements": [
+        "A01",
+        "A02"
+      ],
+      "acceptance_ids": [
+        "AC16",
+        "AC17"
+      ],
+      "work": [
+        "Один стартовый run и ограниченная корректировка по validation при необходимости.",
+        "Фиксировать seed/locks/datahash/epochs/steps/memory/training time.",
+        "Выбрать checkpoint по frozen validation metric, не по test."
+      ],
+      "deliverables_planned": [
+        "artifacts/models/sft/",
+        "artifacts/training-run.json",
+        "data/cards/model-card.md"
+      ],
+      "done_when": [
+        "Есть реальный адаптер/checkpoint и воспроизводимый training record.",
+        "Никаких fabricated improvements; no DPO requirement invented."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T18.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T19",
+      "stage": "M4",
+      "owner": "ml",
+      "title": "Экспортировать и подключить итоговый artifact",
+      "status": "todo",
+      "depends_on": [
+        "T18",
+        "T12",
+        "T13"
+      ],
+      "requirements": [
+        "A01",
+        "B05"
+      ],
+      "acceptance_ids": [
+        "AC10",
+        "AC18"
+      ],
+      "work": [
+        "При merge/quantization записать новую версию и проверить parity.",
+        "Actual checkpoint hash и training rights manifest проверяются startup.",
+        "Подключить SFT через прежний API без изменения данных оценки."
+      ],
+      "deliverables_planned": [
+        "inference/model-manifest.json",
+        "artifacts/export-parity.json"
+      ],
+      "done_when": [
+        "UI SFT соответствует действительно загруженному artifact.",
+        "Public inference разрешён для training lineage; private weights не опубликованы."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T19.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T20",
+      "stage": "M5",
+      "owner": "ml_qa",
+      "title": "Сравнить base/SFT и вклад в сервис",
+      "status": "todo",
+      "depends_on": [
+        "T19",
+        "T16",
+        "T15"
+      ],
+      "requirements": [
+        "A02",
+        "B03"
+      ],
+      "acceptance_ids": [
+        "AC17",
+        "AC18"
+      ],
+      "work": [
+        "Запустить frozen test base/SFT с одинаковым контекстом.",
+        "На малом поднаборе strong-only / strong+base / strong+SFT; fixed NHTSA fixtures.",
+        "Слепой review, group uncertainty, latency/cost, реальные errors и conclusions."
+      ],
+      "deliverables_planned": [
+        "artifacts/evaluation/final.json",
+        "docs/experiment-report.md"
+      ],
+      "done_when": [
+        "Прирост заявлен только при фактическом подтверждении; регрессии разобраны.",
+        "Оценён именно deployment representation, нет подмены base/SFT."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T20.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T21",
+      "stage": "M5",
+      "owner": "qa_ops",
+      "title": "Проверить ошибки, границы данных и UI",
+      "status": "todo",
+      "depends_on": [
+        "T13",
+        "T19"
+      ],
+      "requirements": [
+        "B05",
+        "B06"
+      ],
+      "acceptance_ids": [
+        "AC03",
+        "AC07",
+        "AC10",
+        "AC11",
+        "AC12",
+        "AC13",
+        "AC14",
+        "AC21",
+        "AC22"
+      ],
+      "work": [
+        "Негативные fixtures: источник-инструкция, подмена истории, schema errors, timeouts.",
+        "Проверить публичный corpus и model training manifest, secrets/logs, html.",
+        "Выполнить релевантные acceptance cases без построения отдельной security platform.",
+        "Двухходовый canary: send_cloud=false источник показан локальным блоком, follow-up не отправляет этот блок router."
+      ],
+      "deliverables_planned": [
+        "tests/acceptance/",
+        "artifacts/acceptance-report.json"
+      ],
+      "done_when": [
+        "Критические сценарии имеют фактический pass/fail, failure исправлены либо релиз blocked.",
+        "Finite requests и права обеспечиваются backend, не обещанием в промпте."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T21.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T22",
+      "stage": "M5",
+      "owner": "qa_ops",
+      "title": "Выпустить воспроизводимый публичный MVP",
+      "status": "todo",
+      "depends_on": [
+        "T09",
+        "T20",
+        "T21"
+      ],
+      "requirements": [
+        "B04",
+        "B05",
+        "B06",
+        "B07"
+      ],
+      "acceptance_ids": [
+        "AC01",
+        "AC18",
+        "AC19",
+        "AC22"
+      ],
+      "work": [
+        "Clean checkout build, corpus restore, secrets/config manifests.",
+        "Опубликовать допустимый код и сервис в предоставленных аккаунтах.",
+        "После релиза пройти live MCP и SFT сценарии из отдельного клиента.",
+        "Проверять по уже обновлявшемуся README; T23 только окончательно редактирует материалы."
+      ],
+      "deliverables_planned": [
+        "artifacts/releases/final-release.md",
+        "infra/runbook.md"
+      ],
+      "done_when": [
+        "Working URL/repo/commit/date зафиксированы; нет mock production.",
+        "Другой агент воспроизводит запуск по README, ограничения данных явно описаны."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T22.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T23",
+      "stage": "M6",
+      "owner": "integrator",
+      "title": "Оформить README и отчёт двух курсов",
+      "status": "todo",
+      "depends_on": [
+        "T20",
+        "T22"
+      ],
+      "requirements": [
+        "A02",
+        "B07",
+        "B11"
+      ],
+      "acceptance_ids": [
+        "AC20",
+        "AC22"
+      ],
+      "work": [
+        "README actual commands/screenshots/URLs/data/models/evaluation.",
+        "Engineering log связывает задачи, commits, acceptance и evidence.",
+        "Разделить требования курсов, факты, hypotheses и remaining limitations."
+      ],
+      "deliverables_planned": [
+        "README.md",
+        "docs/experiment-report.md",
+        "docs/engineering-log/"
+      ],
+      "done_when": [
+        "README не содержит ложной готовности или скрытых секретов.",
+        "Рубрика каждого курса и воспроизводимость понятны новому человеку."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T23.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    },
+    {
+      "id": "T24",
+      "stage": "M6",
+      "owner": "integrator_user",
+      "title": "Подготовить HTML, воркшоп и защиту",
+      "status": "todo",
+      "depends_on": [
+        "T13",
+        "T23"
+      ],
+      "requirements": [
+        "B08",
+        "B09",
+        "B10"
+      ],
+      "acceptance_ids": [
+        "AC20"
+      ],
+      "work": [
+        "Интерактивная схема, источники, base/SFT examples, actual metrics.",
+        "Репетиция до10мин; live cases плюс явно помеченный recording fallback.",
+        "Приложить evidence раннего milestone W01; участие в воркшопе проводится после T13 по расписанию и НЕ ждёт T23/T24."
+      ],
+      "deliverables_planned": [
+        "presentation/index.html",
+        "docs/defence-checklist.md"
+      ],
+      "done_when": [
+        "Презентация открывается и взаимодействия работают без скрытых внешних зависимостей.",
+        "Обязательное участие человека и даты подтверждены; live не имитируется fixture."
+      ],
+      "evidence_path_planned": "docs/engineering-log/T24.md",
+      "verification_scope": "Проверить локальные done_when этой задачи и относящиеся к ним части AC; полные AC не объявлять пройденными до фактического системного прогона."
+    }
+  ],
+  "acceptance_semantics": "acceptance_ids are traceability links to final system cases. A task is done when its local done_when and verification_scope pass; it does not require all global AC cases to pass early."
+}

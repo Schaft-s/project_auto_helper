@@ -1,0 +1,16 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+artifacts/smoke/*.json
+!artifacts/smoke/.gitkeep
+data/mechanics/raw.parquet
+evaluation/last-report.json
+.DS_Store

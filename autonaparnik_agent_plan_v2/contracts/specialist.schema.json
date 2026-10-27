@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "Check": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "relation": {
+          "enum": [
+            "required_check",
+            "not_mentioned",
+            "conflict",
+            "observation"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "pattern": "^E[A-Za-z0-9_-]{1,63}$",
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "text",
+        "relation",
+        "evidence_ids"
+      ],
+      "title": "Check",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "task": {
+      "enum": [
+        "assembly_checklist",
+        "review_plan",
+        "post_repair_checks"
+      ],
+      "title": "Task",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "grounded",
+        "general_only",
+        "needs_context",
+        "out_of_scope",
+        "unavailable"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "summary": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Summary",
+      "type": "string"
+    },
+    "checks": {
+      "items": {
+        "$ref": "#/$defs/Check"
+      },
+      "maxItems": 12,
+      "title": "Checks",
+      "type": "array"
+    },
+    "missing_information": {
+      "items": {
+        "maxLength": 500,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 3,
+      "title": "Missing Information",
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "maxLength": 500,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 6,
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "task",
+    "status",
+    "summary",
+    "checks",
+    "missing_information",
+    "limitations"
+  ],
+  "title": "SpecialistResult",
+  "type": "object"
+}

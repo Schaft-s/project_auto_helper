@@ -1,0 +1,123 @@
+{
+  "scope": "Specification bundle only: no live MCP, application, hosting or training tests executed.",
+  "validated_at": "2026-10-20T15:49:16.789875+00:00",
+  "python": "3.12.14",
+  "pydantic": "2.14.0",
+  "status": "pass",
+  "checks": [
+    {
+      "name": "all_json_parses",
+      "status": "pass",
+      "details": {
+        "files": 19
+      }
+    },
+    {
+      "name": "task_dag_and_requirement_links",
+      "status": "pass",
+      "details": {
+        "tasks": 24,
+        "acceptance_cases": 22,
+        "requirements": 13,
+        "topological_order": [
+          "T01",
+          "T02",
+          "T03",
+          "T04",
+          "T05",
+          "T06",
+          "T07",
+          "T08",
+          "T09",
+          "T10",
+          "T11",
+          "T12",
+          "T13",
+          "T14",
+          "T15",
+          "T16",
+          "T17",
+          "T18",
+          "T19",
+          "T20",
+          "T21",
+          "T22",
+          "T23",
+          "T24"
+        ]
+      }
+    },
+    {
+      "name": "early_workshop_milestone",
+      "status": "pass",
+      "details": "W01 can run after technical MVP, independently of T23/T24"
+    },
+    {
+      "name": "schema_exports_match",
+      "status": "pass",
+      "details": "Pydantic JSON Schema exports match canonical model definitions; this is not an independent standards validator."
+    },
+    {
+      "name": "valid_fixture:examples/chat-request.json",
+      "status": "pass",
+      "details": "ChatRequest"
+    },
+    {
+      "name": "valid_fixture:examples/specialist-result.json",
+      "status": "pass",
+      "details": "SpecialistResult"
+    },
+    {
+      "name": "valid_fixture:examples/document.json",
+      "status": "pass",
+      "details": "Document"
+    },
+    {
+      "name": "valid_fixture:examples/answer.json",
+      "status": "pass",
+      "details": "AnswerEnvelope"
+    },
+    {
+      "name": "valid_fixture:examples/api-payloads.json",
+      "status": "pass",
+      "details": "ApiPayloads"
+    },
+    {
+      "name": "invalid_fixture_rejected:examples/invalid-history.json",
+      "status": "pass",
+      "details": "rejected as expected"
+    },
+    {
+      "name": "invalid_fixture_rejected:examples/invalid-specialist.json",
+      "status": "pass",
+      "details": "rejected as expected"
+    },
+    {
+      "name": "invalid_fixture_rejected:examples/invalid-citation.json",
+      "status": "pass",
+      "details": "rejected as expected"
+    },
+    {
+      "name": "invalid_fixture_rejected:examples/invalid-model-provenance.json",
+      "status": "pass",
+      "details": "rejected as expected"
+    },
+    {
+      "name": "specialist_cannot_cite_other_envelope_source",
+      "status": "pass",
+      "details": "an evidence ID in the final envelope is insufficient if not supplied to specialist"
+    },
+    {
+      "name": "fixture_document_hash",
+      "status": "pass",
+      "details": "fictional document content hash matches"
+    },
+    {
+      "name": "local_markdown_links",
+      "status": "pass",
+      "details": {
+        "links": 43
+      }
+    }
+  ]
+}

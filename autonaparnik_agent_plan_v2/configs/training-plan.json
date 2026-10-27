@@ -1,0 +1,52 @@
+{
+  "status": "planning_values_not_a_run_record",
+  "base_model": "Qwen/Qwen3-4B-Instruct-2507",
+  "base_revision": null,
+  "tokenizer_revision": null,
+  "method": "SFT_QLoRA",
+  "quantization": {
+    "bits": 4,
+    "type": "nf4",
+    "double_quantization": true,
+    "compute_dtype": "hardware_validated_bf16_or_fp16"
+  },
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": "all-linear_after_compatibility_check"
+  },
+  "sequence_length": 4096,
+  "pilot_sequence_length": 2048,
+  "micro_batch_size": 1,
+  "gradient_accumulation_steps": 16,
+  "learning_rate": 0.0001,
+  "epochs_initial": 2,
+  "epochs_max": 3,
+  "loss_scope": "assistant_completion_only_verified_by_token_mask",
+  "packing": false,
+  "gradient_checkpointing": true,
+  "selection": "validation_primary_score_and_regressions",
+  "seed": 42,
+  "training_examples_target_range": [
+    500,
+    1000
+  ],
+  "final_test_scenarios_target_range": [
+    80,
+    120
+  ],
+  "split_by": "source_group_id",
+  "split_ratio_initial": [
+    0.7,
+    0.15,
+    0.15
+  ],
+  "dpo_required": false,
+  "notes": [
+    "This is a project config, not kwargs to pass unchanged to TRL.",
+    "Training and inference lengths include template and output/target.",
+    "If 4096 fails, change both production and evaluation to a verified limit.",
+    "Exact package/CUDA versions and hardware are M0 outputs."
+  ]
+}

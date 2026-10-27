@@ -1,0 +1,73 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "vehicle_safety_lookup",
+      "description": "Search recall campaigns and optionally complaints via NHTSA MCP. Vehicle is taken from validated backend context, not tool arguments.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "symptom": {
+            "default": "",
+            "maxLength": 1000,
+            "title": "Symptom",
+            "type": "string"
+          },
+          "include_complaints": {
+            "default": true,
+            "title": "Include Complaints",
+            "type": "boolean"
+          }
+        },
+        "title": "VehicleSafetyArgs",
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "workshop_consult",
+      "description": "Retrieve allowed applicable technical context and call the small assembly specialist for a checklist, plan review or post-repair checks.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "task": {
+            "enum": [
+              "assembly_checklist",
+              "review_plan",
+              "post_repair_checks"
+            ],
+            "title": "Task",
+            "type": "string"
+          },
+          "query": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Query",
+            "type": "string"
+          },
+          "user_plan": {
+            "anyOf": [
+              {
+                "maxLength": 4000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "User Plan"
+          }
+        },
+        "required": [
+          "task",
+          "query"
+        ],
+        "title": "WorkshopArgs",
+        "type": "object"
+      }
+    }
+  }
+]

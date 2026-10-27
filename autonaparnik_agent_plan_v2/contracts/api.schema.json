@@ -1,0 +1,781 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "AnswerEnvelope": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "trace_id": {
+          "maxLength": 100,
+          "minLength": 8,
+          "title": "Trace Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "partial",
+            "needs_clarification",
+            "out_of_scope",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "route": {
+          "enum": [
+            "clarify",
+            "known_issues",
+            "workshop",
+            "combined",
+            "general"
+          ],
+          "title": "Route",
+          "type": "string"
+        },
+        "vehicle": {
+          "$ref": "#/$defs/VehicleProfile"
+        },
+        "summary": {
+          "maxLength": 1500,
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        },
+        "known_issues": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/KnownIssues"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "specialist": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SpecialistBlock"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "questions": {
+          "items": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 3,
+          "title": "Questions",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Limitations",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "maxItems": 20,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "tool_events": {
+          "items": {
+            "$ref": "#/$defs/ToolEvent"
+          },
+          "maxItems": 2,
+          "title": "Tool Events",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "trace_id",
+        "status",
+        "route",
+        "vehicle",
+        "summary",
+        "known_issues",
+        "specialist",
+        "questions",
+        "limitations",
+        "evidence",
+        "tool_events"
+      ],
+      "title": "AnswerEnvelope",
+      "type": "object"
+    },
+    "ChatRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "message": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "vehicle": {
+          "$ref": "#/$defs/VehicleProfile"
+        },
+        "audience": {
+          "default": "owner",
+          "enum": [
+            "owner",
+            "mechanic"
+          ],
+          "title": "Audience",
+          "type": "string"
+        },
+        "intent": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "known_issues",
+            "workshop"
+          ],
+          "title": "Intent",
+          "type": "string"
+        },
+        "history": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/HistoryMessage"
+          },
+          "maxItems": 12,
+          "title": "History",
+          "type": "array"
+        }
+      },
+      "required": [
+        "message",
+        "vehicle"
+      ],
+      "title": "ChatRequest",
+      "type": "object"
+    },
+    "Check": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "relation": {
+          "enum": [
+            "required_check",
+            "not_mentioned",
+            "conflict",
+            "observation"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "pattern": "^E[A-Za-z0-9_-]{1,63}$",
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "text",
+        "relation",
+        "evidence_ids"
+      ],
+      "title": "Check",
+      "type": "object"
+    },
+    "Coverage": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ok",
+            "empty",
+            "partial",
+            "unavailable",
+            "not_requested",
+            "needs_context"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "total_matching_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Matching Count"
+        },
+        "returned_count": {
+          "minimum": 0,
+          "title": "Returned Count",
+          "type": "integer"
+        },
+        "analyzed_count": {
+          "minimum": 0,
+          "title": "Analyzed Count",
+          "type": "integer"
+        },
+        "pages_fetched": {
+          "maximum": 2,
+          "minimum": 0,
+          "title": "Pages Fetched",
+          "type": "integer"
+        },
+        "is_partial": {
+          "title": "Is Partial",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "status",
+        "total_matching_count",
+        "returned_count",
+        "analyzed_count",
+        "pages_fetched",
+        "is_partial"
+      ],
+      "title": "Coverage",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "pattern": "^E[A-Za-z0-9_-]{1,63}$",
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "source_type": {
+          "enum": [
+            "nhtsa_recall",
+            "nhtsa_complaint",
+            "technical_doc",
+            "demo_note"
+          ],
+          "title": "Source Type",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "locator": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Url"
+        },
+        "excerpt": {
+          "anyOf": [
+            {
+              "maxLength": 2000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Excerpt"
+        },
+        "retrieved_at": {
+          "format": "date-time",
+          "title": "Retrieved At",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "live",
+            "cache",
+            "fixture"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "applicability": {
+          "enum": [
+            "matched",
+            "general",
+            "unknown"
+          ],
+          "title": "Applicability",
+          "type": "string"
+        },
+        "source_market": {
+          "enum": [
+            "US",
+            "KZ",
+            "RU",
+            "EU",
+            "other",
+            "unknown",
+            "general"
+          ],
+          "title": "Source Market",
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "source_type",
+        "source_id",
+        "title",
+        "locator",
+        "url",
+        "excerpt",
+        "retrieved_at",
+        "mode",
+        "applicability",
+        "source_market"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "HistoryMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "enum": [
+            "user",
+            "assistant"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "text"
+      ],
+      "title": "HistoryMessage",
+      "type": "object"
+    },
+    "KnownIssues": {
+      "additionalProperties": false,
+      "properties": {
+        "recalls": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "complaints": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/SourcedClaim"
+          },
+          "maxItems": 10,
+          "title": "Claims",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "recalls",
+        "complaints",
+        "claims",
+        "limitations"
+      ],
+      "title": "KnownIssues",
+      "type": "object"
+    },
+    "ModelRun": {
+      "additionalProperties": false,
+      "properties": {
+        "executed": {
+          "title": "Executed",
+          "type": "boolean"
+        },
+        "stage": {
+          "enum": [
+            "base",
+            "sft",
+            "not_run"
+          ],
+          "title": "Stage",
+          "type": "string"
+        },
+        "model_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model Id"
+        },
+        "base_revision": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Base Revision"
+        },
+        "artifact_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Artifact Sha256"
+        },
+        "latency_ms": {
+          "minimum": 0,
+          "title": "Latency Ms",
+          "type": "number"
+        },
+        "raw_schema_valid": {
+          "title": "Raw Schema Valid",
+          "type": "boolean"
+        },
+        "repaired": {
+          "title": "Repaired",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "executed",
+        "stage",
+        "model_id",
+        "base_revision",
+        "artifact_sha256",
+        "latency_ms",
+        "raw_schema_valid",
+        "repaired"
+      ],
+      "title": "ModelRun",
+      "type": "object"
+    },
+    "SourcedClaim": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "pattern": "^E[A-Za-z0-9_-]{1,63}$",
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "text",
+        "evidence_ids"
+      ],
+      "title": "SourcedClaim",
+      "type": "object"
+    },
+    "SpecialistBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "result": {
+          "$ref": "#/$defs/SpecialistResult"
+        },
+        "model_run": {
+          "$ref": "#/$defs/ModelRun"
+        },
+        "input_evidence_ids": {
+          "items": {
+            "pattern": "^E[A-Za-z0-9_-]{1,63}$",
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Input Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "result",
+        "model_run",
+        "input_evidence_ids"
+      ],
+      "title": "SpecialistBlock",
+      "type": "object"
+    },
+    "SpecialistResult": {
+      "additionalProperties": false,
+      "properties": {
+        "task": {
+          "enum": [
+            "assembly_checklist",
+            "review_plan",
+            "post_repair_checks"
+          ],
+          "title": "Task",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "grounded",
+            "general_only",
+            "needs_context",
+            "out_of_scope",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "summary": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        },
+        "checks": {
+          "items": {
+            "$ref": "#/$defs/Check"
+          },
+          "maxItems": 12,
+          "title": "Checks",
+          "type": "array"
+        },
+        "missing_information": {
+          "items": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 3,
+          "title": "Missing Information",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "task",
+        "status",
+        "summary",
+        "checks",
+        "missing_information",
+        "limitations"
+      ],
+      "title": "SpecialistResult",
+      "type": "object"
+    },
+    "ToolEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "tool": {
+          "enum": [
+            "vehicle_safety_lookup",
+            "workshop_consult"
+          ],
+          "title": "Tool",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "partial",
+            "unavailable",
+            "needs_context",
+            "out_of_scope"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "live",
+            "cache",
+            "fixture",
+            "not_run"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "elapsed_ms": {
+          "minimum": 0,
+          "title": "Elapsed Ms",
+          "type": "number"
+        }
+      },
+      "required": [
+        "tool",
+        "status",
+        "mode",
+        "elapsed_ms"
+      ],
+      "title": "ToolEvent",
+      "type": "object"
+    },
+    "VehicleProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "make": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Make"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model"
+        },
+        "model_year": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1886,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Year"
+        },
+        "market": {
+          "default": "unknown",
+          "enum": [
+            "US",
+            "KZ",
+            "RU",
+            "EU",
+            "other",
+            "unknown"
+          ],
+          "title": "Market",
+          "type": "string"
+        },
+        "variant": {
+          "anyOf": [
+            {
+              "maxLength": 500,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Variant"
+        }
+      },
+      "title": "VehicleProfile",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "request": {
+      "$ref": "#/$defs/ChatRequest"
+    },
+    "response": {
+      "$ref": "#/$defs/AnswerEnvelope"
+    }
+  },
+  "required": [
+    "request",
+    "response"
+  ],
+  "title": "ApiPayloads",
+  "type": "object"
+}

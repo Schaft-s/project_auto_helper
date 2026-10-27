@@ -1,0 +1,45 @@
+[project]
+name = "autonaparnik"
+version = "0.1.0"
+description = "АвтоНапарник: Telegram-консультант по NHTSA и сборочным проверкам"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.7",
+    "httpx>=0.27",
+    "python-dotenv>=1.0",
+    "aiogram>=3.13",
+    "mcp>=1.9,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2",
+    "pytest-asyncio>=0.24",
+]
+data = [
+    "pyarrow>=15",
+    "qdrant-client>=1.12",
+    "fastembed>=0.5",
+    "pypdf>=5.0",
+]
+
+[project.scripts]
+autonaparnik-bot = "autonaparnik.bot.main:main"
+autonaparnik-mcp = "autonaparnik.mcp_server:main"
+autonaparnik-eval = "autonaparnik.eval_golden:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["autonaparnik*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = [
+    "live: calls OpenRouter, NHTSA MCP and optional Qdrant",
+]

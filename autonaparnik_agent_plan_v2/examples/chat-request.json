@@ -1,0 +1,13 @@
+{
+  "message": "Учебный пример: сравни мой список с вымышленной карточкой контроля фиксатора.",
+  "vehicle": {
+    "make": null,
+    "model": null,
+    "model_year": null,
+    "market": "unknown",
+    "variant": null
+  },
+  "audience": "mechanic",
+  "intent": "workshop",
+  "history": []
+}

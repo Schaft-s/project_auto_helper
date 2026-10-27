@@ -1,0 +1,212 @@
+{
+  "schema_version": "2.0",
+  "requirements": [
+    {
+      "id": "A01",
+      "text": "Дообучить небольшую LLM на автомобильной задаче",
+      "origin": "user_explicit",
+      "tasks": [
+        "T01",
+        "T03",
+        "T10",
+        "T12",
+        "T13",
+        "T14",
+        "T16",
+        "T17",
+        "T18",
+        "T19"
+      ],
+      "acceptance_ids": [
+        "AC06",
+        "AC10",
+        "AC16",
+        "AC18"
+      ]
+    },
+    {
+      "id": "A02",
+      "text": "Данные, воспроизводимость и честное сравнение",
+      "origin": "project_evidence_method_exact_course_rubric_unknown",
+      "tasks": [
+        "T14",
+        "T15",
+        "T16",
+        "T18",
+        "T20",
+        "T23"
+      ],
+      "acceptance_ids": [
+        "AC09",
+        "AC15",
+        "AC17"
+      ]
+    },
+    {
+      "id": "B01",
+      "text": "Прикладная задача",
+      "origin": "course_B_explicit",
+      "tasks": [
+        "T01",
+        "T10"
+      ],
+      "acceptance_ids": [
+        "AC04",
+        "AC05",
+        "AC07",
+        "AC09",
+        "AC21"
+      ]
+    },
+    {
+      "id": "B02",
+      "text": "Пользовательский вход",
+      "origin": "course_B_explicit",
+      "tasks": [
+        "T05",
+        "T08"
+      ],
+      "acceptance_ids": [
+        "AC02",
+        "AC12"
+      ]
+    },
+    {
+      "id": "B03",
+      "text": "Основная AI-логика",
+      "origin": "course_B_explicit",
+      "tasks": [
+        "T02",
+        "T07",
+        "T11",
+        "T12",
+        "T13",
+        "T20"
+      ],
+      "acceptance_ids": [
+        "AC06",
+        "AC07",
+        "AC08",
+        "AC11",
+        "AC14",
+        "AC21"
+      ]
+    },
+    {
+      "id": "B04",
+      "text": "MCP интеграция",
+      "origin": "course_B_explicit",
+      "tasks": [
+        "T02",
+        "T06",
+        "T09",
+        "T22"
+      ],
+      "acceptance_ids": [
+        "AC01",
+        "AC03"
+      ]
+    },
+    {
+      "id": "B05",
+      "text": "End-to-end",
+      "origin": "course_B_explicit",
+      "tasks": [
+        "T05",
+        "T07",
+        "T09",
+        "T13",
+        "T19",
+        "T21",
+        "T22"
+      ],
+      "acceptance_ids": [
+        "AC01",
+        "AC02",
+        "AC03",
+        "AC04",
+        "AC06",
+        "AC11",
+        "AC13",
+        "AC18"
+      ]
+    },
+    {
+      "id": "B06",
+      "text": "Хостинг и ссылка",
+      "origin": "course_B_explicit",
+      "tasks": [
+        "T09",
+        "T21",
+        "T22"
+      ],
+      "acceptance_ids": [
+        "AC10",
+        "AC13",
+        "AC19",
+        "AC22"
+      ]
+    },
+    {
+      "id": "B07",
+      "text": "Публичный репозиторий и README",
+      "origin": "course_B_explicit",
+      "tasks": [
+        "T22",
+        "T23"
+      ],
+      "acceptance_ids": [
+        "AC19",
+        "AC20",
+        "AC22"
+      ]
+    },
+    {
+      "id": "B08",
+      "text": "Интерактивная HTML-презентация",
+      "origin": "course_B_explicit",
+      "tasks": [
+        "T24"
+      ],
+      "acceptance_ids": [
+        "AC20"
+      ]
+    },
+    {
+      "id": "B09",
+      "text": "Защита до10мин и live demo",
+      "origin": "course_B_explicit",
+      "tasks": [
+        "T24"
+      ],
+      "acceptance_ids": [
+        "AC20"
+      ]
+    },
+    {
+      "id": "B10",
+      "text": "Обязательный воркшоп",
+      "origin": "course_B_explicit",
+      "tasks": [
+        "T01",
+        "T24"
+      ],
+      "acceptance_ids": [
+        "AC20"
+      ]
+    },
+    {
+      "id": "B11",
+      "text": "Spec-driven и история работы агентами",
+      "origin": "course_B_description_and_project_traceability",
+      "tasks": [
+        "T01",
+        "T04",
+        "T23"
+      ],
+      "acceptance_ids": [
+        "AC20"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "task": "review_plan",
+  "status": "general_only",
+  "summary": "В вымышленном плане не упомянута проверка фиксации; это не доказывает ошибку реальной сборки.",
+  "checks": [
+    {
+      "text": "Неподтверждённая проверка.",
+      "relation": "required_check",
+      "evidence_ids": []
+    }
+  ],
+  "missing_information": [],
+  "limitations": [
+    "Форматный пример, не инструкция для реального автомобиля."
+  ]
+}

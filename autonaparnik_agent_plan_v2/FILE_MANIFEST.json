@@ -1,0 +1,190 @@
+{
+  "bundle_version": "2.0",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 20633,
+      "sha256": "000573b895eb01038b89aa6f075cce00f02cf8f4f01d75b76d6d24ef0011a615"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7239,
+      "sha256": "f0552d9c4e8c74efa2becdf8e4df17b2714a3620166fc9c1941fb0c6c2a2b735"
+    },
+    {
+      "path": "VALIDATION_REPORT.json",
+      "bytes": 3062,
+      "sha256": "52185ce9efb5e3ed1767ca57d9055c5bf8102e17b2d4c3cc2c19500e53bed6f2"
+    },
+    {
+      "path": "backlog/acceptance.json",
+      "bytes": 9783,
+      "sha256": "55724cf0a2cde6a7454812fa4d17c70908e600ebb190607da5e44f3852da5a9b"
+    },
+    {
+      "path": "backlog/milestones.json",
+      "bytes": 764,
+      "sha256": "08917c86f6c247c0a3c5341b175fbee3e9a44d8786bf94d472ed5edc8801608b"
+    },
+    {
+      "path": "backlog/requirements.json",
+      "bytes": 3970,
+      "sha256": "05babe6ef2d86b933534f22ada5d04f6f7ee0a1e98b7755488951696cfde62a0"
+    },
+    {
+      "path": "backlog/tasks.json",
+      "bytes": 37876,
+      "sha256": "0bbcf36f089677a3cce7393dc00fe4d09fd4f29a5782a4952912f4e2969af183"
+    },
+    {
+      "path": "configs/runtime-policy.json",
+      "bytes": 1886,
+      "sha256": "8d8cdeb20a37e7ad146b94a99e77882421c9c617c41b25561924bffba58208a3"
+    },
+    {
+      "path": "configs/training-plan.json",
+      "bytes": 1390,
+      "sha256": "e978f19f7175403ff450f929197b48635ae25f9d67801951c4419742c89ff0c8"
+    },
+    {
+      "path": "contracts/README.md",
+      "bytes": 2992,
+      "sha256": "19eade143134437638ee9f37ea0df14737d6eae341cf316be546df903569997a"
+    },
+    {
+      "path": "contracts/api.schema.json",
+      "bytes": 17226,
+      "sha256": "7434ccf9fc66d950a3d8128cca3a5275f36b0e5ff0f5a1301b32f2f4596ae63a"
+    },
+    {
+      "path": "contracts/document.schema.json",
+      "bytes": 5614,
+      "sha256": "22b6e231bd1aaa5c4929d523f59d0793d0c0d49c203a99e8c1febc597a2429d0"
+    },
+    {
+      "path": "contracts/models.py",
+      "bytes": 10867,
+      "sha256": "257ce2c9fede96bab9d1c5df1888a2e474b0929d0e8fa3f2fcc2a5ab4ffe587b"
+    },
+    {
+      "path": "contracts/specialist.schema.json",
+      "bytes": 2237,
+      "sha256": "099543894c1e1add1f6bf1454fdce0de038a08a38ecb9a6e56002fe8ba9ec7b1"
+    },
+    {
+      "path": "contracts/tool-schemas.json",
+      "bytes": 1891,
+      "sha256": "d33a2ce69cc3adb188d40ed8fcf318408525c1b9dc0c8bb5f0dbab2cb34f6d9b"
+    },
+    {
+      "path": "docs/01-product-and-courses.md",
+      "bytes": 16813,
+      "sha256": "0b6d743424a6585bbe4c9b3b42d158605fe2a32dfdfbadaf2ea05315ddce1608"
+    },
+    {
+      "path": "docs/02-architecture.md",
+      "bytes": 23881,
+      "sha256": "b3b45e94c6f03b1f48735c2f79f447a35e150727ee14de87fa0cc71d57c49310"
+    },
+    {
+      "path": "docs/03-nhtsa-integration.md",
+      "bytes": 24991,
+      "sha256": "4c7dbfbfc0669c72ad1f3e7d04433efab861e2e2606d9454a83b2cb25a6d3249"
+    },
+    {
+      "path": "docs/04-data-and-training.md",
+      "bytes": 36493,
+      "sha256": "bcaf900b597976cbbcdb54948b10fbf33227ccf858f73a2e58ca8da2e943bf3b"
+    },
+    {
+      "path": "docs/05-evaluation.md",
+      "bytes": 15566,
+      "sha256": "e1606608f8432c4ded5adcb68cb70cea79e1c693a8475843fcafa0f37c07567d"
+    },
+    {
+      "path": "docs/06-delivery.md",
+      "bytes": 15471,
+      "sha256": "f5ade499d120097bac2d41012383337d74a07f23083679b07c5bfa75b5e17563"
+    },
+    {
+      "path": "docs/07-agent-workflow.md",
+      "bytes": 30687,
+      "sha256": "5e7fa9ff676ae08d0b992dc27363b39e8510b224f65d6f299ae16152001d4e70"
+    },
+    {
+      "path": "docs/08-sources.md",
+      "bytes": 8128,
+      "sha256": "1dc127f77c2cf1acba4a3a53a2495407c529c2d40615c456607093e691acebaa"
+    },
+    {
+      "path": "examples/answer.json",
+      "bytes": 2725,
+      "sha256": "4af800ea3d53cb893dc26bc29b24aa71b4bf1f81c15b7c41a715f4d292a29341"
+    },
+    {
+      "path": "examples/api-payloads.json",
+      "bytes": 3285,
+      "sha256": "553db7571bf43beca770113300a320615d913be48449ccedd4b373fbc841f5fc"
+    },
+    {
+      "path": "examples/chat-request.json",
+      "bytes": 356,
+      "sha256": "4816d686d5593397fc314dca0cd1cf1905ad81c3aa9a9bf6630cf1d27e371eac"
+    },
+    {
+      "path": "examples/document.json",
+      "bytes": 1266,
+      "sha256": "9073865883f26d267873a982c5741368a12953d8cea8b73cc791b59cded3a5a8"
+    },
+    {
+      "path": "examples/invalid-citation.json",
+      "bytes": 2727,
+      "sha256": "a9d642094d461c485127e6b1edee6bf3ebb53e31a31b4eaa338980b2485b1ad5"
+    },
+    {
+      "path": "examples/invalid-history.json",
+      "bytes": 428,
+      "sha256": "a4b32f25312628f880ff85e98c9b6c6b4a91757058d3b5f00432fab1b4c28803"
+    },
+    {
+      "path": "examples/invalid-model-provenance.json",
+      "bytes": 2662,
+      "sha256": "8ca898a17d73032ff36bc8e549d1624c581c73ab1a1d94804f9f19a07f5933e0"
+    },
+    {
+      "path": "examples/invalid-specialist.json",
+      "bytes": 571,
+      "sha256": "3bf7c87f0ac6ee141077aba69b0e5b5193ebc4830fad4dd2b87a0a6edbfb6e22"
+    },
+    {
+      "path": "examples/specialist-result.json",
+      "bytes": 698,
+      "sha256": "8df3f4efb7733eedc1fe768015402afa1c41fccc473ed899e14555be0afdd3b5"
+    },
+    {
+      "path": "requirements-spec.txt",
+      "bytes": 17,
+      "sha256": "21fc068d5e30b7ae266a4e68938ebe1e76f956899645286224cdfe7f39eaa137"
+    },
+    {
+      "path": "templates/decisions.md",
+      "bytes": 1800,
+      "sha256": "9b3c79f2bf01477a384206986d7f143e337a6af5b1cdef008a0af59890ba3c4d"
+    },
+    {
+      "path": "templates/experiment-report.md",
+      "bytes": 2894,
+      "sha256": "84f34f44b5d58112dc1872884fc2be42e223a8ec9559ee793d42bc3f072df21f"
+    },
+    {
+      "path": "templates/task-report.md",
+      "bytes": 1402,
+      "sha256": "e63383a391aba1ba17d8d13de28cf39376c482e464cab2fa6a4e65f28801f5be"
+    },
+    {
+      "path": "validate_bundle.py",
+      "bytes": 8772,
+      "sha256": "b522f72662f1aaad4c77b9b2ca7abc8a7ef3ea29ac910a281b48b2fdfa7b97a4"
+    }
+  ]
+}
