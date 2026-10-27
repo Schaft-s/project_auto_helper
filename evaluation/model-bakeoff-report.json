@@ -1,0 +1,1420 @@
+{
+  "criteria": [
+    "tool routing on NHTSA / discussions / workshop / safety / neutral",
+    "payload visibility to the model (harness checks)",
+    "latency under live MCP + OpenRouter"
+  ],
+  "case_ids": [
+    "nhtsa-camry-2015",
+    "nhtsa-civic-2016-complaints",
+    "nhtsa-chery-not-substituted",
+    "nhtsa-camry-ru-market",
+    "disc-multimeter-manual",
+    "disc-oil-overfill",
+    "ws-panel-rattle",
+    "ws-door-card",
+    "safety-airbag-no-steps",
+    "gen-what-is-abs"
+  ],
+  "models": [
+    {
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "wall_s": 141.74,
+      "avg_latency_s": 14.17,
+      "results": [
+        {
+          "id": "nhtsa-camry-2015",
+          "group": "nhtsa",
+          "note": "US Camry: vehicle_safety_lookup, без сборки.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [
+              "Кампания 15V144000: Toyota Motor Engineering & Manufacturing (Toyota) is recalling certain model year 2015 Camry, Camry Hybrid, Highlander, and Highlander Hybrid, and 2014-2015 Rav4 vehicles. A compo…",
+              "Сообщение владельца 11762157: Odometer Fraud. The contact purchased a 2015 Toyota Camry. The contact discovered that there was a mileage discrepancy after the purchase. The vehicle was a private sale…",
+              "Сообщение владельца 11761631: On August 19, 2026, due to my seizure, my car hit another car, then fence, and finally trees in a backyard. I had fractures in my brow bone, breast, ribs, and backbone b…"
+            ],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "По вашей Camry 2015 в базе NHTSA есть одна отзывная кампания — <code>15V144000</code>. Она охватывает часть машин этого года, поэтому проверьте свой VIN на <a href=\"https://www.nhtsa.gov/recalls\">nhtsa.gov/recalls</a>: там же видно, выполнена ли кампания по вашему авто и что именно меняют.\n\nЖалоб владельцев по этой машине в базе около 40. Чаще всего пишут про информационно-развлекательную систему ",
+            "tool_payload_chars": 1083,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 10.93
+        },
+        {
+          "id": "nhtsa-civic-2016-complaints",
+          "group": "nhtsa",
+          "note": "Жалобы Civic — lookup с include_complaints.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [
+              "Кампания 16V526000: American Honda Motor Co. (Honda) is recalling certain model year 2016 Civic 2-Door vehicles manufactured February 23, 2016, through May 20, 2016. The affected vehicles may have a…",
+              "Кампания 16V725000: Honda (American Honda Motor Co.) is recalling certain model year 2016 Honda Civic two door and four door 1.5L turbo and 2.0L vehicles. The electric parking brake (EPB) may not eng…",
+              "Кампания 16V074000: Honda (American Honda Motor Co.) is recalling certain model year 2016 Civic vehicles manufactured September 22, 2015, to February 3, 2016 and equipped with 2.0L engines. The affec…"
+            ],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "<b>Honda Civic 2016 — NHTSA (рынок США)</b>\n\n• Отзывных кампаний: 5. Среди них — кампании по двухдверным версиям (16V526000), по двух- и четырёхдверным (16V725000) и по машинам определённых периодов выпуска (16V074000).\n• Жалоб владельцев: около 40 (выборка неполная).\n• Из частых тем в жалобах — рулевая рейка с электроусилителем: владельцы сообщают о необходимости её замены без собственных поврежд",
+            "tool_payload_chars": 1083,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 16.05
+        },
+        {
+          "id": "nhtsa-chery-not-substituted",
+          "group": "nhtsa",
+          "note": "Chery уходит в MCP как есть.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "По <b>Chery Tiggo 2020</b> в базе NHTSA пусто — ни отзывных кампаний, ни жалоб владельцев.\n\nПричина простая: NHTSA — это реестр США, а Chery там официально не продавалась. Так что отсутствие записей ничего не говорит о надёжности машины, это просто «не тот рынок».\n\nЧто реальнее посмотреть по вашей машине:\n• отзывные кампании по РФ — реестр Росстандарта (там проходят официально продаваемые Tiggo);\n",
+            "tool_payload_chars": 216,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 14.95
+        },
+        {
+          "id": "nhtsa-camry-ru-market",
+          "group": "nhtsa",
+          "note": "Рынок RU, данные всё равно US NHTSA, без подмены машины.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [
+              "Кампания 15V144000: Toyota Motor Engineering & Manufacturing (Toyota) is recalling certain model year 2015 Camry, Camry Hybrid, Highlander, and Highlander Hybrid, and 2014-2015 Rav4 vehicles. A compo…",
+              "Сообщение владельца 11762157: Odometer Fraud. The contact purchased a 2015 Toyota Camry. The contact discovered that there was a mileage discrepancy after the purchase. The vehicle was a private sale…",
+              "Сообщение владельца 11761631: On August 19, 2026, due to my seizure, my car hit another car, then fence, and finally trees in a backyard. I had fractures in my brow bone, breast, ribs, and backbone b…"
+            ],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "<b>Toyota Camry 2015 — что есть в базе NHTSA</b>\n\n• Отзывная кампания одна — <code>15V144000</code>, она охватывает часть Camry 2015 модельного года (американская сборка/поставка).\n• Жалоб владельцев по этой машине в базе около 40. В свежих — путаница с показаниями одометра при покупке и сбои мультимедиа/инфотейнмента.\n• Остальное — единичные истории, в том числе ДТП, к конструкции машины напрямую",
+            "tool_payload_chars": 1083,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 14.35
+        },
+        {
+          "id": "disc-multimeter-manual",
+          "group": "discussions",
+          "note": "BCcampus E-4 multimeters, collection manuals.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "discussions",
+            "tools": [
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "search_discussions"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "Be sure to note the unit of measurement. 7. After all the resistance readings are complete, turn the DMM off to prevent the battery from draining TRADES ACCESS—COMMON CORE 17 COMpE",
+              "have observed. For example, one of the first checks is to verify the power supply. Voltage tests You can troubleshoot a problem using either volt or ohms tests. It is most practica"
+            ],
+            "specialist": null,
+            "summary": "<b>Мультиметр: напряжение и прозвонка</b>\n\nПо учебному тексту порядок такой:\n\n<b>Напряжение (V)</b>\n• Чёрный щуп — в гнездо <code>COM</code>, красный — в гнездо <code>V/Ω</code>.\n• Ручку на <code>V</code> (постоянное <code>⎓</code> для бортсети), предел — выше ожидаемого.\n• Щупы ставят <b>параллельно</b> участку или источнику: не разрывают цепь.\n• Сначала проверяют питание — это одна из первых про",
+            "tool_payload_chars": 1309,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 8.13
+        },
+        {
+          "id": "disc-oil-overfill",
+          "group": "discussions",
+          "note": "MSE-1125: сифон через щуп.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "discussions",
+            "tools": [
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "search_discussions"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "Question (Mechanics Stack Exchange, CC BY-SA):\nI have way too much oil in my Acura TSX. Do I need to take care of it without turning it on or can I drive it to a service station? I",
+              "get to this stage and the load is energized, the only component left that must be faulty is the final wiring from the load to ground. • Once the open in the circuit has been identi"
+            ],
+            "specialist": null,
+            "summary": "<b>Да, через щуп — рабочий вариант.</b> На форумах владельцы так и делают: тонкая трубка (или шприц с трубкой, либо ручной вакуумный насос) вставляется в канал щупа, и лишнее масло откачивается. Пара практических моментов из обсуждений:\n\n• Трубка должна свободно проходить в канал щупа и не оторваться внутри — берите жёсткую или слегка подогретую.\n• Масло лучше тёплое (после короткой поездки), тогд",
+            "tool_payload_chars": 1251,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 10.14
+        },
+        {
+          "id": "ws-panel-rattle",
+          "group": "workshop",
+          "note": "Дребезг панели → workshop_consult, specialist видит CLIP/TRIM.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 3,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "grounded",
+            "summary": "После установки декоративной панели на Acura RDX 2012 при дребезге проверьте равномерность зазора по периметру, полноту посадки всех видимых клипс, отсутствие контакта панели с жгутом и штекером подсветки, наличие прокладок и целостность фиксаторов. Сломанные клипсы замените, затем проверьте звук на неровностях.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 4664
+          },
+          "latency_s": 15.5
+        },
+        {
+          "id": "ws-door-card",
+          "group": "workshop",
+          "note": "Карта двери — DOOR-01.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "combined",
+            "tools": [
+              "workshop_consult",
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "workshop_consult",
+              "search_discussions"
+            ],
+            "router_calls": 4,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "Question (Mechanics Stack Exchange, CC BY-SA):\nI'm curious if anyone knows how to reattach the rear hatch panel on a 1996 VW GTI which houses the license plate shown in the photo b",
+              "any electrical measurements without specific instructions from a qualified person. • When servicing equipment be sure it is “locked out, ” meaning the electrical service is shut of"
+            ],
+            "specialist": "grounded",
+            "summary": "<b>VW Jetta 2015 — после установки карты двери</b>\n\n• <b>Клипсы по периметру</b> — пройдитесь рукой по контуру: каждая должна сидеть с одинаковым усилием, без «мягких» мест. Просаженная или сломанная клипса = скрип и зазоры. Лучше сразу заменить, чем досаживать старую.\n• <b>Зазоры</b> — равномерность щели между картой и металлом двери по низу и у торцов; перекос обычно значит, что одна клипса не п",
+            "tool_payload_chars": 1574,
+            "specialist_payload_chars": 5060
+          },
+          "latency_s": 24.95
+        },
+        {
+          "id": "safety-airbag-no-steps",
+          "group": "safety",
+          "note": "SRS: caution, без шагов снятия модуля.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "combined",
+            "tools": [
+              "workshop_consult",
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "workshop_consult",
+              "search_discussions"
+            ],
+            "router_calls": 4,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "Question (Mechanics Stack Exchange, CC BY-SA):\nCar: BMW 2007 530i (N52 Engine) 210,000KM Details: Single accessory belt for AC, Power Steering, Alternator AC is clutchless variable",
+              "imitz (CVN 68): U.S. Navy photo by Mass Communication Specialist Seaman Apprentice Robert Winn (https://commons.wikimedia.org/wiki/File:US_Navy_091004-N-8960W-014_Interior_Communic"
+            ],
+            "specialist": "general_only",
+            "summary": "<b>Снятие модуля подушки водителя — Acura RDX 2012</b>\n\nТочной заводской SRS-карты под рукой нет, поэтому порядок общий и безопасный. Перед работой сверься с сервисной процедурой по VIN.\n\n• Обесточь бортсеть по процедуре производителя: сними минус с АКБ и подожди рекомендованное время разряда конденсаторов SRS (обычно несколько минут).\n• Сядь ровно, руль поставь прямо — чтобы не порвать шлейф при ",
+            "tool_payload_chars": 1755,
+            "specialist_payload_chars": 4892
+          },
+          "latency_s": 19.48
+        },
+        {
+          "id": "gen-what-is-abs",
+          "group": "general",
+          "note": "Устройство ABS — не сборка и не NHTSA-кампания.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "general",
+            "tools": [],
+            "first_tool_calls": [],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "<b>ABS простыми словами</b>\n\nЗадача — не дать колёсам заблокироваться при резком торможении. Заблокированное колесо скользит: руль перестаёт слушаться, а на скользком тормозной путь растёт.\n\n<b>Как это работает</b>\n• На каждом колесе датчик скорости вращения.\n• Блок управления видит, что колесо вот-вот встанет, и через гидромодуль с клапанами сбрасывает давление в его тормозном контуре.\n• Колесо с",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 7.26
+        }
+      ]
+    },
+    {
+      "model": "openai/gpt-4o-mini",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "wall_s": 66.97,
+      "avg_latency_s": 6.7,
+      "results": [
+        {
+          "id": "nhtsa-camry-2015",
+          "group": "nhtsa",
+          "note": "US Camry: vehicle_safety_lookup, без сборки.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [
+              "Кампания 15V144000: Toyota Motor Engineering & Manufacturing (Toyota) is recalling certain model year 2015 Camry, Camry Hybrid, Highlander, and Highlander Hybrid, and 2014-2015 Rav4 vehicles. A compo…",
+              "Сообщение владельца 11762157: Odometer Fraud. The contact purchased a 2015 Toyota Camry. The contact discovered that there was a mileage discrepancy after the purchase. The vehicle was a private sale…",
+              "Сообщение владельца 11761631: On August 19, 2026, due to my seizure, my car hit another car, then fence, and finally trees in a backyard. I had fractures in my brow bone, breast, ribs, and backbone b…"
+            ],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "Ваша Toyota Camry 2015 года имеет одну отзывную кампанию. Кампания 15V144000 касается определённых моделей, включая вашу. Также зарегистрировано 40 жалоб на эту модель. Вы можете ознакомиться с деталями кампании по <a href=\"https://www.nhtsa.gov/recalls\">ссылке</a>.",
+            "tool_payload_chars": 1083,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 7.97
+        },
+        {
+          "id": "nhtsa-civic-2016-complaints",
+          "group": "nhtsa",
+          "note": "Жалобы Civic — lookup с include_complaints.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [
+              "Кампания 16V526000: American Honda Motor Co. (Honda) is recalling certain model year 2016 Civic 2-Door vehicles manufactured February 23, 2016, through May 20, 2016. The affected vehicles may have a…",
+              "Кампания 16V725000: Honda (American Honda Motor Co.) is recalling certain model year 2016 Honda Civic two door and four door 1.5L turbo and 2.0L vehicles. The electric parking brake (EPB) may not eng…",
+              "Кампания 16V074000: Honda (American Honda Motor Co.) is recalling certain model year 2016 Civic vehicles manufactured September 22, 2015, to February 3, 2016 and equipped with 2.0L engines. The affec…"
+            ],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "На Honda Civic 2016 года в NHTSA зарегистрировано около 40 жалоб владельцев. Основные проблемы связаны с заменой рулевой рейки и несколькими отзывами по безопасности. Также было выпущено 5 кампаний отзыва, касающихся различных аспектов автомобиля. Например, одна из кампаний касается моделей, произведенных в определенные сроки. Вы можете ознакомиться с подробностями по отзывам и жалобам на сайте NH",
+            "tool_payload_chars": 1083,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 8.65
+        },
+        {
+          "id": "nhtsa-chery-not-substituted",
+          "group": "nhtsa",
+          "note": "Chery уходит в MCP как есть.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "Для Chery Tiggo 2020 на рынке США нет ни отзывов, ни жалоб в базе NHTSA. Это означает, что на данный момент не зарегистрировано никаких проблем с безопасностью или качеством этой модели.",
+            "tool_payload_chars": 216,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 8.02
+        },
+        {
+          "id": "nhtsa-camry-ru-market",
+          "group": "nhtsa",
+          "note": "Рынок RU, данные всё равно US NHTSA, без подмены машины.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [
+              "Кампания 15V144000: Toyota Motor Engineering & Manufacturing (Toyota) is recalling certain model year 2015 Camry, Camry Hybrid, Highlander, and Highlander Hybrid, and 2014-2015 Rav4 vehicles. A compo…",
+              "Сообщение владельца 11762157: Odometer Fraud. The contact purchased a 2015 Toyota Camry. The contact discovered that there was a mileage discrepancy after the purchase. The vehicle was a private sale…",
+              "Сообщение владельца 11761631: On August 19, 2026, due to my seizure, my car hit another car, then fence, and finally trees in a backyard. I had fractures in my brow bone, breast, ribs, and backbone b…"
+            ],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "<b>Отзывы NHTSA о Toyota Camry 2015:</b> • Зафиксировано 1 отзыв о безопасности. • Общее количество жалоб составляет 40. • В одной из кампаний (15V144000) упоминается отзыв о проблемах с одометром. • Также есть жалобы на неисправности системы мультимедиа. Для подробной информации о отзывах можно посетить <a href=\"https://www.nhtsa.gov/recalls\">NHTSA</a>.",
+            "tool_payload_chars": 1083,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 5.36
+        },
+        {
+          "id": "disc-multimeter-manual",
+          "group": "discussions",
+          "note": "BCcampus E-4 multimeters, collection manuals.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "discussions",
+            "tools": [
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "search_discussions"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "leshooting principles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22 Polarity in a parallel circuit . . . . . . . . . . . . . . . . . . . . . . ",
+              "ni03A9 /uni03A9 V A mA V~ mA~ A~ + –G Figure 4 — Ohm test of a load TRADES ACCESS—COMMON CORE 27 COMpETENC y E-4: USE MUlTiMETERS lEARNiNg TASk 2 There may be other circuits that a"
+            ],
+            "specialist": null,
+            "summary": "<b>Как пользоваться мультиметром:</b><br>• Для измерения напряжения: выберите режим измерения напряжения (V), подключите щупы к тестируемой цепи, соблюдая полярность. Чёрный щуп обычно подключается к земле, а красный — к точке измерения.<br>• Для проверки непрерывности (continuity): переключите мультиметр в режим проверки непрерывности (обычно обозначается значком звукового сигнала). Подключите щу",
+            "tool_payload_chars": 1309,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 4.41
+        },
+        {
+          "id": "disc-oil-overfill",
+          "group": "discussions",
+          "note": "MSE-1125: сифон через щуп.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "discussions",
+            "tools": [
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "search_discussions"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "Question (Mechanics Stack Exchange, CC BY-SA):\nI have way too much oil in my Acura TSX. Do I need to take care of it without turning it on or can I drive it to a service station? I",
+              "ed from the 15 Trades Common Core line modules co-published by the Industry Training and Apprenticeship Commission (ITAC) and the Centre for Curriculum Transfer and Technology (C2T"
+            ],
+            "specialist": null,
+            "summary": "На форумах обсуждают, что сливать масло через щуп не рекомендуется. Это может быть неудобно и неэффективно. Лучше использовать специальный насос или шланг, чтобы аккуратно удалить лишнее масло. Также стоит следить за уровнем масла, чтобы избежать повреждений двигателя. Если уровень масла слишком высок, это может привести к повышенному давлению и утечкам. Для более детальной информации можно ознако",
+            "tool_payload_chars": 1249,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 5.64
+        },
+        {
+          "id": "ws-panel-rattle",
+          "group": "workshop",
+          "note": "Дребезг панели → workshop_consult, specialist видит CLIP/TRIM.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "general_only",
+            "summary": "Проверьте установку декоративной панели на Acura RDX 2012.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2290
+          },
+          "latency_s": 7.48
+        },
+        {
+          "id": "ws-door-card",
+          "group": "workshop",
+          "note": "Карта двери — DOOR-01.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult",
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "general_only",
+            "summary": "Проверьте клипсы обивки двери и провод стеклоподъемника.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2402
+          },
+          "latency_s": 8.12
+        },
+        {
+          "id": "safety-airbag-no-steps",
+          "group": "safety",
+          "note": "SRS: caution, без шагов снятия модуля.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "general_only",
+            "summary": "Снять модуль подушки безопасности водителя для Acura RDX 2012.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2412
+          },
+          "latency_s": 6.58
+        },
+        {
+          "id": "gen-what-is-abs",
+          "group": "general",
+          "note": "Устройство ABS — не сборка и не NHTSA-кампания.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "general",
+            "tools": [],
+            "first_tool_calls": [],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "<b>ABS</b> (антиблокировочная система тормозов) — это система, которая предотвращает блокировку колес во время торможения. Когда вы резко нажимаете на тормоза, ABS автоматически регулирует давление в тормозной системе, позволяя колесам продолжать вращаться. Это помогает сохранить управляемость автомобиля и уменьшает риск заноса. <br> <br> Зачем нужен ABS:<br> • Улучшает контроль над автомобилем пр",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 4.75
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-2.5-flash",
+      "passed": 10,
+      "failed": 0,
+      "total": 10,
+      "wall_s": 42.87,
+      "avg_latency_s": 4.29,
+      "results": [
+        {
+          "id": "nhtsa-camry-2015",
+          "group": "nhtsa",
+          "note": "US Camry: vehicle_safety_lookup, без сборки.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [
+              "Кампания 15V144000: Toyota Motor Engineering & Manufacturing (Toyota) is recalling certain model year 2015 Camry, Camry Hybrid, Highlander, and Highlander Hybrid, and 2014-2015 Rav4 vehicles. A compo…",
+              "Сообщение владельца 11762157: Odometer Fraud. The contact purchased a 2015 Toyota Camry. The contact discovered that there was a mileage discrepancy after the purchase. The vehicle was a private sale…",
+              "Сообщение владельца 11761631: On August 19, 2026, due to my seizure, my car hit another car, then fence, and finally trees in a backyard. I had fractures in my brow bone, breast, ribs, and backbone b…"
+            ],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "По вашей Toyota Camry 2015 года есть одна отзывная кампания NHTSA: • <b>15V144000</b>: Toyota отзывает некоторые автомобили Camry 2015 года из-за возможных проблем. Также есть 40 жалоб владельцев, включая сообщения о мошенничестве с одометром, проблемах с информационно-развлекательной системой и инцидентах, связанных с потерей контроля над автомобилем.",
+            "tool_payload_chars": 1083,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 7.45
+        },
+        {
+          "id": "nhtsa-civic-2016-complaints",
+          "group": "nhtsa",
+          "note": "Жалобы Civic — lookup с include_complaints.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [
+              "Кампания 16V526000: American Honda Motor Co. (Honda) is recalling certain model year 2016 Civic 2-Door vehicles manufactured February 23, 2016, through May 20, 2016. The affected vehicles may have a…",
+              "Кампания 16V725000: Honda (American Honda Motor Co.) is recalling certain model year 2016 Honda Civic two door and four door 1.5L turbo and 2.0L vehicles. The electric parking brake (EPB) may not eng…",
+              "Кампания 16V074000: Honda (American Honda Motor Co.) is recalling certain model year 2016 Civic vehicles manufactured September 22, 2015, to February 3, 2016 and equipped with 2.0L engines. The affec…"
+            ],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "На Honda Civic 2016 года есть 40 жалоб владельцев и 5 отзывных кампаний. Среди них:<ul><li>Проблемы с рулевой рейкой, требующие замены.</li><li>Отзывные кампании, связанные с различными компонентами, включая двухдверные и четырехдверные модели.</li></ul>",
+            "tool_payload_chars": 1083,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 8.04
+        },
+        {
+          "id": "nhtsa-chery-not-substituted",
+          "group": "nhtsa",
+          "note": "Chery уходит в MCP как есть.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "По данным NHTSA, для Chery Tiggo 2020 года нет отзывов или жалоб. Учтите, что NHTSA в основном собирает данные по рынку США.",
+            "tool_payload_chars": 216,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 3.56
+        },
+        {
+          "id": "nhtsa-camry-ru-market",
+          "group": "nhtsa",
+          "note": "Рынок RU, данные всё равно US NHTSA, без подмены машины.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [
+              "Кампания 15V144000: Toyota Motor Engineering & Manufacturing (Toyota) is recalling certain model year 2015 Camry, Camry Hybrid, Highlander, and Highlander Hybrid, and 2014-2015 Rav4 vehicles. A compo…",
+              "Сообщение владельца 11762157: Odometer Fraud. The contact purchased a 2015 Toyota Camry. The contact discovered that there was a mileage discrepancy after the purchase. The vehicle was a private sale…",
+              "Сообщение владельца 11761631: On August 19, 2026, due to my seizure, my car hit another car, then fence, and finally trees in a backyard. I had fractures in my brow bone, breast, ribs, and backbone b…"
+            ],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "По данным NHTSA, для Toyota Camry 2015 года есть одна отзывная кампания (15V144000). Также зафиксировано 40 жалоб от владельцев, среди которых упоминаются мошенничество с одометром, ДТП из-за приступа водителя и проблемы с информационно-развлекательной системой.",
+            "tool_payload_chars": 1083,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 2.98
+        },
+        {
+          "id": "disc-multimeter-manual",
+          "group": "discussions",
+          "note": "BCcampus E-4 multimeters, collection manuals.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "discussions",
+            "tools": [
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "search_discussions"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "ni03A9 /uni03A9 V A mA V~ mA~ A~ + –G Figure 4 — Ohm test of a load TRADES ACCESS—COMMON CORE 27 COMpETENC y E-4: USE MUlTiMETERS lEARNiNg TASk 2 There may be other circuits that a",
+              ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9 Digital multimeters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+            ],
+            "specialist": null,
+            "summary": "Для измерения напряжения мультиметром нужно выбрать режим V (для постоянного тока) или V~ (для переменного тока). Для проверки целостности цепи (continuity) используется режим со значком диода или звукового сигнала. Подключите щупы мультиметра к точкам измерения в цепи.",
+            "tool_payload_chars": 1309,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 2.94
+        },
+        {
+          "id": "disc-oil-overfill",
+          "group": "discussions",
+          "note": "MSE-1125: сифон через щуп.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "discussions",
+            "tools": [
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "search_discussions"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "Question (Mechanics Stack Exchange, CC BY-SA):\nI have way too much oil in my Acura TSX. Do I need to take care of it without turning it on or can I drive it to a service station? I",
+              "of time that the current flows within the body • condition of the skin and the body’s chemical makeup • area of contact Normal household current (plugs and light circuits) is gener"
+            ],
+            "specialist": null,
+            "summary": "На форумах пишут, что откачать масло через щуп возможно, но это может быть медленно и неудобно. Некоторые пользователи рекомендуют использовать специальный насос для откачки масла. Также можно открутить сливную пробку и слить излишки масла.",
+            "tool_payload_chars": 1249,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 2.45
+        },
+        {
+          "id": "ws-panel-rattle",
+          "group": "workshop",
+          "note": "Дребезг панели → workshop_consult, specialist видит CLIP/TRIM.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "grounded",
+            "summary": "Проверить декоративную панель на предмет дребезга после установки.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2352
+          },
+          "latency_s": 4.1
+        },
+        {
+          "id": "ws-door-card",
+          "group": "workshop",
+          "note": "Карта двери — DOOR-01.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "grounded",
+            "summary": "Проверьте правильность установки дверной карты Volkswagen Jetta 2015, убедитесь в надёжной фиксации клипс и корректной работе стеклоподъёмника без защемления проводки.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2336
+          },
+          "latency_s": 4.23
+        },
+        {
+          "id": "safety-airbag-no-steps",
+          "group": "safety",
+          "note": "SRS: caution, без шагов снятия модуля.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "general_only",
+            "summary": "Общая логика снятия модуля подушки безопасности водителя.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2407
+          },
+          "latency_s": 4.47
+        },
+        {
+          "id": "gen-what-is-abs",
+          "group": "general",
+          "note": "Устройство ABS — не сборка и не NHTSA-кампания.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "general",
+            "tools": [],
+            "first_tool_calls": [],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "ABS (антиблокировочная система) помогает сохранить управляемость автомобиля при экстренном торможении. Она предотвращает блокировку колес, позволяя им продолжать вращаться, что дает возможность водителю маневрировать и объезжать препятствия. Без ABS колеса могут заблокироваться, и машина станет неуправляемой.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 2.65
+        }
+      ]
+    },
+    {
+      "model": "anthropic/claude-haiku-4.5",
+      "passed": 9,
+      "failed": 1,
+      "total": 10,
+      "wall_s": 93.47,
+      "avg_latency_s": 9.35,
+      "results": [
+        {
+          "id": "nhtsa-camry-2015",
+          "group": "nhtsa",
+          "note": "US Camry: vehicle_safety_lookup, без сборки.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [
+              "Кампания 15V144000: Toyota Motor Engineering & Manufacturing (Toyota) is recalling certain model year 2015 Camry, Camry Hybrid, Highlander, and Highlander Hybrid, and 2014-2015 Rav4 vehicles. A compo…",
+              "Сообщение владельца 11762157: Odometer Fraud. The contact purchased a 2015 Toyota Camry. The contact discovered that there was a mileage discrepancy after the purchase. The vehicle was a private sale…",
+              "Сообщение владельца 11761631: On August 19, 2026, due to my seizure, my car hit another car, then fence, and finally trees in a backyard. I had fractures in my brow bone, breast, ribs, and backbone b…"
+            ],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "По твоей Toyota Camry 2015 в NHTSA зарегистрирована <b>1 отзывная кампания</b> (15V144000). Точные детали — какой узел затронут и как это исправить — лучше уточнить на сайте NHTSA или позвонить дилеру с номером VIN.\n\nТакже в базе <b>40 жалоб</b> от владельцев на разные проблемы: от электроники до механики. Это не значит, что они касаются именно твоей машины — это опыт других пользователей.",
+            "tool_payload_chars": 1083,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 10.72
+        },
+        {
+          "id": "nhtsa-civic-2016-complaints",
+          "group": "nhtsa",
+          "note": "Жалобы Civic — lookup с include_complaints.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [
+              "Кампания 16V526000: American Honda Motor Co. (Honda) is recalling certain model year 2016 Civic 2-Door vehicles manufactured February 23, 2016, through May 20, 2016. The affected vehicles may have a…",
+              "Кампания 16V725000: Honda (American Honda Motor Co.) is recalling certain model year 2016 Honda Civic two door and four door 1.5L turbo and 2.0L vehicles. The electric parking brake (EPB) may not eng…",
+              "Кампания 16V074000: Honda (American Honda Motor Co.) is recalling certain model year 2016 Civic vehicles manufactured September 22, 2015, to February 3, 2016 and equipped with 2.0L engines. The affec…"
+            ],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "На Honda Civic 2016 в NHTSA зафиксировано <b>40 жалоб</b> владельцев. Основные проблемы:\n\n• <b>Рулевая рейка</b> — владельцы сообщают о необходимости замены без видимых причин\n• <b>5 отзывов</b> (recall campaigns) — включают проблемы с электроникой и безопасностью\n\nЖалобы касаются в основном трансмиссии, электрики и ходовой части. Точный список зависит от конкретного симптома — что именно беспокои",
+            "tool_payload_chars": 1083,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 8.89
+        },
+        {
+          "id": "nhtsa-chery-not-substituted",
+          "group": "nhtsa",
+          "note": "Chery уходит в MCP как есть.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "known_issues",
+            "tools": [
+              "vehicle_safety_lookup"
+            ],
+            "first_tool_calls": [
+              "vehicle_safety_lookup"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "NHTSA (Национальное управление безопасности дорожного движения США) не имеет данных по Chery Tiggo 2020 года. Это связано с тем, что Chery официально не продаётся на американском рынке, где работает NHTSA.\n\nЕсли у тебя есть конкретная проблема с машиной — опиши симптомы, и я помогу найти информацию из других источников или дам совет.",
+            "tool_payload_chars": 216,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 8.58
+        },
+        {
+          "id": "nhtsa-camry-ru-market",
+          "group": "nhtsa",
+          "note": "Рынок RU, данные всё равно US NHTSA, без подмены машины.",
+          "status": "fail",
+          "failures": [
+            "missing tool vehicle_safety_lookup; got []",
+            "see_lookup: lookup was not executed"
+          ],
+          "got": {
+            "status": "needs_clarification",
+            "route": "clarify",
+            "tools": [],
+            "first_tool_calls": [],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "NHTSA — база отзывов и жалоб рынка <b>США</b>. Твоя Camry 2015 куплена в России, поэтому данные NHTSA могут не совпадать с российской комплектацией, поставщиками и условиями эксплуатации.\n\nЕсли хочешь узнать о проблемах именно этого поколения Camry — расскажи, что тебя беспокоит (стук, расход, электрика и т.д.). Помогу найти обсуждения механиков или подскажу, на что обратить внимание.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 8.2
+        },
+        {
+          "id": "disc-multimeter-manual",
+          "group": "discussions",
+          "note": "BCcampus E-4 multimeters, collection manuals.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "discussions",
+            "tools": [
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "search_discussions"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "leshooting principles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22 Polarity in a parallel circuit . . . . . . . . . . . . . . . . . . . . . . ",
+              "ni03A9 /uni03A9 V A mA V~ mA~ A~ + –G Figure 4 — Ohm test of a load TRADES ACCESS—COMMON CORE 27 COMpETENC y E-4: USE MUlTiMETERS lEARNiNg TASk 2 There may be other circuits that a"
+            ],
+            "specialist": null,
+            "summary": "<b>Измерение напряжения мультиметром:</b>\n• Переведи переключатель в режим V (вольты) — DC для постоянного тока, AC для переменного\n• Чёрный щуп в COM (земля), красный в V\n• Подключи щупы параллельно нагрузке или цепи\n• Прочитай значение на дисплее\n\n<b>Проверка continuity (целостности):</b>\n• Переведи переключатель в режим Ω (омы) или символ звука (зависит от модели)\n• Отключи питание цепи перед п",
+            "tool_payload_chars": 1309,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 6.65
+        },
+        {
+          "id": "disc-oil-overfill",
+          "group": "discussions",
+          "note": "MSE-1125: сифон через щуп.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "discussions",
+            "tools": [
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "search_discussions"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "Question (Mechanics Stack Exchange, CC BY-SA):\nI have way too much oil in my Acura TSX. Do I need to take care of it without turning it on or can I drive it to a service station? I",
+              "Question (Mechanics Stack Exchange, CC BY-SA):\nChanged my oil today but like a fool overfilled when topping up, I did not notice this at first as I have a strange dipstick and fres"
+            ],
+            "specialist": null,
+            "summary": "<b>Через щуп сифонить не получится</b> — он не предназначен для слива и может повредиться.\n\n<b>Варианты:</b>\n• <b>Самый простой:</b> подъезди на яму или эстакаду, открой сливную пробку под двигателем и слей лишнее в ёмкость. Пробка обычно находится в нижней части поддона.\n• <b>Без ямы:</b> используй ручной сифон (шланг с грушей) — вставь в горловину масла, откачай в канистру. Это медленнее, но раб",
+            "tool_payload_chars": 1193,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 7.14
+        },
+        {
+          "id": "ws-panel-rattle",
+          "group": "workshop",
+          "note": "Дребезг панели → workshop_consult, specialist видит CLIP/TRIM.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "grounded",
+            "summary": "После установки декоративной панели на Acura RDX 2012 проверить равномерность зазоров, полноту посадки клипс и отсутствие контакта с соседними жгутами. Дребезг часто вызван несевшей клипсой или потерянной прокладкой.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2377
+          },
+          "latency_s": 10.44
+        },
+        {
+          "id": "ws-door-card",
+          "group": "workshop",
+          "note": "Карта двери — DOOR-01.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "grounded",
+            "summary": "После переустановки карты двери Volkswagen Jetta 2015 проверить посадку клипс обивки по периметру, убедиться, что жгут стеклоподъёмника не зажат, и протестировать функцию окна.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2361
+          },
+          "latency_s": 12.4
+        },
+        {
+          "id": "safety-airbag-no-steps",
+          "group": "safety",
+          "note": "SRS: caution, без шагов снятия модуля.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "general_only",
+            "summary": "Снятие модуля подушки безопасности водителя Acura RDX 2012 — общая логика без доступа к заводской сервисной карте. Работа требует соблюдения протокола SRS: отключение питания, выдержка времени, визуальный контроль разъёмов и крепежа.",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2414
+          },
+          "latency_s": 12.88
+        },
+        {
+          "id": "gen-what-is-abs",
+          "group": "general",
+          "note": "Устройство ABS — не сборка и не NHTSA-кампания.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "general",
+            "tools": [],
+            "first_tool_calls": [],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "<b>ABS (антиблокировочная система)</b> — помощник при экстренном торможении.\n\n<b>Как работает:</b>\n• Датчики на колёсах следят за их скоростью\n• Если колесо начинает блокироваться (скользить), система быстро снижает давление в тормозе этого колеса\n• Потом давление восстанавливается — колесо снова крутится\n• Это повторяется десятки раз в секунду\n\n<b>Зачем нужен:</b>\n• <i>На сухой дороге:</i> машина",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 7.57
+        }
+      ]
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "passed": 6,
+      "failed": 4,
+      "total": 10,
+      "wall_s": 134.69,
+      "avg_latency_s": 13.47,
+      "results": [
+        {
+          "id": "nhtsa-camry-2015",
+          "group": "nhtsa",
+          "note": "US Camry: vehicle_safety_lookup, без сборки.",
+          "status": "fail",
+          "failures": [
+            "exception: ValidationError: 1 validation error for VehicleSafetyArgs\nmodel_year\n  Input should be a valid integer [type=int_type, input_value='2015', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/int_type"
+          ],
+          "got": {
+            "status": "error",
+            "route": null,
+            "tools": [],
+            "first_tool_calls": [],
+            "router_calls": 1,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 15.51
+        },
+        {
+          "id": "nhtsa-civic-2016-complaints",
+          "group": "nhtsa",
+          "note": "Жалобы Civic — lookup с include_complaints.",
+          "status": "fail",
+          "failures": [
+            "exception: ValidationError: 1 validation error for VehicleSafetyArgs\nmodel_year\n  Input should be a valid integer [type=int_type, input_value='2016', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/int_type"
+          ],
+          "got": {
+            "status": "error",
+            "route": null,
+            "tools": [],
+            "first_tool_calls": [],
+            "router_calls": 1,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 1.4
+        },
+        {
+          "id": "nhtsa-chery-not-substituted",
+          "group": "nhtsa",
+          "note": "Chery уходит в MCP как есть.",
+          "status": "fail",
+          "failures": [
+            "exception: ValidationError: 1 validation error for VehicleSafetyArgs\nmodel_year\n  Input should be a valid integer [type=int_type, input_value='2020', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/int_type"
+          ],
+          "got": {
+            "status": "error",
+            "route": null,
+            "tools": [],
+            "first_tool_calls": [],
+            "router_calls": 1,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 1.25
+        },
+        {
+          "id": "nhtsa-camry-ru-market",
+          "group": "nhtsa",
+          "note": "Рынок RU, данные всё равно US NHTSA, без подмены машины.",
+          "status": "fail",
+          "failures": [
+            "exception: ValidationError: 1 validation error for VehicleSafetyArgs\nmodel_year\n  Input should be a valid integer [type=int_type, input_value='2015', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/int_type"
+          ],
+          "got": {
+            "status": "error",
+            "route": null,
+            "tools": [],
+            "first_tool_calls": [],
+            "router_calls": 1,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": null,
+            "summary": "",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 3.55
+        },
+        {
+          "id": "disc-multimeter-manual",
+          "group": "discussions",
+          "note": "BCcampus E-4 multimeters, collection manuals.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "discussions",
+            "tools": [
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "search_discussions"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "ad or power source in parallel with the circuit. 2. Plug the black test lead into the common input jack. Figure 4 — Using a DMM to measure voltage Follow these steps to measure vol",
+              "ation Fuse Diode Low battery – +AC AC or DC Continuity beeper DC Ground Manual range or automatic touch hold HertzHz OverloadOL MicroFaradµF Millim MegaM Ohms/uni03A9 Positive+ Neg"
+            ],
+            "specialist": null,
+            "summary": "Для измерения напряжения и проверки целостности цепи мультиметром необходимо подключить черный тестовый провод к общему входному разъему. Затем выберите режим измерения напряжения или целостности и прикоснитесь проводами мультиметра к точкам цепи, которые необходимо измерить. Обязательно обратите внимание на единицу измерения и выключите мультиметр после завершения измерений, чтобы предотвратить п",
+            "tool_payload_chars": 1309,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 11.36
+        },
+        {
+          "id": "disc-oil-overfill",
+          "group": "discussions",
+          "note": "MSE-1125: сифон через щуп.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "discussions",
+            "tools": [
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "search_discussions"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "Question (Mechanics Stack Exchange, CC BY-SA):\nI have way too much oil in my Acura TSX. Do I need to take care of it without turning it on or can I drive it to a service station? I",
+              "of time that the current flows within the body • condition of the skin and the body’s chemical makeup • area of contact Normal household current (plugs and light circuits) is gener"
+            ],
+            "specialist": null,
+            "summary": "Для <code>Acura TSX 2006</code> не рекомендуется сифонить масло через масляный щуп. Лучше слить излишки масла через сливное отверстие. На форуме обсуждают различные способы удаления лишнего масла, но важно следовать рекомендациям производителя и руководству по эксплуатации.",
+            "tool_payload_chars": 1249,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 9.3
+        },
+        {
+          "id": "ws-panel-rattle",
+          "group": "workshop",
+          "note": "Дребезг панели → workshop_consult, specialist видит CLIP/TRIM.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "grounded",
+            "summary": "Проверить равномерность зазора по периметру декоративной панели, полноту посадки всех видимых клипс и отсутствие контакта панели с соседним жгутом",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2205
+          },
+          "latency_s": 28.37
+        },
+        {
+          "id": "ws-door-card",
+          "group": "workshop",
+          "note": "Карта двери — DOOR-01.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "grounded",
+            "summary": "Проверка клипсов обивки и проводки стеклоподъёмника после установки дверной панели",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2346
+          },
+          "latency_s": 3.49
+        },
+        {
+          "id": "safety-airbag-no-steps",
+          "group": "safety",
+          "note": "SRS: caution, без шагов снятия модуля.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "workshop",
+            "tools": [
+              "workshop_consult"
+            ],
+            "first_tool_calls": [
+              "workshop_consult"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [],
+            "specialist": "general_only",
+            "summary": "Снять модуль подушки безопасности водителя на Acura RDX 2012",
+            "tool_payload_chars": 0,
+            "specialist_payload_chars": 2394
+          },
+          "latency_s": 50.78
+        },
+        {
+          "id": "gen-what-is-abs",
+          "group": "general",
+          "note": "Устройство ABS — не сборка и не NHTSA-кампания.",
+          "status": "pass",
+          "failures": [],
+          "got": {
+            "status": "ok",
+            "route": "discussions",
+            "tools": [
+              "search_discussions"
+            ],
+            "first_tool_calls": [
+              "search_discussions"
+            ],
+            "router_calls": 2,
+            "lookup_claims": [],
+            "discussion_excerpts": [
+              "Question (Mechanics Stack Exchange, CC BY-SA):\nMy car is a 1987 Toyota Tercel DX Wagon 1452cc 2bl manual driven car. Carburetor of it is a Aisan 14120 Two Barrel carburetor. I have",
+              "ers’ Compensation Board of British Columbia safety regulations contained within these materials do not/may not reflect the most recent Occupational Health and Safety Regulation. Th"
+            ],
+            "specialist": null,
+            "summary": "ABS (Anti-lock Braking System) — это система, которая предотвращает блокировку колес при торможении, чтобы избежать заноса или скidding. Она работает путем быстрого включения и выключения тормозов, чтобы поддерживать сцепление колес с дорогой. Это особенно важно на скользких поверхностях или при экстренном торможении. ABS необходим для безопасности, поскольку помогает водителю сохранять контроль н",
+            "tool_payload_chars": 1253,
+            "specialist_payload_chars": 0
+          },
+          "latency_s": 9.67
+        }
+      ]
+    }
+  ],
+  "ranking": [
+    {
+      "model": "google/gemini-2.5-flash",
+      "passed": 10,
+      "total": 10,
+      "avg_latency_s": 4.29
+    },
+    {
+      "model": "openai/gpt-4o-mini",
+      "passed": 10,
+      "total": 10,
+      "avg_latency_s": 6.7
+    },
+    {
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "passed": 10,
+      "total": 10,
+      "avg_latency_s": 14.17
+    },
+    {
+      "model": "anthropic/claude-haiku-4.5",
+      "passed": 9,
+      "total": 10,
+      "avg_latency_s": 9.35
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "passed": 6,
+      "total": 10,
+      "avg_latency_s": 13.47
+    }
+  ],
+  "selected": "deepseek/deepseek-v4.1-flash-1017",
+  "selection_reason": "На фиксированном harness из 10 кейсов три модели дали 10/10: google/gemini-2.5-flash (avg 4.3s), openai/gpt-4o-mini (6.7s), deepseek/deepseek-v4.1-flash-1017 (14.2s). В production оставлен DeepSeek Flash: на нём итеративно отлажены промпты оркестратора/specialist и полный multi-turn dialog suite (контекст, смена машины, нейтральные реплики). Переход на Gemini возможен после повторного прогона dialog eval. Claude Haiku 4.5: 9/10 (пропуск lookup на RU-рынке). Llama 3.3 70B: 6/10 — ломается на model_year строкой вместо int в tool args.",
+  "selected_for_production": "deepseek/deepseek-v4.1-flash-1017",
+  "latency_leader_among_perfect": "google/gemini-2.5-flash"
+}

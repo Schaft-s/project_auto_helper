@@ -11,12 +11,26 @@ LIVE = os.environ.get("AUTONAPARNIK_LIVE") == "1"
 
 
 def test_dialog_catalog_has_multi_step_coverage() -> None:
-    assert len(DIALOGS) >= 5
+    assert len(DIALOGS) >= 10
     ids = [item["id"] for item in DIALOGS]
     assert len(ids) == len(set(ids))
+    workshop_context_ids = {
+        "bmw7-then-headlight-workshop",
+        "camry-then-door-card-workshop",
+        "switch-car-then-panel-workshop",
+        "workshop-followup-same-car",
+        "pronoun-this-car-workshop",
+        "symptom-then-assembly-switch",
+    }
+    assert workshop_context_ids.issubset(ids)
     assert all(len(item["steps"]) >= 2 for item in DIALOGS)
     assert any(step["message"].lower().startswith("спасибо") for item in DIALOGS for step in item["steps"])
     assert any(step["message"].lower() == "привет" for item in DIALOGS for step in item["steps"])
+    for dialog_id in workshop_context_ids:
+        dialog = next(item for item in DIALOGS if item["id"] == dialog_id)
+        workshop_steps = [step for step in dialog["steps"] if "workshop_consult" in (step["expect"].get("tools_include") or [])]
+        assert workshop_steps, f"{dialog_id} has no workshop step"
+        assert any("specialist_must_any" in step["expect"] for step in workshop_steps), dialog_id
 
 
 @pytest.mark.live

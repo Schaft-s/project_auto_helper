@@ -93,8 +93,10 @@ TOOL_SCHEMAS = [
         "function": {
             "name": "workshop_consult",
             "description": (
-                "Retrieve allowed applicable technical context and call the assembly "
-                "specialist for a checklist, plan review or post-repair checks."
+                "Assembly/disassembly specialist only: clips, trim panels, headlights, "
+                "post-install checks, plan review. Put make/model/year into query when "
+                "they are known from the current message or history. "
+                "Do not call for overheating, noise, fuel economy, diagnostics or NHTSA lookups."
             ),
             "parameters": {
                 "type": "object",

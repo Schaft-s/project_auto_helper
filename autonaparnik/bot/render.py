@@ -3,7 +3,8 @@ from __future__ import annotations
 import html
 import re
 
-from autonaparnik.domain.models import AnswerEnvelope, SpecialistBlock
+from autonaparnik.domain.models import AnswerEnvelope, Evidence, SpecialistBlock
+from autonaparnik.textutil import unique_questions
 
 ALLOWED_TAG = re.compile(
     r"</?(?:b|i|code)(?:\s*)>|</a>|<a\s+href=\"https?://[^\"]+\"\s*>",
@@ -60,12 +61,9 @@ def strip_protocol(text: str) -> str:
 
 
 def render_answer(answer: AnswerEnvelope) -> list[str]:
-    parts = [sanitize_telegram_html(strip_protocol(answer.summary))]
-    extra_questions = [
-        item
-        for item in answer.questions[:2]
-        if item.strip() and item.strip() not in answer.summary
-    ]
+    summary = strip_protocol(answer.summary)
+    parts = [sanitize_telegram_html(summary)]
+    extra_questions = unique_questions(list(answer.questions), summary, limit=2)
     if extra_questions:
         parts.append("\n".join(f"• {sanitize_telegram_html(item)}" for item in extra_questions))
     assembly = _render_assembly(answer.specialist)
@@ -89,6 +87,17 @@ def _render_assembly(block: SpecialistBlock | None) -> str:
     return "\n".join(lines)
 
 
+def _link_label(item: Evidence) -> str:
+    source_id = (item.source_id or "").strip()
+    if item.source_type == "nhtsa_recall":
+        return f"NHTSA отзыв {source_id}"[:60] if source_id else "NHTSA отзыв"
+    if item.source_type == "nhtsa_complaint":
+        return f"NHTSA жалоба {source_id}"[:60] if source_id else "NHTSA жалоба"
+    if item.source_type == "mechanics_qa":
+        return f"Mechanics.SE {source_id}"[:60] if source_id else "Mechanics.SE"
+    return (source_id or item.title or "источник")[:60]
+
+
 def _source_links(answer: AnswerEnvelope) -> list[str]:
     preferred = [
         item
@@ -106,7 +115,7 @@ def _source_links(answer: AnswerEnvelope) -> list[str]:
         if item.url in seen:
             continue
         seen.add(item.url)
-        title = html.escape((item.title or item.source_id)[:80], quote=False)
+        title = html.escape(_link_label(item), quote=False)
         href = html.escape(item.url, quote=True)
         links.append(f'• <a href="{href}">{title}</a>')
         if len(links) >= 3:

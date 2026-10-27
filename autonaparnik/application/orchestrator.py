@@ -22,6 +22,7 @@ from autonaparnik.domain.models import (
     WorkshopArgs,
 )
 from autonaparnik.jsonutil import extract_json_object
+from autonaparnik.textutil import unique_questions
 from autonaparnik.tools.discussions import DiscussionOutcome, SearchDiscussions
 from autonaparnik.tools.vehicle_safety import VehicleSafetyLookup, merge_vehicle
 from autonaparnik.tools.workshop import WorkshopConsult, WorkshopOutcome
@@ -232,9 +233,9 @@ class Orchestrator:
             {
                 "role": "user",
                 "content": (
-                    "Собери итоговый JSON (telegram_html, questions, limitations, route). "
-                    "telegram_html — обычный ответ без заголовков Итог/Ограничения/Уточнения и без дисклеймеров. "
-                    "Не включай сборочные шаги. Не копируй цитаты. Не выдумывай идентификаторы источников."
+                    "Собери итоговый JSON: telegram_html, questions, limitations, route. "
+                    "В telegram_html — готовый ответ без дублей уточнений, сырых цитат и сборочных шагов. "
+                    "questions пустой, если уточнения уже в telegram_html."
                 ),
             }
         )
@@ -295,20 +296,21 @@ class Orchestrator:
             route = "known_issues"
         elif discussions:
             route = "discussions"
+        summary = str(draft.get("summary") or _fallback_summary(state, request))[:2800]
+        if not summary:
+            summary = "Нужны дополнительные сведения."
         questions = [str(item)[:500] for item in (draft.get("questions") or []) if str(item).strip()][:2]
         if state.lookup and state.lookup.questions:
             questions = (state.lookup.questions + questions)[:2]
         if vehicle_complete(request):
             questions = [item for item in questions if not _asks_vehicle_identity(item)][:2]
+        questions = unique_questions(questions, summary, limit=2)
         limitations = [str(item)[:500] for item in (draft.get("limitations") or []) if str(item).strip()]
         if not limitations:
             limitations = list(DEFAULT_LIMITATIONS)
         if request.vehicle.market != "US" and known is not None and all("рынк" not in item.lower() for item in limitations):
             limitations.append("Данные NHTSA относятся к рынку США.")
         status = _envelope_status(route, state, specialist, known)
-        summary = str(draft.get("summary") or _fallback_summary(state, request))[:2800]
-        if not summary:
-            summary = "Нужны дополнительные сведения."
         cited: set[str] = set()
         if known:
             for claim in known.claims:
@@ -412,7 +414,7 @@ def _tool_messages(tool_calls: list[dict[str, Any]], state: RunState) -> list[di
         elif name == "workshop_consult" and state.workshop:
             payload = state.workshop.opaque
         elif name == "search_discussions" and state.discussions:
-            payload = state.discussions.payload
+            payload = _compact_discussions(state.discussions)
         else:
             payload = {"status": "unavailable"}
         messages.append({"role": "tool", "tool_call_id": call_id, "content": json.dumps(payload, ensure_ascii=False)})
@@ -421,14 +423,15 @@ def _tool_messages(tool_calls: list[dict[str, Any]], state: RunState) -> list[di
 
 def _compact_lookup(outcome: LookupOutcome) -> dict[str, Any]:
     issues = outcome.known_issues
-    claims = [{"text": claim.text[:200], "evidence_ids": claim.evidence_ids} for claim in issues.claims[:6]]
+    claims = [{"text": claim.text[:120], "evidence_ids": claim.evidence_ids} for claim in issues.claims[:4]]
     links = []
     seen: set[str] = set()
     for item in outcome.evidence:
         if not item.url or not item.url.startswith("https://") or item.url in seen:
             continue
         seen.add(item.url)
-        links.append({"title": item.title[:80], "url": item.url, "source_id": item.source_id})
+        kind = "recall" if item.source_type == "nhtsa_recall" else "complaint"
+        links.append({"kind": kind, "source_id": item.source_id, "url": item.url})
         if len(links) >= 3:
             break
     return {
@@ -438,7 +441,28 @@ def _compact_lookup(outcome: LookupOutcome) -> dict[str, Any]:
         "claims": claims,
         "links": links,
         "questions": outcome.questions[:2],
-        "hint": "Не копируй цитаты целиком. 1-3 факта и ссылки из links.",
+        "hint": "1–3 факта своими словами. Не копируй claims дословно.",
+    }
+
+
+def _compact_discussions(outcome: DiscussionOutcome) -> dict[str, Any]:
+    hits = []
+    for raw in (outcome.payload.get("hits") or [])[:4]:
+        if not isinstance(raw, dict):
+            continue
+        hits.append(
+            {
+                "evidence_id": raw.get("evidence_id"),
+                "url": raw.get("url"),
+                "fact": str(raw.get("excerpt") or raw.get("title") or "")[:120],
+                "collection": raw.get("collection"),
+            }
+        )
+    return {
+        "status": outcome.payload.get("status") or outcome.discussions.status,
+        "hits": hits,
+        "limitations": (outcome.payload.get("limitations") or outcome.discussions.limitations)[:1],
+        "hint": "1–3 факта своими словами. Не копируй hits дословно.",
     }
 
 

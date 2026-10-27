@@ -212,6 +212,18 @@ def evaluate_visibility(case: dict, answer: AnswerEnvelope, recorder: RecordingR
         elif '"content"' not in specialist_text and '"title"' not in specialist_text:
             failures.append("see_workshop: RAG chunks missing from specialist input")
 
+    specialist_needles = expect.get("specialist_must_any") or []
+    if specialist_needles:
+        if "workshop_consult" not in tools:
+            failures.append("specialist_must_any: workshop_consult was not executed")
+        elif not specialist_text:
+            failures.append("specialist_must_any: specialist payload empty")
+        elif not any(needle.lower() in specialist_text.lower() for needle in specialist_needles):
+            failures.append(f"specialist_must_any: none of {specialist_needles} in specialist input")
+    for needle in expect.get("specialist_must_not") or []:
+        if needle.lower() in specialist_text.lower():
+            failures.append(f"specialist_must_not: forbidden in specialist input: {needle}")
+
     if expect.get("use_workshop"):
         if answer.specialist is None:
             failures.append("use_workshop: no specialist block")
@@ -302,6 +314,9 @@ async def run_all(cases: list[dict]) -> dict:
 
 
 def evaluate_dialog_step(step: dict, answer: AnswerEnvelope, recorder: RecordingRouter) -> list[str]:
+    from autonaparnik.bot.render import render_answer
+    from autonaparnik.textutil import unique_questions
+
     expect = step["expect"]
     failures: list[str] = []
     tools = [event.tool for event in answer.tool_events]
@@ -322,6 +337,30 @@ def evaluate_dialog_step(step: dict, answer: AnswerEnvelope, recorder: Recording
     for needle in expect.get("must_not") or []:
         if needle.lower() in blob:
             failures.append(f"forbidden text: {needle}")
+    specialist_text = "\n".join(_specialist_blobs(recorder))
+    if expect.get("see_workshop"):
+        if "workshop_consult" not in tools:
+            failures.append("see_workshop: workshop_consult was not executed")
+        elif not specialist_text:
+            failures.append("see_workshop: specialist did not receive a payload")
+    specialist_needles = expect.get("specialist_must_any") or []
+    if specialist_needles:
+        if "workshop_consult" not in tools:
+            failures.append("specialist_must_any: workshop_consult was not executed")
+        elif not specialist_text:
+            failures.append("specialist_must_any: specialist payload empty")
+        elif not any(needle.lower() in specialist_text.lower() for needle in specialist_needles):
+            failures.append(f"specialist_must_any: none of {specialist_needles} in specialist input")
+    for needle in expect.get("specialist_must_not") or []:
+        if needle.lower() in specialist_text.lower():
+            failures.append(f"specialist_must_not: forbidden in specialist input: {needle}")
+    # Backend must not keep paraphrase duplicates in questions vs summary.
+    if unique_questions(list(answer.questions), answer.summary, limit=2) != list(answer.questions)[:2]:
+        failures.append("questions still duplicate summary after envelope build")
+    rendered = "\n".join(render_answer(answer))
+    for bad in ("Complaint ", "Recall ", "I'd like to understand", "My 1997 BMW"):
+        if bad.lower() in rendered.lower() and bad.lower() not in answer.summary.lower():
+            failures.append(f"raw evidence title leaked into render: {bad}")
     return failures
 
 

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>АвтоНапарник — защита проекта</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #1a222c;
+      --ink: #e8eef4;
+      --muted: #9aabbc;
+      --accent: #3d9bfd;
+      --good: #3ecf8e;
+      --warn: #e6b35c;
+      --line: #2a3542;
+      --mono: "SF Mono", "Menlo", Consolas, monospace;
+      --sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font-family: var(--sans); }
+    body { display: grid; grid-template-rows: auto 1fr auto; }
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: .75rem 1.25rem; border-bottom: 1px solid var(--line); background: #12181f;
+    }
+    header strong { letter-spacing: .02em; }
+    header .meta { color: var(--muted); font-size: .9rem; }
+    nav { display: flex; flex-wrap: wrap; gap: .35rem; }
+    nav button {
+      background: transparent; border: 1px solid var(--line); color: var(--muted);
+      padding: .35rem .65rem; border-radius: 999px; cursor: pointer; font: inherit; font-size: .8rem;
+    }
+    nav button.active, nav button:hover { color: var(--ink); border-color: var(--accent); }
+    main { overflow: auto; padding: 1.5rem; }
+    .slide { display: none; max-width: 980px; margin: 0 auto; animation: in .25s ease; }
+    .slide.active { display: block; }
+    @keyframes in { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: none;} }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0 0 .5rem; }
+    h2 { font-size: 1.55rem; margin: 0 0 1rem; }
+    p, li { line-height: 1.55; color: var(--ink); }
+    .muted { color: var(--muted); }
+    .hero {
+      min-height: 70vh; display: flex; flex-direction: column; justify-content: center;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(61,155,253,.18), transparent 50%),
+        radial-gradient(ellipse at 80% 0%, rgba(62,207,142,.12), transparent 40%);
+      border-radius: 16px; padding: 2rem;
+    }
+    .tag { display: inline-block; color: var(--accent); font-size: .85rem; margin-bottom: .75rem; letter-spacing: .08em; text-transform: uppercase; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .box {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem;
+    }
+    .box h3 { margin: 0 0 .4rem; font-size: 1rem; }
+    .box p, .box li { margin: 0; font-size: .95rem; color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+    th, td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; }
+    .ok { color: var(--good); font-family: var(--mono); }
+    .warn { color: var(--warn); }
+    .arch {
+      font-family: var(--mono); font-size: .82rem; white-space: pre; overflow-x: auto;
+      background: #0b1015; border: 1px solid var(--line); border-radius: 12px; padding: 1rem; color: #c9d7e6;
+    }
+    .cta {
+      display: inline-block; margin-top: 1rem; padding: .7rem 1.1rem; border-radius: 10px;
+      background: var(--accent); color: #041018; text-decoration: none; font-weight: 700;
+    }
+    footer {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      padding: .7rem 1.25rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem;
+    }
+    footer button {
+      background: var(--panel); border: 1px solid var(--line); color: var(--ink);
+      padding: .45rem .9rem; border-radius: 8px; cursor: pointer; font: inherit;
+    }
+    details { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: .7rem 1rem; margin: .5rem 0; }
+    summary { cursor: pointer; font-weight: 600; }
+    .kbd { font-family: var(--mono); font-size: .85rem; background: #0b1015; padding: .1rem .35rem; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <strong>АвтоНапарник</strong>
+      <div class="meta">Рубежный контроль · интерактивная презентация</div>
+    </div>
+    <nav id="nav"></nav>
+  </header>
+
+  <main>
+    <section class="slide active" data-title="Старт">
+      <div class="hero">
+        <div class="tag">Личный проект · AI-консультант</div>
+        <h1>АвтоНапарник</h1>
+        <p class="muted" style="max-width:36rem">От симптома и известной машины — к фактам NHTSA, обсуждениям механиков и сборочным проверкам. Без ложного диагноза.</p>
+        <p><a class="cta" href="https://t.me/autolover_test_bot" target="_blank" rel="noopener">Открыть бота @autolover_test_bot</a></p>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Задача">
+      <h2>Задача, пользователь, MVP</h2>
+      <div class="grid">
+        <div class="box">
+          <h3>Кто</h3>
+          <p>Автовладелец и механик. Режим owner / mechanic меняет язык, не снимает ограничения безопасности.</p>
+        </div>
+        <div class="box">
+          <h3>Сценарии</h3>
+          <p>Известные проблемы NHTSA · симптом после ремонта · сборка панелей/фар · смена машины в диалоге.</p>
+        </div>
+        <div class="box">
+          <h3>Границы</h3>
+          <p>Telegram + MCP + RAG + specialist. Нет Web UI, нет SFT, нет подмены автомобиля.</p>
+        </div>
+      </div>
+      <details style="margin-top:1rem">
+        <summary>Критерии готовности</summary>
+        <ul>
+          <li>Живой MCP-вызов NHTSA в диалоге</li>
+          <li>RAG со ссылкой на источник</li>
+          <li>Specialist на сборочный вопрос</li>
+          <li>Multi-turn тесты контекста и смены машины</li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="slide" data-title="Архитектура">
+      <h2>Архитектура</h2>
+      <div class="arch">Telegram → Orchestrator → OpenRouter
+                 ├─ vehicle_safety_lookup → MCP → NHTSA
+                 ├─ search_discussions → Qdrant hybrid
+                 └─ workshop_consult → Specialist (отдельный промпт)
+                                      + demo corpus клипсов/панелей</div>
+      <div class="grid" style="margin-top:1rem">
+        <div class="box"><h3>Оркестратор</h3><p>DeepSeek Flash · tool-calling · JSON ответ в Telegram HTML</p></div>
+        <div class="box"><h3>Specialist</h3><p>Специализированная модель с отдельным промптом. Планируется заменить на дообученную модель специалиста по сборке.</p></div>
+        <div class="box"><h3>Политика</h3><p>SRS/HV → caution. Нет диагноза. NHTSA = рынок США.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="MCP">
+      <h2>MCP-интеграция</h2>
+      <p class="muted">Собственный минимальный MCP-сервер на официальном Python SDK. Оркестратор не ходит в NHTSA REST напрямую.</p>
+      <table>
+        <tr><th>Инструмент MCP</th><th>Назначение</th></tr>
+        <tr><td><span class="kbd">nhtsa_search_recalls</span></td><td>Отзывные кампании</td></tr>
+        <tr><td><span class="kbd">nhtsa_search_complaints</span></td><td>Жалобы владельцев</td></tr>
+        <tr><td><span class="kbd">nhtsa_lookup_vehicles</span></td><td>Справочник моделей (models)</td></tr>
+      </table>
+      <p style="margin-top:1rem">Фасад приложения: <span class="kbd">vehicle_safety_lookup</span>. Подмена Chery/Lada похожей US-моделью запрещена и покрыта тестами.</p>
+    </section>
+
+    <section class="slide" data-title="Модели">
+      <h2>Выбор модели OpenRouter</h2>
+      <p class="muted">Bake-off на 10 фиксированных маршрутных кейсах · <span class="kbd">evaluation/model-bakeoff-report.json</span></p>
+      <table>
+        <tr><th>Модель</th><th>Pass</th><th>Latency</th><th>Заметка</th></tr>
+        <tr><td>gemini-2.5-flash</td><td class="ok">10/10</td><td>4.3s</td><td>лидер по скорости</td></tr>
+        <tr><td>gpt-4o-mini</td><td class="ok">10/10</td><td>6.7s</td><td>стабильный routing</td></tr>
+        <tr><td><b>deepseek-v4.1-flash</b></td><td class="ok">10/10</td><td>14.2s</td><td>production: на нём dialog suite</td></tr>
+        <tr><td>claude-haiku-4.5</td><td>9/10</td><td>9.4s</td><td>пропуск RU NHTSA</td></tr>
+        <tr><td>llama-3.3-70b</td><td>6/10</td><td>13.5s</td><td>year как string → ValidationError</td></tr>
+      </table>
+    </section>
+
+    <section class="slide" data-title="Eval">
+      <h2>Eval и покрытие тестами</h2>
+      <div class="grid">
+        <div class="box"><h3>Offline</h3><p class="ok">60 passed</p><p>контракты, policy, history, opaque workshop, render</p></div>
+        <div class="box"><h3>Live routes</h3><p class="ok">34 / 34</p><p>NHTSA · RAG · workshop · combined · safety</p></div>
+        <div class="box"><h3>Dialogs</h3><p class="ok">13 / 13</p><p>контекст · смена машины · «спасибо» · follow-up</p></div>
+      </div>
+      <details style="margin-top:1rem">
+        <summary>Что именно проверяли в диалогах</summary>
+        <ul>
+          <li>Сохранение машины из истории для specialist</li>
+          <li>Смена Audi → Civic без утечки старого контекста</li>
+          <li>Местоимение «эта машина»</li>
+          <li>Нейтральные реплики без повторного tool-calling</li>
+          <li>Visibility: payload tool реально дошёл до модели</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Разбор ошибок</summary>
+        <ul>
+          <li>Игнор BCcampus excerpt → промпт + harness (исправлено)</li>
+          <li>Длинный follow-up по перегреву → лимит символов (исправлено)</li>
+          <li>Слабый schema-following у Llama — зафиксирован в bake-off</li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="slide" data-title="Демо">
+      <h2>Демо и воспроизведение</h2>
+      <ol>
+        <li>Открыть <a href="https://t.me/autolover_test_bot" target="_blank" rel="noopener">@autolover_test_bot</a></li>
+        <li>«Toyota Camry 2015, есть отзывы NHTSA?» → MCP</li>
+        <li>«После установки панели дребезг» → specialist</li>
+        <li>«спасибо» → без повторного поиска</li>
+        <li>Сменить машину в том же чате → контекст не смешивается</li>
+      </ol>
+      <p class="muted">Локально: Docker Compose (Qdrant + MCP) → ingest → <span class="kbd">python -m autonaparnik.bot.main</span>. Подробности в README.</p>
+      <p><a class="cta" href="../README.md">Открыть README</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <button type="button" id="prev">← Назад</button>
+    <span id="progress">1 / 7</span>
+    <button type="button" id="next">Далее →</button>
+  </footer>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const nav = document.getElementById('nav');
+    const progress = document.getElementById('progress');
+    let i = 0;
+
+    slides.forEach((slide, idx) => {
+      const btn = document.createElement('button');
+      btn.textContent = slide.dataset.title;
+      btn.addEventListener('click', () => show(idx));
+      nav.appendChild(btn);
+    });
+
+    function show(idx) {
+      i = (idx + slides.length) % slides.length;
+      slides.forEach((s, n) => s.classList.toggle('active', n === i));
+      [...nav.children].forEach((b, n) => b.classList.toggle('active', n === i));
+      progress.textContent = `${i + 1} / ${slides.length}`;
+      history.replaceState(null, '', `#${i}`);
+    }
+
+    document.getElementById('prev').onclick = () => show(i - 1);
+    document.getElementById('next').onclick = () => show(i + 1);
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); show(i + 1); }
+      if (e.key === 'ArrowLeft') show(i - 1);
+    });
+
+    const start = Number(location.hash.replace('#', ''));
+    show(Number.isFinite(start) ? start : 0);
+  </script>
+</body>
+</html>

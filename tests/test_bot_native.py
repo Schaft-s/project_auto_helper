@@ -2,7 +2,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from autonaparnik.bot.main import BOT_COMMANDS, HELP, LOADING_PHRASES, next_loading_phrase
+import pytest
+
+from autonaparnik.bot.main import BOT_COMMANDS, HELP, LOADING_PHRASES, _replace_notice, next_loading_phrase
 from autonaparnik.bot.session import ChatSession
 from autonaparnik.config import ROOT
 from autonaparnik.domain.models import VehicleProfile, VehicleSafetyArgs
@@ -49,9 +51,28 @@ def test_bot_package_has_no_car_parse() -> None:
     assert "car_parse.py" not in names
 
 
+@pytest.mark.asyncio
+async def test_replace_notice_sends_if_edit_fails() -> None:
+    class Notice:
+        async def edit_text(self, *args, **kwargs):
+            raise RuntimeError("message can't be edited")
+
+    class Chat:
+        def __init__(self) -> None:
+            self.sent: list[str] = []
+
+        async def answer(self, text, **kwargs):
+            self.sent.append(text)
+
+    chat = Chat()
+    await _replace_notice(Notice(), chat, "<b>ответ</b>")
+    assert chat.sent == ["<b>ответ</b>"]
+
+
 def test_loading_phrases_rotate() -> None:
     assert len(LOADING_PHRASES) == 50
     assert len(set(LOADING_PHRASES)) == 50
+    assert all(phrase == phrase.lower() for phrase in LOADING_PHRASES)
     batch = [next_loading_phrase() for _ in range(50)]
-    assert set(batch) == set(LOADING_PHRASES)
+    assert set(batch) == {f"<i>{phrase}</i>" for phrase in LOADING_PHRASES}
     assert next_loading_phrase() == batch[0]

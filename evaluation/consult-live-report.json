@@ -1,6 +1,6 @@
 {
-  "passed": 33,
-  "failed": 1,
+  "passed": 34,
+  "failed": 0,
   "total": 34,
   "results": [
     {
@@ -26,8 +26,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "По базе NHTSA для вашей Toyota Camry 2015 (рынок США) нашлась одна отзывная кампания:\n\n• <b>15V144000</b> — затрагивает Camry/Camry Hybrid 2015 (а также Highlander и RAV4 тех же лет); причина связана с системой электрического усилителя руля. Проверить статус и записаться на бесплатное устранение можно у дилера по VIN.\n\nЖалоб владельцев по этой машине в базе много (порядка 40) — от сбоев электроник",
-        "tool_payload_chars": 1483,
+        "summary": "По базе NHTSA для Camry 2015 (рынок США) числится <b>одна отзывная кампания</b> — <code>15V144000</code>. Жалоб владельцев в базе заметно больше — около 40; в них чаще всего фигурируют сбои информационно-развлекательной системы и спорные случаи с показаниями одометра.\n\n• Отзывная кампания — это бесплатное устранение у официального дилера, если ваш VIN попадает под неё.\n• Жалобы — не отзыв: они не ",
+        "tool_payload_chars": 1083,
         "specialist_payload_chars": 0
       }
     },
@@ -54,8 +54,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "<b>Honda Civic 2016 (рынок США)</b> — в базе NHTSA по этой машине около 40 жалоб владельцев и 5 отзывных кампаний.\n\n<b>Что чаще всего пишут владельцы</b>\n• Рулевое управление: на трассовых скоростях и после долгой поездки руль становится тугим, «залипает» в положении и плохо возвращается к центру — из-за этого приходится подруливать. Несколько обращений доходят до замены рулевой рейки с электроуси",
-        "tool_payload_chars": 1951,
+        "summary": "По Honda Civic 2016 в базе NHTSA есть 5 отзывных кампаний и порядка 40 жалоб владельцев (данные по жалобам подгрузились не полностью).\n\n<b>Отзывные кампании</b>\n• 16V074000 — затрагивает часть седанов 2016 года выпуска\n• 16V526000 — двухдверные Civic 2016\n• 16V725000 — двух- и четырёхдверные Civic 2016\n\n<b>Из жалоб</b>\n• Встречается необходимость замены рулевой рейки с электроусилителем — владелец",
+        "tool_payload_chars": 1083,
         "specialist_payload_chars": 0
       }
     },
@@ -82,8 +82,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "По вашему 2018 Ford F-150 в базе NHTSA есть отзывные кампании. Из найденного:\n\n• <b>20V097000</b> — машины с LED-фарами high series и функцией Autolamp: кампания касается работы дневных ходовых огней (DRL).\n• <b>21V983000</b> — задний борт с ручным и электрическим замком: замки могут самопроизвольно открыться на ходу.\n• <b>21V155000</b> — шины Continental, установленные на F-150 2018 (кампания зат",
-        "tool_payload_chars": 1956,
+        "summary": "<b>Ford F-150 2018 — NHTSA (рынок США)</b>\n\nПо базе проходит 19 кампаний по отзыву; жалоб владельцев в выборке — около 40 (частично).\n\n<b>Что видно по кампаниям</b>\n• <code>20V097000</code> — F-150 2018–2020 с фарами high series LED.\n• <code>21V983000</code> — F-150 2018 с ручным и электрическим замком заднего борта.\n• <code>21V155000</code> — F-150 2018 вместе с Super Duty 2018–2020 и Escape 2019",
+        "tool_payload_chars": 1084,
         "specialist_payload_chars": 0
       }
     },
@@ -110,8 +110,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "<b>Tesla Model 3 2020 (рынок США)</b> — по данным NHTSA для этой модели проходят несколько кампаний:\n• <b>22V037000</b> — обновление ПО автопилота (функция «rolling stop»), затрагивает Model 3 2017–2022.\n• <b>21V834000</b> — крепление боковых шторок безопасности к рейлингу крыши (Model 3 2020–2021 и 2023).\n• <b>21V835000</b> — возможное ослабление крепежа переднего поперечного рычага подвески (Mod",
-        "tool_payload_chars": 1872,
+        "summary": "По базе NHTSA на <b>Tesla Model 3 2020</b> (рынок США) числится <b>21 отзывная кампания</b> и около <b>40 жалоб владельцев</b>.\n\n<b>Что видно по кампаниям</b>\n• <code>22V037000</code> — охватывает Model 3 выпуска 2017–2022, то есть вашу машину тоже.\n• <code>21V834000</code> — распространяется на Model 3 2020–2021.\n• <code>21V835000</code> — Model 3 2019–2021 (и Model Y 2020–2021).\n\n<b>Жалобы</b>\nС",
+        "tool_payload_chars": 980,
         "specialist_payload_chars": 0
       }
     },
@@ -138,8 +138,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "<b>2016 Subaru Outback (рынок США)</b> — по данным NHTSA в базе 4 отзывные кампании и около 40 жалоб владельцев.\n\n<b>Кампании</b>\n• <code>19V910000</code> — блок управления подушками безопасности: мог быть установлен модуль, несовместимый с системой определения пассажира на переднем сиденье.\n• <code>16V292000</code> — рулевая колонка на машинах, собранных весной 2016 года.\n• <code>15V502000</code>",
-        "tool_payload_chars": 1985,
+        "summary": "<b>Subaru Outback 2016 — NHTSA (рынок США)</b>\n\nПо вашей машине в базе числятся 4 отзывные кампании, в том числе:\n• замена подушки безопасности на Outback 2016–2017 (кампания 19V910000);\n• кампания по Legacy/Outback 2016–2017 (16V292000);\n• кампания, затрагивающая Legacy/Outback 2015–2016 (15V502000).\n\nЖалоб владельцев — около 40. Среди них, например, обращение о скрученном пробеге при покупке маш",
+        "tool_payload_chars": 1083,
         "specialist_payload_chars": 0
       }
     },
@@ -166,8 +166,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "По 2014 Nissan Altima в базе NHTSA есть <b>8 отзывных кампаний</b> и около <b>40 жалоб владельцев</b> (рынок США).\n\n<b>Что заметно в кампаниях</b>\n• 16V911000 — датчик классификации пассажира в системе подушек безопасности; охватывает часть Altima 2013–2015.\n• 14V138000 — кампания по Altima 2013–2014 (вместе с LEAF, Pathfinder, Sentra и др.).\n\n<b>Что пишут владельцы в жалобах</b>\n• Помутнение/поте",
-        "tool_payload_chars": 1919,
+        "summary": "<b>NHTSA по Nissan Altima 2014 (рынок США)</b>\n\n• В базе <b>8 отзывных кампаний</b> и около <b>40 жалоб</b> владельцев.\n• Среди кампаний — <code>16V911000</code> (Altima 2013–2015) и <code>14V138000</code> (Altima 2013–2014 и ряд других моделей Nissan); есть также <code>15V486000</code>.\n• В жалобах часто всплывает падение видимости из-за помутнения фар.\n\nПолный список кампаний и жалоб по VIN можн",
+        "tool_payload_chars": 1083,
         "specialist_payload_chars": 0
       }
     },
@@ -194,8 +194,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "<b>Да, по Jetta кампании в базе NHTSA есть</b> — по вашей машине (2015, рынок США) нашлось 8 записей о кампаниях и около 40 жалоб владельцев.\n\n• <b>19V679000</b> — отзыв Volkswagen Group of America, в список которого входит в том числе Jetta 2015 модельного года (вместе с рядом других годов и моделей).\n• <b>20E064000</b> — отзыв Tenneco по главным тормозным цилиндрам Beck/Arnley (артикул 072-9831)",
-        "tool_payload_chars": 1860,
+        "summary": "<b>Volkswagen Jetta 2015 (рынок США)</b>\n\nПо данным NHTSA на эту модель и год проходит 8 кампаний отзыва и около 40 жалоб владельцев.\n\n• Одна из кампаний (19V615000) охватывает Jetta 2015–2016 в числе других моделей VW — точную привязку к вашей машине даёт только проверка по VIN.\n• В жалобах чаще всего всплывает электрика: потеря связи между блоком управления двигателем и ABS, из-за чего загораетс",
+        "tool_payload_chars": 1047,
         "specialist_payload_chars": 0
       }
     },
@@ -222,8 +222,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "<b>Hyundai Elantra 2017 (рынок США)</b> — по базе NHTSA проходят 4 кампании отзыва. Три из них:\n• <b>17V213000</b> — повреждённый разъём электроусилителя руля (MDPS), возможна потеря усилия на руле;\n• <b>17V063000</b> — отказ вакуумного усилителя тормозов, теряется усилие при торможении;\n• <b>16V956000</b> — касается машин, собранных примерно с 15 апреля по 13 сентября 2016 года.\n\nОтзыв действует ",
-        "tool_payload_chars": 1969,
+        "summary": "По NHTSA для Hyundai Elantra 2017 (рынок США):\n\n• <b>4 отзыва (recalls)</b> — в базе числятся кампании 17V213000, 16V956000 и 17V063000, ещё одна без деталей в выдаче.\n• <b>~40 жалоб владельцев</b> — данные подгрузились частично, поэтому счётчик ориентировочный.\n\nПроверить, попадает ли ваша машина под кампанию и сделана ли работа, можно по VIN у дилера или на <a href=\"https://www.nhtsa.gov/recalls",
+        "tool_payload_chars": 1083,
         "specialist_payload_chars": 0
       }
     },
@@ -250,8 +250,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "По 2018 Jeep Wrangler в базе NHTSA есть несколько кампаний, вот самые заметные из выдачи:\n\n• <b>18V675000</b> — 2018–2019 Wrangler: кронштейн крепления передней поперечной тяги (track bar) мог быть приварен с нарушением, из-за чего способен оторваться от рамы и ухудшить управляемость.\n• <b>18V231000</b> — 2018 Wrangler: задняя нижняя продольная балка кузова подвержена коррозии, что снижает прочнос",
-        "tool_payload_chars": 1091,
+        "summary": "<b>Jeep Wrangler 2018 — отзывные кампании NHTSA</b>\n\nПо базе NHTSA на ваш год проходит 14 кампаний. Из них чаще всего упоминаются:\n\n• <b>Передняя поперечная тяга (track bar)</b> — кампания 18V675000, охватывает Wrangler 2018–2019: кронштейн мог быть плохо приварен.\n• <b>Задняя нижняя ступенька/порог кузова</b> — кампания 18V231000 по Wrangler 2018.\n• <b>Правый руль, 2011–2018</b> — кампания 19V680",
+        "tool_payload_chars": 1084,
         "specialist_payload_chars": 0
       }
     },
@@ -278,8 +278,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "По базе NHTSA для <b>Mazda CX-5 2017</b> (рынок США) есть <b>1 отзывная кампания</b> и <b>около 40 жалоб владельцев</b>.\n\n• Кампания <a href=\"https://www.nhtsa.gov/recalls\">17V744000</a> касается машин с аксессуарным жгутом проводки фаркопа: из-за прокладки жгута возможен риск повреждения проводки. Если фаркоп с электрикой не ставили, это вряд ли про вашу машину — но VIN стоит проверить у дилера.\n",
-        "tool_payload_chars": 1496,
+        "summary": "<b>Mazda CX-5 2017 — что есть в базе NHTSA (США)</b>\n\n• <b>Отзывная кампания — 1.</b> Касается 2017 CX-5 в определённой комплектации (по оборудованию), а не всех машин подряд. Стоит проверить свой VIN у дилера или на nhtsa.gov/recalls — бесплатно.\n• <b>Жалоб владельцев — около 40.</b> Повторяющиеся темы в них:\n  – внезапное падение тяги / машина «клюёт» на ходу, у некоторых владельцев повторялось ",
+        "tool_payload_chars": 1083,
         "specialist_payload_chars": 0
       }
     },
@@ -306,8 +306,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "<b>Acura RDX 2012 (рынок США)</b>\n\nПо базе NHTSA для вашей машины нашлось 2 отзывные кампании и 15 жалоб владельцев.\n\n• <b>19V182000</b> — отзыв по модулю нагнетателя подушки безопасности водителя; в список входят RDX 2007–2016, то есть ваш год попадает. Стоит проверить по VIN у дилера, закрыта ли кампания на конкретно вашем авто — работы по отзыву бесплатны.\n• Вторая кампания в выдаче относится к",
-        "tool_payload_chars": 1730,
+        "summary": "<b>Acura RDX 2012 — что есть в базе NHTSA (США)</b>\n\n• По вашей модели в выдаче нет кампаний, которые явно покрывали бы именно 2012 RDX: найденные отзывы относятся к другим моделям/годам (например, старым 3.2CL и линейке ILX), поэтому примерять их к вашей машине не стоит.\n• Жалоб владельцев по базе около 15. Среди них встречаются обращения про скрученный/несоответствующий пробег при покупке и про ",
+        "tool_payload_chars": 1073,
         "specialist_payload_chars": 0
       }
     },
@@ -334,8 +334,8 @@
         ],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "Привет! Я собрал для тебя информацию из баз NHTSA по Toyota Camry 2015. Важно помнить, что NHTSA — это американская база, но она отражает общие проблемы, которые владельцы отмечают в эксплуатации.\n\nВот что можно отметить:\n\n• <a href=\"https://www.nhtsa.gov/recalls\"><b>Отзыв (Recall):</b> На эту модель распространяется отзыв 15V144000, связанный с системой электроусилителя руля (EPS). Это важный мом",
-        "tool_payload_chars": 1483,
+        "summary": "<b>Toyota Camry 2015 — что есть в базе NHTSA</b>\n\nNHTSA — это американский регулятор, база покрывает машины, проданные в США. Для Camry 2015 там числится одна отзывная кампания (15V144000) — она касается определённых седанов этого года. Точный перечень узлов и VIN-диапазон смотрите в карточке кампании на nhtsa.gov.\n\nЖалоб владельцев по этой модели набралось около четырёх десятков. Чаще всего всплы",
+        "tool_payload_chars": 1083,
         "specialist_payload_chars": 0
       }
     },
@@ -358,8 +358,8 @@
         "lookup_claims": [],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "По базе NHTSA для Chery Tiggo 2020 ничего не нашлось: ни отзывных кампаний, ни жалоб владельцев. Это ожидаемо — NHTSA ведёт учёт только по машинам, официально продававшимся в США, а Chery там не представлена. Так что отсутствие записей здесь не говорит ни о надёжности модели, ни об отсутствии проблем: статистики по этой машине в американской базе просто нет.\n\nЕсли хочешь, могу поискать обсуждения ",
-        "tool_payload_chars": 218,
+        "summary": "По <b>Chery Tiggo 2020</b> в базе NHTSA пусто: ни отзывных кампаний, ни жалоб владельцев. Это ожидаемо — марка не продавалась на рынке США, поэтому американский регулятор её просто не отслеживает. Отсутствие записей здесь не значит, что машина без проблем.\n\nЧто можно посмотреть вместо этого:\n• <b>Росстандарт</b> — официальные отзывные кампании по VIN для рынка РФ, там же проверка по номеру кузова\n",
+        "tool_payload_chars": 216,
         "specialist_payload_chars": 0
       }
     },
@@ -382,8 +382,8 @@
         "lookup_claims": [],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "По базе NHTSA записей по Lada Granta 2018 года нет: ни отзывных кампаний, ни жалоб владельцев — поиск вернул пустой результат.\n\nЭто ожидаемо: NHTSA — американский регулятор, и Granta официально в США не продавалась, поэтому в его базу такие машины просто не попадают. Пустой ответ здесь не подтверждает, что отзывных кампаний по вашей машине не было вообще.\n\nПо российским отзывам смотрите официальны",
-        "tool_payload_chars": 218,
+        "summary": "По базе NHTSA отзывных кампаний и жалоб на Lada Granta 2018 не числится — записей ноль.\n\nЭто ожидаемо: NHTSA ведёт учёт по рынку США, а Granta там официально не продавалась. Так что отсутствие записей ничего не говорит о надёжности машины — это просто не её рынок.\n\nПо отзывным кампаниям в России смотри базу Росстандарта (Росстандарт — отзывные кампании) и сервисные акции у дилера Lada по VIN.",
+        "tool_payload_chars": 216,
         "specialist_payload_chars": 0
       }
     },
@@ -406,8 +406,8 @@
         "lookup_claims": [],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "По вашему профилю (Chevrolet Silverado 2019, рынок США) проверка отзывов NHTSA вернула пустой результат — ни одной кампании в выдаче нет.\n\nЭто не значит, что отзывов по машине не существует: база NHTSA привязана к VIN и конкретной комплектации/двигателю, а не только к модели и году. Проверить точнее можно двумя способами:\n• по VIN на сайте NHTSA (раздел Recalls) — там видно и открытые, и уже выпол",
-        "tool_payload_chars": 226,
+        "summary": "<b>Chevrolet Silverado 2019 — отзывные кампании NHTSA</b>\n\nПо запросу база NHTSA сейчас ничего не вернула: ни отзывных кампаний, ни жалоб владельцев. Это не значит, что их нет — выдача по модели и году часто пустая, если не указан точный VIN или комплектация.\n\nЧто сделать, чтобы получить точный список:\n• Проверить по VIN на <a href=\"https://www.nhtsa.gov/recalls\">nhtsa.gov/recalls</a> — там кампан",
+        "tool_payload_chars": 216,
         "specialist_payload_chars": 0
       }
     },
@@ -424,18 +424,17 @@
           "search_discussions"
         ],
         "first_tool_calls": [
-          "search_discussions",
           "search_discussions"
         ],
         "router_calls": 2,
         "lookup_claims": [],
         "discussion_excerpts": [
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nI recently used some siphon tubing to remove some oil from my engine. This worked great until I realized I wasn't sure how I could cl",
+          "Question (Mechanics Stack Exchange, CC BY-SA):\nI have way too much oil in my Acura TSX. Do I need to take care of it without turning it on or can I drive it to a service station? I",
           "get to this stage and the load is energized, the only component left that must be faulty is the final wiring from the load to ground. • Once the open in the circuit has been identi"
         ],
         "specialist": null,
-        "summary": "<b>Да, через щуп обычно можно</b> — это самый частый ответ на форуме Mechanics Stack Exchange на такой вопрос. В обсуждениях (в т.ч. про перелив примерно на литр выше метки max) люди описывают именно два пути: отсосать излишек сверху через трубку щупа или слить через сливную пробку и залить заново по уровню.\n\n• <b>Через щуп:</b> нужна тонкая гибкая трубка, которая проходит в поддон по изгибу напра",
-        "tool_payload_chars": 3314,
+        "summary": "<b>Да, через щуп — рабочий вариант.</b> На форуме Mechanics Stack Exchange как раз обсуждают перелив на TSX и откачку масла трубкой: народ берёт тонкую гибкую трубку (или шприц/маслооткачивающий насос) и вытягивает лишнее прямо через трубку щупа.\n\n• Трубка должна свободно проходить в трубку щупа и не оторваться внутри — берите силиконовую/ПВХ подходящего диаметра.\n• Откачивайте на слегка тёплом дв",
+        "tool_payload_chars": 1251,
         "specialist_payload_chars": 0
       }
     },
@@ -458,12 +457,12 @@
         "router_calls": 2,
         "lookup_claims": [],
         "discussion_excerpts": [
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nAssuming I have no known mechanical problems, at what mileage should I replace the timing belt in a 2003 Honda Accord EX V6? I have h",
-          "ce, whether they are analog or digital. The length of time an instrument retains its original usefulness and accuracy depends largely on the care it receives in the hands of the us"
+          "Question (Mechanics Stack Exchange, CC BY-SA):\nI drive a 1999 Chrysler 300M, V6 3.5L engine. I am about to start a water pump replacement repair. I've discovered that the water pum",
+          "ince the current available from the meter depends on the state of charge of the battery, the DMM should be zero adjusted to start. This may require no more than a test of touching "
         ],
         "specialist": null,
-        "summary": "<b>Honda Accord 2003, V6 (J30A4)</b> — ремень ГРМ, а не цепь, поэтому интервал у него задан <i>двумя</i> пределами: по пробегу и по календарному сроку. Второй часто срабатывает раньше: машина 2003 года даже с небольшим пробегом уже давно вышла за срок, если ремень не меняли.\n\n• Смотрите не общий мануал по Accord (там есть и 4-цилиндровые моторы с цепью), а раздел для V6 — в книжке это отдельная та",
-        "tool_payload_chars": 3518,
+        "summary": "<b>Honda Accord 2003, V6 3.0 (J30A4)</b> — ремень ГРМ, не цепь.\n\n• <b>Обычные условия:</b> замена ремня по сервисной книге Honda — около <b>105 000 миль (≈170 000 км) или 7 лет</b>, что наступит раньше. Пробег тут не главное: резина стареет и от времени.\n• <b>Тяжёлые условия</b> (короткие поездки зимой, пробки, буксировка, жара/пыль, частые холодные пуски) — интервал сокращают примерно до <b>60 00",
+        "tool_payload_chars": 2490,
         "specialist_payload_chars": 0
       }
     },
@@ -480,18 +479,17 @@
           "search_discussions"
         ],
         "first_tool_calls": [
-          "search_discussions",
           "search_discussions"
         ],
         "router_calls": 2,
         "lookup_claims": [],
         "discussion_excerpts": [
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nI have seen a few videos saying that there is a risk of getting an explosion because of hydrogen igniting if you attach the negative ",
+          "Question (Mechanics Stack Exchange, CC BY-SA):\nAs pointed out in Jump starting a dead battery: Connect black wire to negative pole of battery or grounded metal? , you connect the b",
           "e removed for maintenance or repairs while reduced power to the load is maintained. If a 6 V battery has a maximum current output of 1 A, and if it is necessary to supply a load re"
         ],
         "specialist": null,
-        "summary": "<b>Коротко:</b> дело в искре в последний момент и в том, где именно она проскакивает.\n\nКогда вы соединяете последний провод, в момент касания почти всегда проскакивает небольшая искра. Если это происходит прямо на клемме разряженного аккумулятора, искра оказывается рядом с вентиляционными отверстиями банок. Разряженный или только что усиленно заряжаемый аккумулятор может выделять смесь водорода с ",
-        "tool_payload_chars": 3688,
+        "summary": "<b>Коротко:</b> последний зажим («масса») уводят от аккумулятора, чтобы искра не возникла рядом с банками.\n\n• При последнем соединении почти всегда проскакивает небольшая искра. Если щёлкать прямо на минусовой клемме разряженной батареи, искра может воспламенить водород, который она выделяет при заряде — отсюда риск хлопка и разбрызгивания кислоты.\n• Голый металл кузова/двигателя — это тот же мину",
+        "tool_payload_chars": 1253,
         "specialist_payload_chars": 0
       }
     },
@@ -514,12 +512,12 @@
         "router_calls": 2,
         "lookup_claims": [],
         "discussion_excerpts": [
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nIf a battery with a higher CCA capacity is used in a warmer climate, would it effect the battery's performance in the longer run?\n\nAn",
+          "Question (Mechanics Stack Exchange, CC BY-SA):\nI'm shopping for a new car battery for a 1998 Subaru Outback (2.5l). For the physical dimensions, the battery has to match. But I see",
           "e removed for maintenance or repairs while reduced power to the load is maintained. If a 6 V battery has a maximum current output of 1 A, and if it is necessary to supply a load re"
         ],
         "specialist": null,
-        "summary": "<b>Ah и CCA — это про разное</b>\n\n• <b>CCA</b> (cold cranking amps) — сколько тока батарея отдаёт на морозе ~−18 °C первые 30 секунд. Это характеристика запуска: чем холоднее климат и чем тяжелее крутить стартер, тем важнее не занижать CCA. Брать выше штатного — нормально и безопасно, вреда электронике это не наносит.\n• <b>Ah</b> (ампер-часы) — запас энергии. Больше Ah = дольше можно питать потреб",
-        "tool_payload_chars": 3612,
+        "summary": "<b>Ah и CCA — про разное.</b>\n\n• <b>CCA (холодный пуск)</b> — ток, который батарея отдаёт на морозе. Для запуска в холод важнее всего, ниже рекомендованного брать не стоит.\n• <b>Ah / резервная ёмкость</b> — сколько продержится при выключенном двигателе (подсветка, регистратор, стоянка с музыкой). Больше Ah не «усилит» генератор и не добавит мощности, просто дольше терпит разряд.\n• Больше Ah — не в",
+        "tool_payload_chars": 2498,
         "specialist_payload_chars": 0
       }
     },
@@ -536,18 +534,17 @@
           "search_discussions"
         ],
         "first_tool_calls": [
-          "search_discussions",
           "search_discussions"
         ],
         "router_calls": 2,
         "lookup_claims": [],
         "discussion_excerpts": [
           "Question (Mechanics Stack Exchange, CC BY-SA):\nWhat steps do I take to replace the cabin air filter on my 2008 Toyota Tacoma?\n\nAnswer by Gabriel Mongeon (score 1, selected=True):\ni",
-          "ad or power source in parallel with the circuit. 2. Plug the black test lead into the common input jack. Figure 4 — Using a DMM to measure voltage Follow these steps to measure vol"
+          "any electrical measurements without specific instructions from a qualified person. • When servicing equipment be sure it is “locked out, ” meaning the electrical service is shut of"
         ],
         "specialist": null,
-        "summary": "<b>2008 Tacoma</b> — тут есть важная особенность: у части машин этого поколения салонного фильтра с завода просто нет, а у части есть посадочное место за бардачком. Поэтому первый шаг — не покупать фильтр, а проверить, есть ли вообще щель/съёмная крышка под него.\n\n• Откройте бардачок, сожмите его боковины внутрь и опустите вниз до упора — так открывается доступ к блоку отопителя.\n• За бардачком ищ",
-        "tool_payload_chars": 3446,
+        "summary": "По 2008 Tacoma обсуждение на Mechanics Stack Exchange есть, но подробных шагов в нём не расписано — только сам вопрос. По опыту владельцев второго поколения доступ обычно такой:\n\n• Открой бардачок, сожми его боковины внутрь и опусти вниз до упора (или сними ограничитель-демпфер сбоку).\n• За бардачком увидишь прямоугольную крышку фильтра — защёлки по бокам, снимаются пальцами.\n• Вынь старый фильтр,",
+        "tool_payload_chars": 1249,
         "specialist_payload_chars": 0
       }
     },
@@ -564,7 +561,6 @@
           "search_discussions"
         ],
         "first_tool_calls": [
-          "search_discussions",
           "search_discussions"
         ],
         "router_calls": 2,
@@ -574,8 +570,8 @@
           "the jacks for test leads. TRADES ACCESS—COMMON CORE 11 COMpETENC y E-4: USE MUlTiMETERS lEARNiNg TASk 1 The function switch normally has positions that will allow a technician to m"
         ],
         "specialist": null,
-        "summary": "<b>Что говорят на форуме</b>\n\nНа Mechanics Stack Exchange есть обсуждение почти один-в-один ваш случай — Ford F-150 4x4, спереди 12/32, сзади 6/32 и 10/32, и дилер тоже предлагал менять задние. Тема как раз про то, можно ли менять только одну ось.\n\nОбщий ход рассуждений у отвечающих такой:\n• На полноприводной машине важна не столько «глубина протектора» сама по себе, сколько <b>разница в диаметре/",
-        "tool_payload_chars": 3186,
+        "summary": "<b>Что говорят на форумах</b>\n\nПохожая тема на Mechanics Stack Exchange — как раз про F-150 4x4, где передние колёса были заметно «свежее» задних (перед 12/32, задние меньше).\n\n• Главный аргумент форумчан: на полном приводе важно, чтобы все четыре колеса были близки по остатку протектора. Заметная разница между осями нагружает раздатку и мосты — резина разного диаметра крутится с разной скоростью.",
+        "tool_payload_chars": 1249,
         "specialist_payload_chars": 0
       }
     },
@@ -598,12 +594,12 @@
         "router_calls": 2,
         "lookup_claims": [],
         "discussion_excerpts": [
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nProvided that the oil filter of an engine would be swapped every x time intervals as needed to be kept clean, I was wondering if, ins",
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nI have always changed the oil in my vehicles with the engine hot, because the manuals always say to let the engine reach normal opera"
+          "Question (Mechanics Stack Exchange, CC BY-SA):\nI have always changed the oil in my vehicles with the engine hot, because the manuals always say to let the engine reach normal opera",
+          "What will increase when power sources are connected in series? a. Voltage b. Current c. Resistance d. Continuity 32 TRADES ACCESS—COMMON CORE COMpETENC y E-4: USE MUlTiMETERS ANSwE"
         ],
         "specialist": null,
-        "summary": "<b>Коротко: нет, «строго после прогрева до рабочей температуры» — не обязательное правило.</b> Это удобство и традиция сервиса, а не жёсткое требование.\n\nЧто обычно пишут механики:\n• <b>Тёплое масло сливается быстрее и полнее</b> — оно менее вязкое, лучше уносит взвесь и шлам со дна поддона. Поэтому многие льют «горячее» масло, как советуют мануалы.\n• <b>Но «рабочая температура» не самоцель.</b> Д",
-        "tool_payload_chars": 4062,
+        "summary": "<b>Не обязательно до «рабочей» температуры.</b> Среди механиков распространён подход менять масло на прогретом двигателе: тёплое масло менее вязкое, сливается быстрее и полнее, унося больше взвеси. Но это про удобство и полноту слива, а не жёсткое требование — на холодном тоже можно, просто дольше.\n\nПрактика, которую обычно советуют:\n• Довести двигатель до рабочей температуры, заглушить и дать пос",
+        "tool_payload_chars": 2506,
         "specialist_payload_chars": 0
       }
     },
@@ -613,41 +609,6 @@
       "note": "MSE-1006: давление на холостых Bonneville.",
       "status": "pass",
       "failures": [],
-      "got": {
-        "status": "ok",
-        "route": "combined",
-        "tools": [
-          "search_discussions",
-          "vehicle_safety_lookup"
-        ],
-        "first_tool_calls": [
-          "search_discussions",
-          "vehicle_safety_lookup"
-        ],
-        "router_calls": 2,
-        "lookup_claims": [
-          "Кампания 94V190000: THESE VEHICLES WERE ASSEMBLED WITH LIGHTING CONTROL MODULES WHICH CAN EXPERIENCE EXCESSIVE CURRENT LEAKAGE DUE TO DAMAGED SURFACE MOUNTING CAPACITORS. THIS CAN CAUSE LOSS OF HEAD…",
-          "Сообщение владельца 11398467: I WAS GOING ABOUT 25 MPH WHEN THE TRUCK AHEAD OF ME STOPPED. I HIT THE BRAKE PEDAL HARD AND THE BRAKE PEDAL SEEMED HARD AS IF IT WASN'T MOVING AND MY CAR JUST KEPT MOVIN…",
-          "Сообщение владельца 10352248: IN FEBRUARY 2010, DRIVING AT 5 MPH WHILE MAKING RIGHT TURN ON BUMPY BLACKTOP, THE ENGINE FELL OUT FROM UNDER CAR CAUSING STEERING TO BECOME INOPERABLE. CAR WAS TOWED FRO…"
-        ],
-        "discussion_excerpts": [
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nI am driving a 1995 Bonneville and, lately, whenever I am idle, at a stoplight for example, my oil pressure drops and my check engine",
-          "m of the individual voltage drops in the circuit, and the equation E = IR is used to calculate the voltage drop across each resistor. Since the current is the same through each res"
-        ],
-        "specialist": null,
-        "summary": "Привет! Я АвтоНапарник. Понимаю, как это неприятно — когда машина начинает капризничать на светофоре. Проблема с падением давления масла на холостом ходу и загоранием Check Engine Light на 1995 Bonneville — это, к сожалению, не редкость, и на форумах владельцев эта тема обсуждается.\n\nСудя по обсуждениям, пользователи сталкивались с тем, что при простом простае давление падает, что может быть связа",
-        "tool_payload_chars": 3289,
-        "specialist_payload_chars": 0
-      }
-    },
-    {
-      "id": "disc-multimeter-manual",
-      "group": "discussions",
-      "note": "BCcampus E-4 multimeters, collection manuals.",
-      "status": "fail",
-      "failures": [
-        "use_discussions: summary ignores discussion excerpts ['ni03A9', 'uni03A9', 'Figure', 'electrical', 'measurements', 'without']"
-      ],
       "got": {
         "status": "ok",
         "route": "discussions",
@@ -661,12 +622,39 @@
         "router_calls": 2,
         "lookup_claims": [],
         "discussion_excerpts": [
-          "ni03A9 /uni03A9 V A mA V~ mA~ A~ + –G Figure 4 — Ohm test of a load TRADES ACCESS—COMMON CORE 27 COMpETENC y E-4: USE MUlTiMETERS lEARNiNg TASk 2 There may be other circuits that a",
-          "any electrical measurements without specific instructions from a qualified person. • When servicing equipment be sure it is “locked out, ” meaning the electrical service is shut of"
+          "Question (Mechanics Stack Exchange, CC BY-SA):\nI am driving a 1995 Bonneville and, lately, whenever I am idle, at a stoplight for example, my oil pressure drops and my check engine",
+          "nections in the circuit has failed. If you have a zero reading across the light, continue with the next steps. • Place the black probe at a grounded component. • Place the red prob"
         ],
         "specialist": null,
-        "summary": "<b>Мультиметр: напряжение и прозвонка</b>\n\nПеред работой: щупы в правильные гнёзда (чёрный — COM, красный — V/Ω), режим и предел выбираешь до подключения, а не после. Если не знаешь величину — начинай с большего предела.\n\n<b>Напряжение (V, DC — обычно «V⎓»)</b>\n• Щупы параллельно нагрузке/участку: красный на плюс, чёрный на массу или минус.\n• Автомобильная бортсеть: 12 В номинал, на заглушенном АК",
-        "tool_payload_chars": 3260,
+        "summary": "<b>Похожий случай на Mechanics Stack Exchange</b>\nНа форуме есть ветка ровно про такой симптом на Bonneville 1995: давление масла проседает на холостых, на светофоре. Единого «заводского» ответа там нет — это обсуждение, а не сервисная карта.\n\n<b>Что обычно проверяют в таких случаях</b>\n• Уровень и вязкость масла — слишком жидкое или перегретое даёт просадку именно на низких оборотах.\n• Точность у",
+        "tool_payload_chars": 2498,
+        "specialist_payload_chars": 0
+      }
+    },
+    {
+      "id": "disc-multimeter-manual",
+      "group": "discussions",
+      "note": "BCcampus E-4 multimeters, collection manuals.",
+      "status": "pass",
+      "failures": [],
+      "got": {
+        "status": "ok",
+        "route": "discussions",
+        "tools": [
+          "search_discussions"
+        ],
+        "first_tool_calls": [
+          "search_discussions"
+        ],
+        "router_calls": 2,
+        "lookup_claims": [],
+        "discussion_excerpts": [
+          "ad or power source in parallel with the circuit. 2. Plug the black test lead into the common input jack. Figure 4 — Using a DMM to measure voltage Follow these steps to measure vol",
+          "the jacks for test leads. TRADES ACCESS—COMMON CORE 11 COMpETENC y E-4: USE MUlTiMETERS lEARNiNg TASk 1 The function switch normally has positions that will allow a technician to m"
+        ],
+        "specialist": null,
+        "summary": "<b>Мультиметр: напряжение и прозвонка</b>\n\n• <b>Напряжение (V)</b> — щупы ставятся <i>параллельно</i> участку цепи: чёрный в гнездо COM, красный в гнездо V/Ω. Переключатель — на DCV (или ACV для переменки), предел выше ожидаемого напряжения.\n• <b>Continuity (прозвонка)</b> — режим со значком диода/волны. Питание цепи снять, щупы на два конца проверяемого участка: писк и близкий к нулю показатель —",
+        "tool_payload_chars": 1309,
         "specialist_payload_chars": 0
       }
     },
@@ -680,12 +668,12 @@
         "status": "ok",
         "route": "combined",
         "tools": [
-          "search_discussions",
-          "vehicle_safety_lookup"
+          "vehicle_safety_lookup",
+          "search_discussions"
         ],
         "first_tool_calls": [
-          "search_discussions",
-          "vehicle_safety_lookup"
+          "vehicle_safety_lookup",
+          "search_discussions"
         ],
         "router_calls": 2,
         "lookup_claims": [
@@ -694,12 +682,12 @@
           "Кампания 14V273000: Toyota Motor Engineering & Manufacturing (Toyota) is recalling certain model year 2004-2011 Sienna vehicles originally sold in, or currently registered in, Connecticut, Delaware,…"
         ],
         "discussion_excerpts": [
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nMy car seems to have a pretty bad smell in the air conditioning. WHat is the best way to flush out these smells?\n\nAnswer by barbecue ",
+          "Question (Mechanics Stack Exchange, CC BY-SA):\nMost of the time when I first turn on the A/C in our 2008 Toyota Sienna, the air that blows out has a very distinct chemical - nasty ",
           "ARNiNg TASk 1 Self-Test 1 1. What are multimeters used to test, in addition to amperage and voltage? a. Pressure b. Humidity c. Resistance d. Temperature 2. Analog meters are more "
         ],
         "specialist": null,
-        "summary": "<b>Что обычно пишут владельцы</b>\n\nПо Sienna 2008 на Mechanics Stack Exchange есть ровно такой же вопрос — резкий химический запах в первые секунды после включения A/C. В обсуждениях это чаще всего связывают с тем, что на испарителе и в корпусе отопителя остаётся конденсат, на нём растут бактерии и плесень, и при старте вентилятор выдувает застоявшийся воздух. Запах обычно уходит через минуту-две ",
-        "tool_payload_chars": 3759,
+        "summary": "<b>Что обычно сообщают по Sienna 2008</b>\n\n• Запах «химии» именно в первые секунды после включения A/C — очень частая жалоба на форумах: его связывают с тем, что в испарителе и поддоне дренажа скапливается конденсат, а на нём растёт налёт/плёнка. Пока воздух не продуло, запах идёт в салон, потом слабеет.\n• Второй частый источник — забитый салонный фильтр: он держит влагу и пыль и «отдаёт» запах пр",
+        "tool_payload_chars": 2332,
         "specialist_payload_chars": 0
       }
     },
@@ -711,25 +699,20 @@
       "failures": [],
       "got": {
         "status": "ok",
-        "route": "combined",
+        "route": "workshop",
         "tools": [
-          "workshop_consult",
-          "search_discussions"
+          "workshop_consult"
         ],
         "first_tool_calls": [
-          "workshop_consult",
-          "search_discussions"
+          "workshop_consult"
         ],
-        "router_calls": 3,
+        "router_calls": 2,
         "lookup_claims": [],
-        "discussion_excerpts": [
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nThe door trim on the drivers side door of my 2003 Ford Focus has come loose at the front: I'm guessing that a proper repair would req",
-          "any electrical measurements without specific instructions from a qualified person. • When servicing equipment be sure it is “locked out, ” meaning the electrical service is shut of"
-        ],
+        "discussion_excerpts": [],
         "specialist": "grounded",
-        "summary": "<b>Acura RDX 2012, дребезг после установки накладки</b>\n\nСначала стоит проверить саму посадку панели: равномерность зазора по периметру и все видимые клипсы — непосаженная или недожатая клипса даёт как раз такой дребезг на неровностях. Второе — нет ли контакта панели с жгутом проводки за ней: прижатый или болтающийся жгут часто и есть источник звука. Полезно сравнить с нетронутой симметричной стор",
-        "tool_payload_chars": 2209,
-        "specialist_payload_chars": 2311
+        "summary": "Проверить посадку клипс, равномерность зазоров, контакт с жгутом и работу кнопок/подсветки панели; дребезг после установки — повод для проверки, но не доказательство ошибки сборки.",
+        "tool_payload_chars": 0,
+        "specialist_payload_chars": 2320
       }
     },
     {
@@ -750,10 +733,10 @@
         "router_calls": 3,
         "lookup_claims": [],
         "discussion_excerpts": [],
-        "specialist": "grounded",
-        "summary": "План неполный по контрольным точкам. После обратной установки накладки проверь каждую клипсу на щелчок и посадку заподлицо, ориентацию ножек, края и углы панели, работу кнопок и натяжение штекера подсветки. Если панель упирается, не давить, искать скрытый винт под заглушкой.",
+        "specialist": "general_only",
+        "summary": "План в целом верный, но его нужно дополнить проверкой целостности клипс, ориентации ножек, посадочных гнёзд, порядка защёлкивания и контролем люфта/зазоров после установки.",
         "tool_payload_chars": 0,
-        "specialist_payload_chars": 4778
+        "specialist_payload_chars": 5144
       }
     },
     {
@@ -776,13 +759,13 @@
         "router_calls": 4,
         "lookup_claims": [],
         "discussion_excerpts": [
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nWhat are my options for replacing tires for 2001 Subaru Outback? One tire is damaged and it seems I need 4 matching tires as it is AW",
-          "ten and in most cases go unrecorded. If an accident happens: • Don’t touch the person and don’t use a conductive tool to free the person that may be electrically energized. • Shut "
+          "Question (Mechanics Stack Exchange, CC BY-SA):\nI have a 2008 Toyota Camry. The fabric above the rear window has come detached and is sagging. I plan to use a spray adhesive (Loctit",
+          "parts of the circuit! Similarly, if a switch is opened, the full-source voltage will appear across the switch contacts. Even though the voltage across the load devices may be zero,"
         ],
-        "specialist": "grounded",
-        "summary": "<b>Коротко:</b> пистоны подкрылка держат не «на честном слове», а на плотной посадке в отверстие кузова — если клипса вошла не до конца или отверстие разбито, она вылетит на первой же луже.\n\n<b>На что смотреть при проверке посадки:</b>\n• Головка каждой клипсы должна сидеть заподлицо с пластиком подкрылка, без зазора и перекоса — утопленная с одной стороны клипса уже не держит.\n• При установке долж",
-        "tool_payload_chars": 2009,
-        "specialist_payload_chars": 4622
+        "specialist": "general_only",
+        "summary": "<b>Как проверить посадку пистонов подкрылка (Camry 2015)</b>\n\n• <b>Все штатные точки заняты.</b> Пройди по кромке подкрылка и по кузову: не должно остаться пустых гнёзд. Один пропущенный пистон — это как раз то место, где край начнёт отходить.\n• <b>Головка села заподлицо.</b> При посадке клипса должна щёлкнуть, а шляпка — встать вровень с пластиком, не торчать и не быть смятой. Торчит — недожата и",
+        "tool_payload_chars": 1516,
+        "specialist_payload_chars": 4422
       }
     },
     {
@@ -804,9 +787,9 @@
         "lookup_claims": [],
         "discussion_excerpts": [],
         "specialist": "grounded",
-        "summary": "Проверить равномерность посадки накладки, убедиться в полном защелкивании всех клипс и отсутствии пережатия жгутов или дефектов кнопок.",
+        "summary": "Проверить равномерность посадки накладки центральной консоли Honda Accord 2014: зазоры по периметру, полноту защёлкивания клипс, отсутствие зажатия жгута и натяжения разъёма подсветки, работу кнопок и отсутствие дребезга.",
         "tool_payload_chars": 0,
-        "specialist_payload_chars": 2377
+        "specialist_payload_chars": 2252
       }
     },
     {
@@ -817,25 +800,20 @@
       "failures": [],
       "got": {
         "status": "ok",
-        "route": "combined",
+        "route": "workshop",
         "tools": [
-          "workshop_consult",
-          "search_discussions"
+          "workshop_consult"
         ],
         "first_tool_calls": [
-          "workshop_consult",
-          "search_discussions"
+          "workshop_consult"
         ],
-        "router_calls": 3,
+        "router_calls": 2,
         "lookup_claims": [],
-        "discussion_excerpts": [
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nI am attempting to remove the window glass from my driver-side front door so I can replace the window regulator. I have removed the t",
-          "any electrical measurements without specific instructions from a qualified person. • When servicing equipment be sure it is “locked out, ” meaning the electrical service is shut of"
-        ],
+        "discussion_excerpts": [],
         "specialist": "grounded",
-        "summary": "<b>Клипсы обивки</b>\n• Клипсы — расходник: у Jetta MK6 они одноразовые по факту, даже если выглядят целыми. Если часть осталась родная, обивка садится неровно и начинает «дышать» на кочках. Проверьте посадку по всему периметру рукой: не должно быть мягких провалов и зазора между картой и металлом.\n• Пластиковые «ёлочки» клипс не должны торчать из своих гнёзд в карте — сломанная ножка клипсы остаёт",
-        "tool_payload_chars": 1981,
-        "specialist_payload_chars": 2508
+        "summary": "Проверить посадку всех клипс обивки передней двери по периметру, заменить повреждённые фиксаторы, убедиться, что жгут стеклоподъёмника не зажат между картой и металлом, затем прогнать стекло на полный ход и проверить зазоры и отсутствие дребезга.",
+        "tool_payload_chars": 0,
+        "specialist_payload_chars": 2551
       }
     },
     {
@@ -862,10 +840,10 @@
           "Сообщение владельца 11697171: Odometer Fraud. The contact purchased a 2012 Acura RDX. The contact discovered a mileage discrepancy after the purchase. The vehicle was a private sale. At the time of p…"
         ],
         "discussion_excerpts": [],
-        "specialist": "grounded",
-        "summary": "<b>Acura RDX 2012 — отзывы NHTSA</b>\nПо вашей машине в базе NHTSA числятся 2 кампании и 15 жалоб владельцев. Одна из кампаний — <a href=\"https://www.nhtsa.gov/recalls\">19V182000</a>, она охватывает RDX 2007–2016 и связана с модулем надувательства передней подушки водителя (типовая тема Takata). Проверить, закрыта ли кампания именно на ваш VIN, можно у дилера или на nhtsa.gov по VIN — по году и мод",
-        "tool_payload_chars": 2228,
-        "specialist_payload_chars": 4752
+        "specialist": "general_only",
+        "summary": "<b>NHTSA по Acura RDX 2012</b>\nВ базе 2 кампании и 15 жалоб владельцев. Кампании, которые выдались по запросу, относятся к другим моделям Honda/Acura (CL, ILX, CR-V) — по самому RDX привязку надо проверять по VIN у дилера или на nhtsa.gov/recalls. Из жалоб по 2012 RDX: одна про скрученный пробег при покупке, ещё одна — про передние фары/противотуманки и обращение по гарантии. Массовых обращений им",
+        "tool_payload_chars": 1414,
+        "specialist_payload_chars": 4784
       }
     },
     {
@@ -893,11 +871,11 @@
         ],
         "discussion_excerpts": [
           "Question (Mechanics Stack Exchange, CC BY-SA):\nAssuming I have no known mechanical problems, at what mileage should I replace the timing belt in a 2003 Honda Accord EX V6? I have h",
-          "illustrates this process. The dashed line indicates where the probe has already been placed and removed. TRADES ACCESS—COMMON CORE 25 COMpETENC y E-4: USE MUlTiMETERS lEARNiNg TASk"
+          "ce, whether they are analog or digital. The length of time an instrument retains its original usefulness and accuracy depends largely on the care it receives in the hands of the us"
         ],
         "specialist": null,
-        "summary": "Привет! Я АвтоНапарник. По вопросу обслуживания Honda Accord 2003 года важно сразу уточнить: в зависимости от двигателя, интервал замены ГРМ может быть совершенно разным. У вашего автомобиля есть два варианта: 2.4-литровый двигатель (K24A4), который использует <b>цепь ГРМ</b>, и 3.0-литровый V6 (J30A4), который использует <b>ремень ГРМ</b>.\n\nЕсли у вас двигатель с ремнем, то согласно обсуждениям в",
-        "tool_payload_chars": 3565,
+        "summary": "<b>Honda Accord 2003 — ремень ГРМ</b>\n\nСначала главное: на Accord 2003 два разных мотора, и ответ зависит от него.\n• <b>2.4 (K24, 4 цилиндра)</b> — ремня ГРМ нет, стоит цепь. По регламенту она не меняется «по пробегу», только по состоянию/шуму.\n• <b>3.0 V6 (J30)</b> — ремень ГРМ есть. Ориентир по обслуживанию — около 105 000 миль (≈170 тыс. км) или ~7 лет, что наступит раньше. Обычно меняют в комп",
+        "tool_payload_chars": 2225,
         "specialist_payload_chars": 0
       }
     },
@@ -916,7 +894,7 @@
         "lookup_claims": [],
         "discussion_excerpts": [],
         "specialist": null,
-        "summary": "<b>ABS — антиблокировочная система тормозов</b>\n\nПростыми словами: это электроника, которая следит за скоростью вращения каждого колеса и не даёт им полностью остановиться (заблокироваться) при резком торможении.\n\n<b>Как работает</b>\n• На ступицах колёс стоят датчики скорости вращения.\n• Блок управления сравнивает их показания. Если одно колесо резко замедлилось сильнее остальных — значит, оно вот",
+        "summary": "<b>ABS — антиблокировочная система тормозов</b>\n\nПростыми словами: это электроника, которая не даёт колёсам заблокироваться при резком торможении.\n\n<b>Как работает</b>\n• Датчик на каждом колесе считает скорость вращения.\n• Блок управления видит, что колесо перестало крутиться (значит, скользит юзом), и на доли секунды сбрасывает давление в тормозной магистрали этого колеса.\n• Затем давление возвра",
         "tool_payload_chars": 0,
         "specialist_payload_chars": 0
       }
@@ -928,7 +906,7 @@
       "status": "pass",
       "failures": [],
       "got": {
-        "status": "ok",
+        "status": "partial",
         "route": "combined",
         "tools": [
           "workshop_consult",
@@ -941,13 +919,13 @@
         "router_calls": 4,
         "lookup_claims": [],
         "discussion_excerpts": [
-          "Question (Mechanics Stack Exchange, CC BY-SA):\nI have a 2000 Ford Excursion. Suddenly the remote system does not respond. I checked the battery of the keyless and replaced it, but ",
-          "e removed for maintenance or repairs while reduced power to the load is maintained. If a 6 V battery has a maximum current output of 1 A, and if it is necessary to supply a load re"
+          "Question (Mechanics Stack Exchange, CC BY-SA):\nIn the course of changing the timing belt in my 2003 Acura TL, my Hayne's manual says to remove the dipstick tube. The manual says th",
+          "re the same current at different points in a circuit 6. Turn the circuit power back on. 7. View the reading on the display unit. Be sure to note the unit of measurement. 8. Switch "
         ],
-        "specialist": "general_only",
-        "summary": "По RDX 2012 модуль водителя снимается по общей логике SRS, но точные точки крепления и порядок разъёмов берите из заводской карты Acura — у этого кузова есть нюансы по фиксаторам накладки.\n\n• Обесточьте бортсеть и выдержите паузу по сервисной информации, прежде чем трогать разъёмы SRS.\n• Декоративную накладку и торцевые крышки снимайте штатным способом, без поддевания и без давления на сам модуль.",
-        "tool_payload_chars": 2074,
-        "specialist_payload_chars": 5182
+        "specialist": "unavailable",
+        "summary": "<b>Acura RDX 2012 — снятие модуля подушки водителя</b>\n\n<i>Порядок общий для этого кузова; тип крепежа и моменты затяжки сверь по сервисной карте — ниже не официальная процедура.</i>\n\n<b>Подготовка</b>\n• Ключ в положение OFF, вынь ключ, подожди ~3 мин (разряд конденсаторов SRS).\n• Сними клемму «−» с АКБ и отведи в сторону, чтобы не коснулась.\n• Не работай под рулём при включённом зажигании — иначе",
+        "tool_payload_chars": 1418,
+        "specialist_payload_chars": 4900
       }
     }
   ]

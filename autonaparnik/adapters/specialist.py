@@ -65,6 +65,7 @@ class SpecialistAdapter:
             "query": args.query,
             "user_plan": args.user_plan,
             "caution": caution,
+            "history": [{"role": item.role, "text": item.text} for item in request.history[-8:]],
             "evidence": [
                 {
                     "evidence_id": chunk.evidence.evidence_id,

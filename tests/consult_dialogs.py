@@ -139,4 +139,200 @@ DIALOGS: list[dict] = [
             },
         ],
     },
+    {
+        "id": "bmw7-then-headlight-workshop",
+        "note": "После обсуждения BMW 7 — снятие фары без потери контекста в подагенте.",
+        "steps": [
+            {
+                "message": "ещё думаю про bmw 7 серии, дорест, 2021-2022 года",
+                "expect": {
+                    "tools_exclude": ["workshop_consult"],
+                    "must_any": ["BMW", "7", "семёр", "семер"],
+                    "must_not": ["Audi", "RS3"],
+                },
+            },
+            {
+                "message": "вот сейчас общался с другом по этой машине, ему фару снять собрать надо, как это сделать",
+                "expect": {
+                    "tools_include": ["workshop_consult"],
+                    "see_workshop": True,
+                    "specialist_must_any": ["BMW", "7", "фару", "фар"],
+                    "must_any": ["фар"],
+                    "must_not": [
+                        "о какой машине",
+                        "какая марка",
+                        "марку, модель",
+                        "марка, модель и год",
+                        "не вижу, о какой",
+                    ],
+                },
+            },
+        ],
+    },
+    {
+        "id": "camry-then-door-card-workshop",
+        "note": "Известная Camry → карта двери; подагент видит историю, не переспрашивает марку.",
+        "steps": [
+            {
+                "message": "у меня toyota camry 2015",
+                "expect": {
+                    "tools_exclude": ["workshop_consult"],
+                    "must_any": ["Camry", "камри", "Toyota"],
+                },
+            },
+            {
+                "message": "снял карту двери, ставлю обратно — что проверить по клипсам?",
+                "expect": {
+                    "tools_include": ["workshop_consult"],
+                    "see_workshop": True,
+                    "specialist_must_any": ["Camry", "камри", "Toyota", "карт", "клипс"],
+                    "must_not": [
+                        "о какой машине",
+                        "какая марка",
+                        "марку, модель",
+                        "марка, модель и год",
+                    ],
+                },
+            },
+        ],
+    },
+    {
+        "id": "switch-car-then-panel-workshop",
+        "note": "Смена машины: сначала Audi, потом Civic и панель — в подагенте Civic, не Audi.",
+        "steps": [
+            {
+                "message": "смотрю audi a4 2018, что по надёжности",
+                "expect": {
+                    "tools_exclude": ["workshop_consult"],
+                    "must_any": ["Audi", "A4", "ауди"],
+                },
+            },
+            {
+                "message": "нет, лучше honda civic 2012 — после установки декоративной панели дребезг, что проверить?",
+                "expect": {
+                    "tools_include": ["workshop_consult"],
+                    "see_workshop": True,
+                    "specialist_must_any": ["Civic", "Honda", "панел", "дребезг"],
+                    "must_any": ["Civic", "Honda", "панел", "дребезг"],
+                    "must_not": ["о какой машине", "какая марка", "Audi A4"],
+                },
+            },
+        ],
+    },
+    {
+        "id": "workshop-followup-same-car",
+        "note": "Сборка → follow-up по другой детали той же машины без повтора марки.",
+        "steps": [
+            {
+                "message": "honda accord 2014, накладка центральной консоли защёлкнулась криво, чек-лист после сборки",
+                "expect": {
+                    "tools_include": ["workshop_consult"],
+                    "see_workshop": True,
+                    "specialist_must_any": ["Accord", "Honda", "консол"],
+                },
+            },
+            {
+                "message": "а клипсы подкрылка на этой же машине как проверить после установки?",
+                "expect": {
+                    "tools_include": ["workshop_consult"],
+                    "see_workshop": True,
+                    "specialist_must_any": ["Accord", "Honda", "подкрыл", "клипс"],
+                    "must_not": [
+                        "о какой машине",
+                        "какая марка",
+                        "марку, модель",
+                        "марка, модель и год",
+                    ],
+                },
+            },
+        ],
+    },
+    {
+        "id": "pronoun-this-car-workshop",
+        "note": "Местоимение «эта машина» после известной модели → workshop без уточнения марки.",
+        "steps": [
+            {
+                "message": "volkswagen jetta 2015",
+                "expect": {
+                    "tools_exclude": ["workshop_consult"],
+                    "must_any": ["Jetta", "Volkswagen", "VW", "джетт"],
+                },
+            },
+            {
+                "message": "на этой машине другу надо снять и поставить фару, как сделать",
+                "expect": {
+                    "tools_include": ["workshop_consult"],
+                    "see_workshop": True,
+                    "specialist_must_any": ["Jetta", "Volkswagen", "VW", "фар"],
+                    "must_any": ["фар"],
+                    "must_not": [
+                        "о какой машине",
+                        "какая марка",
+                        "марку, модель",
+                        "не вижу, о какой",
+                    ],
+                },
+            },
+        ],
+    },
+    {
+        "id": "symptom-then-assembly-switch",
+        "note": "Симптом (не workshop) → затем сборка; контекст машины сохраняется.",
+        "steps": [
+            {
+                "message": "acura rdx 2012, свистит на холодную",
+                "expect": {
+                    "tools_exclude": ["workshop_consult"],
+                    "must_any": ["свист", "Acura", "RDX"],
+                },
+            },
+            {
+                "message": "ладно, другой вопрос по ней: после установки декоративной панели дребезг, что проверить?",
+                "expect": {
+                    "tools_include": ["workshop_consult"],
+                    "see_workshop": True,
+                    "specialist_must_any": ["Acura", "RDX", "панел", "дребезг"],
+                    "must_not": ["о какой машине", "какая марка"],
+                },
+            },
+        ],
+    },
+    {
+        "id": "bmw3-ignition-angle",
+        "note": "Марка → симптом; без дублей уточнений и сырых Complaint-заголовков.",
+        "steps": [
+            {
+                "message": "привет",
+                "expect": {
+                    "tools_exclude": ["vehicle_safety_lookup", "workshop_consult", "search_discussions"],
+                    "route_in": ["general"],
+                    "max_chars": 500,
+                },
+            },
+            {
+                "message": "как дела",
+                "expect": {
+                    "tools_exclude": ["vehicle_safety_lookup", "workshop_consult", "search_discussions"],
+                    "route_in": ["general"],
+                    "max_chars": 400,
+                },
+            },
+            {
+                "message": "бмв",
+                "expect": {
+                    "tools_exclude": ["vehicle_safety_lookup", "workshop_consult", "search_discussions"],
+                    "must_any": ["BMW", "бмв", "модель"],
+                },
+            },
+            {
+                "message": "3-ка, 2021 года, маленький угол зажигания",
+                "expect": {
+                    "tools_exclude": ["workshop_consult"],
+                    "must_any": ["угол", "зажиган"],
+                    "must_not": ["Complaint ", "I'd like to understand", "My 1997 BMW"],
+                    "max_chars": 2800,
+                },
+            },
+        ],
+    },
 ]

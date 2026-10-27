@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from autonaparnik.bot.render import render_answer, sanitize_telegram_html, strip_protocol
 from autonaparnik.domain.models import AnswerEnvelope
+from autonaparnik.textutil import question_covered_by_summary, unique_questions
 
 
 def test_render_escapes_html() -> None:
@@ -136,3 +137,84 @@ def test_render_prefers_forum_links_over_manuals() -> None:
     html = "\n".join(render_answer(answer))
     assert "Use Multimeters" not in html
     assert "mechanics.stackexchange.com" in html
+    assert "Mechanics.SE MSE-318" in html
+    assert "I bought a BMW" not in html
+
+
+def test_render_skips_paraphrased_duplicate_questions() -> None:
+    summary = (
+        "BMW 3 Series 2021, «маленький угол зажигания».\n\n"
+        "Что стоит уточнить:\n"
+        "• угол маленький всегда или только под нагрузкой / на холостых;\n"
+        "• какое топливо залито и есть ли ошибки по детонации."
+    )
+    answer = AnswerEnvelope.model_validate(
+        {
+            "schema_version": "2.0",
+            "trace_id": "trace-dup-q",
+            "status": "ok",
+            "route": "general",
+            "vehicle": {"make": "BMW", "model": "3 Series", "model_year": 2021, "market": "unknown"},
+            "summary": summary,
+            "known_issues": None,
+            "specialist": None,
+            "questions": [
+                "Угол маленький постоянно или только под нагрузкой/на холостых?",
+                "Какое топливо заливаете и есть ли сейчас ошибки по детонации?",
+            ],
+            "limitations": ["x"],
+            "evidence": [
+                {
+                    "evidence_id": "ENHTSA1",
+                    "source_type": "nhtsa_complaint",
+                    "source_id": "11761564",
+                    "title": "Complaint 11761564: ENGINE",
+                    "locator": "https://www.nhtsa.gov/vehicle/2021/BMW/3%20SERIES",
+                    "url": "https://www.nhtsa.gov/vehicle/2021/BMW/3%20SERIES",
+                    "excerpt": "starter",
+                    "retrieved_at": "2026-10-26T00:00:00Z",
+                    "mode": "live",
+                    "applicability": "matched",
+                    "source_market": "US",
+                }
+            ],
+            "tool_events": [],
+        }
+    )
+    html = "\n".join(render_answer(answer))
+    assert html.count("нагрузк") == 1
+    assert html.count("топлив") == 1
+    assert "Complaint 11761564: ENGINE" not in html
+    assert "NHTSA жалоба 11761564" in html
+
+
+def test_prompts_stay_short_without_few_shots() -> None:
+    from pathlib import Path
+
+    from autonaparnik.config import ROOT
+
+    orch = (ROOT / "prompts" / "orchestrator.v2.md").read_text(encoding="utf-8")
+    spec = (ROOT / "prompts" / "specialist.v2.md").read_text(encoding="utf-8")
+    assert len(orch) < 2500
+    assert len(spec) < 1200
+    assert "U: привет" not in orch
+    assert "few-shot" not in orch.lower()
+    assert "vehicle_safety_lookup" in orch
+    assert "search_discussions" in orch
+    assert "workshop_consult" in orch
+    assert "SpecialistResult" in spec
+
+
+def test_question_overlap_helpers() -> None:
+    summary = "Угол маленький всегда или только под нагрузкой на холостых? Какое топливо?"
+    assert question_covered_by_summary(
+        "Угол маленький постоянно или только под нагрузкой/на холостых?",
+        summary,
+    )
+    assert unique_questions(
+        [
+            "Угол маленький постоянно или только под нагрузкой/на холостых?",
+            "Какой пробег у машины?",
+        ],
+        summary,
+    ) == ["Какой пробег у машины?"]

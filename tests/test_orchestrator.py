@@ -59,9 +59,17 @@ class FakeWorkshop:
     def __init__(self, outcome: WorkshopOutcome):
         self.outcome = outcome
         self.calls = []
+        self.requests = []
 
     async def run(self, request, args, remaining):
         self.calls.append(args.model_dump())
+        self.requests.append(
+            {
+                "vehicle": request.vehicle.model_dump(),
+                "history": [item.model_dump() for item in request.history],
+                "message": request.message,
+            }
+        )
         return self.outcome
 
 
@@ -505,6 +513,123 @@ def test_select_evidence_keeps_cited_ids_when_over_limit() -> None:
     assert "ER_021" in ids
     assert "ER_022" in ids
     assert len(kept) == 20
+
+
+async def test_compose_drops_questions_already_in_summary(settings: Settings) -> None:
+    router = ScriptedRouter(
+        [
+            ChatResult(
+                content="",
+                tool_calls=[
+                    {
+                        "id": "call_d",
+                        "type": "function",
+                        "function": {
+                            "name": "search_discussions",
+                            "arguments": json.dumps({"query": "BMW ignition timing"}),
+                        },
+                    }
+                ],
+                raw_message={},
+            ),
+            ChatResult(
+                content=json.dumps(
+                    {
+                        "telegram_html": (
+                            "BMW 3 Series 2021.\n"
+                            "• угол маленький всегда или только под нагрузкой;\n"
+                            "• какое топливо и есть ли ошибки по детонации."
+                        ),
+                        "questions": [
+                            "Угол маленький постоянно или только под нагрузкой?",
+                            "Какое топливо заливаете и есть ли ошибки по детонации?",
+                        ],
+                        "limitations": ["демо"],
+                        "route": "discussions",
+                    }
+                ),
+                tool_calls=[],
+                raw_message={},
+            ),
+        ]
+    )
+    orch = Orchestrator(
+        settings,
+        router,
+        FakeLookup(_empty_lookup(), ToolEvent(tool="vehicle_safety_lookup", status="ok", mode="live", elapsed_ms=1)),
+        FakeWorkshop(_unused_workshop()),
+        FakeDiscussions(),
+    )
+    answer = await orch.handle(
+        ChatRequest(
+            message="3-ка, 2021 года, маленький угол зажигания",
+            vehicle=VehicleProfile(make="BMW", model="3 Series", model_year=2021, market="unknown"),
+            intent="auto",
+        )
+    )
+    assert answer.questions == []
+    dumped = json.dumps(router.calls[1], ensure_ascii=False)
+    assert "Не копируй hits дословно" in dumped or "fact" in dumped
+
+
+async def test_workshop_forwards_dialog_history_without_session_vehicle(settings: Settings) -> None:
+    chunk = _clip_chunk()
+    block = _workshop_block(chunk.evidence.evidence_id)
+    workshop = FakeWorkshop(
+        WorkshopOutcome(
+            block=block,
+            chunks=[chunk],
+            event=ToolEvent(tool="workshop_consult", status="ok", mode="fixture", elapsed_ms=1),
+            opaque={"status": "general_only", "block_id": "B_head", "has_checks": True},
+        )
+    )
+    router = ScriptedRouter(
+        [
+            ChatResult(
+                content="",
+                tool_calls=[
+                    {
+                        "id": "call_w",
+                        "type": "function",
+                        "function": {
+                            "name": "workshop_consult",
+                            "arguments": json.dumps(
+                                {
+                                    "task": "assembly_checklist",
+                                    "query": "BMW 7 Series 2021 снять фару",
+                                }
+                            ),
+                        },
+                    }
+                ],
+                raw_message={},
+            )
+        ]
+    )
+    orch = Orchestrator(
+        settings,
+        router,
+        FakeLookup(_empty_lookup(), ToolEvent(tool="vehicle_safety_lookup", status="ok", mode="live", elapsed_ms=1)),
+        workshop,
+        FakeDiscussions(),
+    )
+    history = [
+        HistoryMessage(role="user", text="bmw 7 серии дорест 2021-2022"),
+        HistoryMessage(role="assistant", text="BMW 7 Series 2021–2022 — на что смотреть перед покупкой."),
+    ]
+    answer = await orch.handle(
+        ChatRequest(
+            message="другу фару снять собрать надо, как это сделать",
+            vehicle=VehicleProfile(market="unknown"),
+            intent="auto",
+            history=history,
+        )
+    )
+    assert answer.route == "workshop"
+    assert answer.vehicle.make is None
+    assert workshop.requests[0]["vehicle"]["make"] is None
+    assert workshop.requests[0]["history"][0]["text"] == "bmw 7 серии дорест 2021-2022"
+    assert workshop.calls[0]["query"] == "BMW 7 Series 2021 снять фару"
 
 
 async def test_thanks_skips_tools_and_keeps_assistant_history(settings: Settings) -> None:
