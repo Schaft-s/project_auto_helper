@@ -91,6 +91,7 @@
       .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       nav { max-width: 100%; }
       .split { grid-template-columns: 1fr !important; }
+      .grid-3 { grid-template-columns: 1fr; }
     }
     .stat {
       background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: .9rem 1rem;
@@ -107,6 +108,7 @@
     .ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
     .ghost:hover { border-color: var(--accent); }
     .grid { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .split { display: grid; gap: 1rem; grid-template-columns: 1.1fr .9fr; align-items: start; }
     .panel {
       background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 1rem 1.1rem;
@@ -203,7 +205,7 @@
         <div class="eyebrow">Telegram · MCP · RAG · LLM-агент</div>
         <div>
           <h1>АвтоНапарник</h1>
-          <p class="lede">Русскоязычный консультант автовладельца и механика: от симптома и известной машины — к фактам NHTSA, обсуждениям механиков и сборочным проверкам. Без ложного диагноза и без подмены автомобиля.</p>
+          <p class="lede">Русскоязычный консультант автовладельца и механика: от симптома и известной машины — к фактам NHTSA, обсуждениям механиков и сборочным проверкам.</p>
         </div>
         <div class="stats">
           <div class="stat"><b>3</b><span>инструмента у оркестратора</span></div>
@@ -221,8 +223,8 @@
     <!-- 2 -->
     <section class="slide" data-title="Умеет">
       <h2>Что умеет система</h2>
-      <p class="lede">Не «чат ради чата», а маршрутизатор по трём источникам правды плюс диалоговый контекст.</p>
-      <div class="grid">
+      <p class="lede">Ответы по трём источникам правды с поддержкой диалогового контекста.</p>
+      <div class="grid grid-3">
         <div class="panel accent">
           <h3>Отзывы и жалобы NHTSA</h3>
           <p class="muted">По марке / модели / году находит отзывные кампании и жалобы владельцев через настоящий MCP. Явно говорит, что база — рынок США.</p>
@@ -245,7 +247,11 @@
         </div>
         <div class="panel">
           <h3>Честные отказы</h3>
-          <p class="muted">Нет данных NHTSA по Chery/Lada — не подставляет Civic. Airbag — caution, без пошаговой «инструкции».</p>
+          <p class="muted">Отсутствие данных NHTSA не приводит к галюцинациям..</p>
+        </div>
+        <div class="panel">
+          <h3>Безопасность</h3>
+          <p class="muted">SRS/HV — caution, без пошаговой «инструкции».</p>
         </div>
       </div>
     </section>
@@ -260,7 +266,7 @@
           <button type="button" class="chip" data-scene="symptom">Симптом</button>
           <button type="button" class="chip" data-scene="workshop">Сборка</button>
           <button type="button" class="chip" data-scene="switch">Смена машины</button>
-          <button type="button" class="chip" data-scene="thanks">Нейтраль</button>
+          <button type="button" class="chip" data-scene="thanks">Базовая обработка</button>
         </div>
 
         <div class="scenario active" id="scene-nhtsa">
@@ -363,7 +369,7 @@
       <h2>Функционал бота подробно</h2>
       <div class="split">
         <div class="flow">
-          <div class="flow-step"><div class="num">1</div><div><h3>Свободный текст вместо анкеты</h3><p class="muted">Марка, модель и год извлекаются из реплик. Отдельной команды <span class="kbd">/car</span> нет — меньше трения.</p></div></div>
+          <div class="flow-step"><div class="num">1</div><div><h3>Свободный текст вместо анкеты</h3><p class="muted">Марка, модель и год извлекаются из реплик. Нет необходимости проходить форму ввода данных.</p></div></div>
           <div class="flow-step"><div class="num">2</div><div><h3>Три tool под разными задачами</h3><p class="muted">NHTSA · discussions · workshop. Оркестратор выбирает маршрут; combined — когда нужны два источника.</p></div></div>
           <div class="flow-step"><div class="num">3</div><div><h3>История диалога</h3><p class="muted">Follow-up «в пробке», «на этой машине», смена темы с симптома на сборку — без потери машины.</p></div></div>
           <div class="flow-step"><div class="num">4</div><div><h3>Безопасность и политика</h3><p class="muted">SRS/высоковольт — caution. Нет VIN-проверки, нет диагноза, нет подмены модели.</p></div></div>
@@ -446,7 +452,6 @@
             <li>Свой минимальный MCP-сервер на Python SDK</li>
             <li>Клиент: initialize / tools/call по streamable HTTP</li>
             <li>Фасад <span class="kbd">vehicle_safety_lookup</span> не ходит в REST напрямую</li>
-            <li>Chery/Lada не подменяются «похожей» US-моделью</li>
             <li>Поднимается в Docker Compose вместе с Qdrant</li>
           </ul>
         </div>
@@ -483,19 +488,19 @@
     <!-- 8 -->
     <section class="slide" data-title="Модели">
       <h2>Выбор модели OpenRouter</h2>
-      <p class="lede">Не взяли модель «на глаз»: bake-off на 10 одинаковых маршрутных кейсах.</p>
+      <p class="lede">Тестирование на 10 одинаковых маршрутных кейсах.</p>
       <div class="panel">
         <table>
           <tr><th>Модель</th><th>Pass</th><th>Latency</th><th>Вывод</th></tr>
           <tr><td>gemini-2.5-flash</td><td class="ok">10/10</td><td>4.3s</td><td>лидер по скорости</td></tr>
           <tr><td>gpt-4o-mini</td><td class="ok">10/10</td><td>6.7s</td><td>стабильный routing</td></tr>
-          <tr><td><b>deepseek-v4.1-flash</b></td><td class="ok">10/10</td><td>14.2s</td><td>production: на нём dialog suite</td></tr>
+          <tr><td><b>deepseek-v4.1-flash</b></td><td class="ok">10/10</td><td>14.2s</td><td>на нём выверены промпты</td></tr>
           <tr><td>claude-haiku-4.5</td><td>9/10</td><td>9.4s</td><td>пропуск RU NHTSA</td></tr>
           <tr><td>llama-3.3-70b</td><td>6/10</td><td>13.5s</td><td>year строкой → ValidationError</td></tr>
         </table>
       </div>
       <div class="grid" style="margin-top:1rem">
-        <div class="panel soft"><h3>Почему DeepSeek</h3><p class="muted">Паритет 10/10 по routing + на нём отлажены промпты и все 13 multi-turn диалогов.</p></div>
+        <div class="panel soft"><h3>Изначально DeepSeek</h3><p class="muted">Паритет 10/10 по routing + на нём отлажены промпты и все 13 multi-turn диалогов.</p></div>
         <div class="panel"><h3>Честный next step</h3><p class="muted">Gemini можно поставить после повторного dialog eval — уже зафиксирован как latency-лидер.</p></div>
       </div>
     </section>
