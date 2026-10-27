@@ -3,7 +3,8 @@
 Русскоязычный Telegram-консультант автовладельца и механика: от симптома и известной машины — к проверенным фактам NHTSA, обсуждениям механиков и сборочным проверкам без ложного диагноза.
 
 **Интерфейс:** [@autolover_test_bot](https://t.me/autolover_test_bot)  
-**Презентация:** [presentation/index.html](presentation/index.html)  
+**Презентация (GitHub Pages):** https://schaft-s.github.io/project_auto_helper/  
+**Исходник слайдов:** [presentation/index.html](presentation/index.html)  
 **Спецификация продукта (проектный пакет):** `autonaparnik_agent_plan_v2/`
 
 ---
